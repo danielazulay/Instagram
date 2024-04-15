@@ -1,0 +1,15 @@
+.main{
+    display: grid;
+    grid-template-columns: 1fr 2fr 7fr 2fr ;
+    grid-template-areas: "side . home ."
+
+}
+.side-menu{
+    grid-area: side;
+    // grid-area: 0/2;
+}
+.pages{
+    grid-area: home;
+    // grid-area: 3/6;
+    // white-space : nowrap;
+}
