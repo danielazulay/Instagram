@@ -1,39 +1,67 @@
+// .home-page{
+//     padding-left: 200px;
+//     padding-right: 200px;
+//     width: 1408px;
+//     height: 100vh;
+//     display: grid;
+//     grid-template-columns: 2fr 6fr 6fr;
+//     grid-template-rows: 2fr 6fr 6fr;   
+//      grid-template-areas: "friends friends side"
+//                          "sugestion sugestion side" 
+//                          ". storys side"        
+          
+// }
+
+// .Friends{
+//     margin-top: 15px;
+//     margin-bottom: 15px;
+//     grid-area: friends;
+//     border: 1px solid black;
+// }
+// .nav-sugestion{
+//     margin-left: 70px;
+//     margin-top: 35px;
+//     grid-area: sugestion;
+//     justify-content: center;
+//     align-items: center;
+//     border: 1px solid black;
+// }
+// .side-sugestion{
+//     grid-area: side;
+//     padding-left: 64px;
+//     height: 50vh;
+//     border: 1px solid black;
+// }
+
+// .story-list{
+//     grid-area: storys;
+//     border: 1px solid black;
+// }
+
 .home-page{
     padding-left: 200px;
     padding-right: 200px;
+    margin-left: 200px;
     width: 1408px;
     height: 100vh;
-    display: grid;
-    grid-template-columns: 2fr 6fr 6fr;
-    grid-template-rows: 2fr 6fr 6fr;   
-     grid-template-areas: "friends friends side"
-                         "sugestion sugestion side" 
-                         ". storys side"        
-          
-}
+    display: flex;
+    overflow-x: hidden;
+   }
 
 .Friends{
     margin-top: 15px;
     margin-bottom: 15px;
-    grid-area: friends;
     border: 1px solid black;
-}
-.nav-sugestion{
-    margin-left: 70px;
-    margin-top: 35px;
-    grid-area: sugestion;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid black;
-}
-.side-sugestion{
-    grid-area: side;
-    padding-left: 64px;
-    height: 50vh;
-    border: 1px solid black;
+    height: 120px;
+    width: 650px;
 }
 
 .story-list{
-    grid-area: storys;
+
+    width: 70%;
+}
+
+.side-sugestion{
     border: 1px solid black;
+    width: 950px;
 }

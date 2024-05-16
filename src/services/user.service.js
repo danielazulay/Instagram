@@ -1,15 +1,17 @@
 
 import { httpService } from './http.service'
+import { utilService } from './util.service'
 
-const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
+const USER_DB = 'loggedinUser'
 
 export const userService = {
+    generateUser,
     login,
     logout,
     signup,
     getLoggedinUser,
     saveLocalUser,
-    getUsers,
+    getUser,
     getById,
     remove,
     update,
@@ -18,11 +20,29 @@ export const userService = {
 }
 
 window.userService = userService
+generateUser()
 
+function generateUser(){
 
-function getUsers() {
-    // return storageService.query('user')
-    return httpService.get(`user`)
+    let loggedInUser = utilService.loadFromStorage(USER_DB)
+
+    if(!loggedInUser)
+    {
+        let user = {
+            "_id":"u101",
+            "userName":"admin",
+            "fullname":"daniel",
+            "password":"123",
+            "email":"da@gmail.com",
+            "imgUrl":"https://source.unsplash.com/random/800x600/?landscape1"
+        }
+        utilService.saveToStorage(USER_DB,user)
+    }
+}
+
+function getUser() {
+    return utilService.loadFromStorage(USER_DB)
+    // return httpService.get(`user`)
 }
 
 
@@ -66,7 +86,7 @@ async function signup(userCred) {
 }
 
 async function logout() {
-    sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
+    sessionStorage.removeItem(USER_DB)
     return await httpService.story('auth/logout')
 }
 
@@ -81,19 +101,19 @@ async function changeScore(by) {
 
 function saveLocalUser(user) {
     user = { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, score: user.score }
-    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
+    sessionStorage.setItem(USER_DB, JSON.stringify(user))
     return user
 }
 
 function updateLocalUserFields(user) {
     const currUser = getLoggedinUser()
     const userToSave = { ...currUser, ...user }
-    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(userToSave))
+    sessionStorage.setItem(USER_DB, JSON.stringify(userToSave))
     return user
 }
 
 function getLoggedinUser() {
-    return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
+    return utilService.loadFromStorage(USER_DB) || null
 }
 
 

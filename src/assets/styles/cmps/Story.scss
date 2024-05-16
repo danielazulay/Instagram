@@ -1,1 +1,25 @@
-.story{}
+.story-img{
+    height: 585px;
+    width: 468px;
+}
+.logo{
+    border-radius: 50%;
+    height: 32px;
+    width: 32px;
+}
+.svgMenuLine{
+    display: flex;
+    width: 468px;
+    justify-content:space-between;
+}
+.svgMenu{
+    display: flex;
+    justify-content:flex-start;
+}
+
+.storyTitlle{
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 2px;
+    font-size: 14px;
+}

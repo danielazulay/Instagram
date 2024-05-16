@@ -1,3 +1,4 @@
+import { StoryDetails } from './cmps/StoryDetails.jsx'
 import { HomePage } from './pages/HomePage.jsx'
 
 
@@ -8,7 +9,7 @@ const routes = [
         path: '/',
         component: <HomePage/>,
         label: 'Home 🏠',
-    },
+    }
     // {
     //     path: 'about',
     //     component: <AboutUs />,

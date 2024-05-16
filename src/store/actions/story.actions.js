@@ -1,9 +1,10 @@
 import { storyService } from '../../services/story.service.js'
 import { store } from '../store.js'
-import { ADD_STORY, REMOVE_STORY, UPDATE_STORY } from '../reducers/story.reducer.js'
-import { SET_USER} from '../reducers/user.reducer.js'
+import { ADD_STORY, REMOVE_STORY, SET_STORIES,UPDATE_STORY } from '../reducers/story.reducer.js'
 
+import { storageService } from '../../services/async-storage.service.js'
 // Action Creators
+let STORY = "story"
 export function getActionRemoveStory(reviewId) {
     return { type: REMOVE_STORY, reviewId }
 }
@@ -11,16 +12,29 @@ export function getActionAddStory(review) {
     return { type: ADD_STORY, review }
 }
 
-// export async function loadStory() {
-//     try {
-//         const reviews = await storyService.query() // Change to Redux way (action -> query)
-//         store.dispatch({ type: UPDATE_STORY, reviews })
+export async function loadStories() {
+    try {
+        const stories = await storyService.query() // Change to Redux way (action -> query)
+        console.log("stories->"+stories)
+        store.dispatch({ type: SET_STORIES, stories })
 
-//     } catch (err) {
-//         console.log('Storyctions: err in loadStories', err)
-//         throw err
-//     }
-// }
+    } catch (err) {
+        console.log('Storyctions: err in loadStories', err)
+        throw err
+    }
+}
+
+export async function saveStory(story) {
+	try {
+		const type = story._id ? UPDATE_STORY : ADD_STORY
+		const savedStory = await storageService.put(STORY,story)
+		store.dispatch({ type, story: savedStory })
+	} catch (err) {
+		console.log('Had issues saving story', err)
+		throw err
+	}
+}
+
 
 // export async function addStory(story) {
 //     try {

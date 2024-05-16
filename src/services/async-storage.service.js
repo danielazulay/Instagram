@@ -1,10 +1,11 @@
 export const storageService = {
     query,
     get,
-    story,
+    post,
     put,
     remove,
 }
+
 
 function query(entityType, delay = 500) {
     var entities = JSON.parse(localStorage.getItem(entityType)) || []
@@ -19,9 +20,11 @@ function get(entityType, entityId) {
     })
 }
 
-function story(entityType, newEntity) {
+function post(entityType, newEntity) {
     newEntity = JSON.parse(JSON.stringify(newEntity))    
     newEntity._id = _makeId()
+    console.log(newEntity._id)
+    console.log(newEntity._id)
     return query(entityType).then(entities => {
         entities.push(newEntity)
         _save(entityType, entities)

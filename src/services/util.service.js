@@ -6,7 +6,8 @@ export const utilService = {
     // randomPastTime,
     saveToStorage,
     loadFromStorage,
-    getAssetSrc
+    getAssetSrc,
+    resumeText
 }
 
 function makeId(length = 6) {
@@ -69,4 +70,9 @@ function getAssetSrc(name) {
     const modules = import.meta.glob('/src/assets/*', { eager: true })
     const mod = modules[path]
     return mod.default
+}
+
+
+function resumeText(str){
+    return str.substring(0,112)
 }

@@ -1,7 +1,7 @@
 export function SideSugestion(){
 
     return(
-        <div className="side-sugestion">
+        <div >
             <h2>SIDE SUGESTION</h2>
         </div>
     )
