@@ -12,15 +12,37 @@ let STORY = "story"
 generateStories()
 function generateStories() {
     let stories = utilService.loadFromStorage(STORY)
-
+ 
     if(!stories || !stories.length){
-        stories = []
+
+        let  coments = []
+        stories = []  
+        for(let j = 10 ;j <20; j++){
+
+           let obj ={ 
+            "id": `c${j}1`,
+            "by": {
+                "_id": `u${j}5`,
+                "fullname": `Commenter ${j}`,
+                "imgUrl": `https://source.unsplash.com/random/40x40/?commenter${j}`
+            },
+            "txt": "This is a comment is number 1",
+            "likedBy": [
+                {
+                    "_id": `u${j}6`,
+                    "fullname": `Liker ${j}`,
+                    "imgUrl": `https://source.unsplash.com/random/40x40/?liker${j}`
+                }
+            ]
+        }
+        coments.push(obj)
+        }
 
         for (let i = 1; i <= 10; i++) {
             const story = {
                 "_id": `s${i}`,
                 "txt": `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ${i}`,
-                "imgUrl": `https://source.unsplash.com/random/800x600/?landscape${i}`,
+                "imgUrl": `https://images.pexels.com/photos/1266810/pexels-photo-1266810.jpeg?cs=srgb&dl=pexels-8moments-1266810.jpg&fm=jpg`,
                 "by": {
                     "_id": `u${i}`,
                     "fullname": `User ${i}`,
@@ -31,24 +53,7 @@ function generateStories() {
                     "lng": 22.22 + i,
                     "name": `Location ${i}`
                 },
-                "comments": [
-                    {
-                        "id": `c${i}1`,
-                        "by": {
-                            "_id": `u${i}5`,
-                            "fullname": `Commenter ${i}`,
-                            "imgUrl": `https://source.unsplash.com/random/40x40/?commenter${i}`
-                        },
-                        "txt": "This is a comment",
-                        "likedBy": [
-                            {
-                                "_id": `u${i}6`,
-                                "fullname": `Liker ${i}`,
-                                "imgUrl": `https://source.unsplash.com/random/40x40/?liker${i}`
-                            }
-                        ]
-                    }
-                ],
+                "comments": [...coments],
                 "likedBy": [
                     {
                         "_id": `u${i}`,

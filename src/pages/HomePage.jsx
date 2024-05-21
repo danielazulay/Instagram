@@ -9,6 +9,7 @@ import { StoryDetails } from "../cmps/StoryDetails";
 export function HomePage() {
   const [story, setStory] = useState(null);
 
+
   const stories = useSelector((storeState) => storeState.storyModule.stories);
   const user = useSelector((userSate) => userSate.userModule.user);
   // const count = useSelector(storeState => storeState.userModule.count)
@@ -17,6 +18,9 @@ export function HomePage() {
   //     console.log('Changing count by:', diff);
   //     dispatch({ type: CHANGE_COUNT, diff })
   // }
+  const [emojie, setEmojiPicker] = useState(null);
+  const [selected, setSelected] = useState(false);
+
 
   useEffect(() => {
     onLoadStories();
@@ -36,10 +40,10 @@ export function HomePage() {
 
   return (
     <div className="home-page">
-      {story && <StoryDetails story={story} onCloseStory={onCloseStory}/>}
+      {story && <StoryDetails   selected={selected} setSelected={setSelected} setEmojiPicker={setEmojiPicker} story={story} user={user} onCloseStory={onCloseStory}/>}
       <div>
         <Friends />
-        <StoryList stories={stories} user={user} onOpenStory={onOpenStory} />
+        <StoryList   selected={selected} setSelected={setSelected} setEmojiPicker={setEmojiPicker} stories={stories} user={user} onOpenStory={onOpenStory} />
       </div>
       <div className="side-sugestion">
         <SideSugestion />

@@ -1,39 +1,38 @@
 // import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { SvgService } from "../services/svg.service";
-import { saveStory } from "../store/actions/story.actions";
+
+// import { SvgService } from "../services/svg.service";
+// import { saveStory } from "../store/actions/story.actions";
 import { utilService } from "../services/util.service";
 import { useState } from "react";
+import { MenuButton } from "./MenuButtons";
+import {ButtonPost} from "../cmps/ButtonPost"
+import { Emoji } from "./Emoji";
 // import { useState,useEffect } from "react";
 // import { userService } from "../services/user.service";
 
-export function Story({ story, user,onOpenStory}) {
+export function Story({ selected, story, user,onOpenStory}) {
 
   let [spand, setSpand] = useState(false)
-  function checkLike() {
-    return story.likedBy.find((element) => user._id == element._id) !==
-      undefined
-      ? true
-      : false;
-  }
 
+  const [post, setPost] = useState("");
+  
   function expand(){
     setSpand(spand => !spand)
   }
-  function handleLike(action) {
-    const newLike = {
-      _id: user._id,
-      fullname: user.fullname,
-      imgUrl: user.imgUrl,
-    };
+  // function handleLike(action) {
+  //   const newLike = {
+  //     _id: user._id,
+  //     fullname: user.fullname,
+  //     imgUrl: user.imgUrl,
+  //   };
 
-    if (action) {
-      story.likedBy.push(newLike);
-    } else if (!action) {
-      story.likedBy = story.likedBy.filter((el) => el._id !== user._id);
-    }
-    saveStory(story);
-  }
+  //   if (action) {
+  //     story.likedBy.push(newLike);
+  //   } else if (!action) {
+  //     story.likedBy = story.likedBy.filter((el) => el._id !== user._id);
+  //   }
+  //   saveStory(story);
+  // }
 
   return (
     <div>
@@ -41,7 +40,8 @@ export function Story({ story, user,onOpenStory}) {
       <h2>{story.by.fullname}</h2></div>
 
       <img className="story-img" src={story.imgUrl} alt="blah blah" />
-      <div className="svgMenuLine">
+      <MenuButton  story={story} user={user} onOpenStory={onOpenStory}/>
+      {/* <div className="svgMenuLine">
       <div className="svgMenu">
         <div>
         {checkLike() ? (
@@ -58,7 +58,7 @@ export function Story({ story, user,onOpenStory}) {
         )}
 
         </div>
-       <button onClick={()=>onOpenStory(story)}><span to={`/${story._id}`} className="compose-button"
+       <button className="commnet-button" onClick={()=>onOpenStory(story)}><span to={`/${story._id}`} className="compose-button"
            dangerouslySetInnerHTML={{ __html: SvgService.getSvg("comment") }}/>
         </button> 
 
@@ -75,12 +75,16 @@ export function Story({ story, user,onOpenStory}) {
       </div>
       <div className="likescount">
           {story.likedBy.length +" Likes"}
-          </div>
+          </div> */}
 
 
-      <h5>{!spand ? utilService.resumeText(story.txt)+"... " : story.txt}<span style={{ visibility: spand? 'hidden' : 'visible' }} onClick={expand}>more</span></h5>
-      <Link to="#">View all {story.comments.length} comments</Link>
-      <Link to="#">Add a comment...</Link>
+      <h5 className="story-text">{!spand ? utilService.resumeText(story.txt)+"... " : story.txt}<span style={{ visibility: spand? 'hidden' : 'visible' }} onClick={expand}>more</span></h5>
+      <div className="coment-post">
+      <a  onClick={()=>onOpenStory(story)}><span to={`/${story._id}`}>View all {story.comments.length} comments</span></a>
+      <input type="text" placeholder="Add a comment..."></input><ButtonPost/>
+      
+      </div>
+      <hr></hr>
     </div>
   );
 }
