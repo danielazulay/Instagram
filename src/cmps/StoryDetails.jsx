@@ -1,24 +1,18 @@
-import EmojiPicker from "emoji-picker-react";
 import { SvgService } from "../services/svg.service";
 import { MenuButton } from "./MenuButtons";
 import { useState } from "react";
 import { saveStory } from "../store/actions/story.actions";
-import { ButtonPost } from "./ButtonPost";
+import { FormPost } from "./FormPost";
 import { Emoji } from "./Emoji";
 
 export function StoryDetails({
   selected,
   setSelected,
-  setEmojiPicker,
   story,
   onCloseStory,
   user,
 }) {
   const [post, setPost] = useState("");
-
-  function openEmoji() {
-    setSelected((pastState) => !pastState);
-  }
 
   function handleChange(event) {
     setPost(event.currentTarget.value);
@@ -63,14 +57,12 @@ export function StoryDetails({
                         <h3>{post.by.fullname}</h3>
                         <span
                           className="love"
-                          onClick={openEmoji}
                           dangerouslySetInnerHTML={{
                             __html: SvgService.getSvg("love"),
                           }}
                         />
                       </div>
                       <p>{post.txt}</p>
-                      {/* <p>{console.log("->>>"post.likedBy.left)}</p> */}
                     </div>
                   </li>
                 );
@@ -81,51 +73,34 @@ export function StoryDetails({
             <hr></hr>
             <div className="story-post">
               <div>
-                {!EmojiPicker ? (
-                  <span
-                    className="img-smile"
-                    onClick={() => setEmojiPicker((prev) => !prev)}
-                    dangerouslySetInnerHTML={{
-                      __html: SvgService.getSvg("smile"),
+                <span
+                  className="img-smile"
+                  onClick={() => setSelected((prev) => !prev)}
+                  dangerouslySetInnerHTML={{
+                    __html: SvgService.getSvg("smile"),
+                  }}
+                />
+                {selected ? (
+                  <Emoji
+                    setPost={setPost}
+                    height={250}
+                    style={{
+                      position: "absolute",
+                      bottom: "130px",
+                      zIndex: 999,
+                      left: 650,
                     }}
                   />
-                  ) : (
-                  <>
-                    <span
-                      className="img-smile"
-                      onClick={openEmoji}
-                      dangerouslySetInnerHTML={{
-                        __html: SvgService.getSvg("smile"),
-                      }}
-                    />
-
-                    {selected ? (
-                      <Emoji
-                        setPost={setPost}
-                        height={250}
-                        style={{
-                          position: "absolute",
-                          bottom: "130px",
-                          zIndex: 999,
-                          left: 790,
-                        }}
-                      />
-                    ) : (
-                      <></>
-                    )}
-                  </>
+                ) : (
+                  <></>
                 )}
               </div>
-              <form onSubmit={handleSubmit}>
-                <input
-                  onClick={() => setSelected(false)} // how to make close when click out
-                  type="text"
-                  placeholder=" Add comment..."
-                  onChange={handleChange}
-                  value={post}
-                ></input>
-                <ButtonPost />
-              </form>
+              <FormPost
+                handleSubmit={handleSubmit}
+                setSelected={setSelected}
+                handleChange={handleChange}
+                post={post}
+              ></FormPost>
             </div>
           </div>
         </div>

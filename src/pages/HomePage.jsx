@@ -38,12 +38,14 @@ export function HomePage() {
     setStory(story)
   }
 
+  
+
   return (
     <div className="home-page">
       {story && <StoryDetails   selected={selected} setSelected={setSelected} setEmojiPicker={setEmojiPicker} story={story} user={user} onCloseStory={onCloseStory}/>}
       <div>
         <Friends />
-        <StoryList   selected={selected} setSelected={setSelected} setEmojiPicker={setEmojiPicker} stories={stories} user={user} onOpenStory={onOpenStory} />
+        <StoryList setEmojiPicker={setEmojiPicker} stories={stories} user={user} onOpenStory={onOpenStory} />
       </div>
       <div className="side-sugestion">
         <SideSugestion />
