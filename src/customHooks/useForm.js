@@ -14,8 +14,6 @@ export const useForm = (initialState) => {
             case 'checkbox':
                 value = checked
 
-            default:
-                break;
         }
         setFields((prevFields) => ({ ...prevFields, [field]: value }))
     }

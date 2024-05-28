@@ -39,13 +39,14 @@
 // }
 
 .home-page{
-    padding-left: 200px;
-    padding-right: 200px;
-    margin-left: 200px;
-    width: 1408px;
+    padding-left: 20%;
+    padding-right: 10%;
+    margin-left: 10%;
+    width: 100vw;
     height: 100vh;
     display: flex;
     overflow-x: hidden;
+    gap: 5%;
    }
 
 .Friends{
@@ -53,15 +54,15 @@
     margin-bottom: 15px;
     border: 1px solid black;
     height: 120px;
-    width: 650px;
+    width: 45vw;
 }
 
 .story-list{
 
-    width: 70%;
+    width: 25%;
 }
 
 .side-sugestion{
     border: 1px solid black;
-    width: 950px;
+    width: 25%;
 }

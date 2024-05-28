@@ -1,7 +1,7 @@
-export function FormPost({handleSubmit,setSelected,handleChange,post}){
+export function FormPost({onPostSubmit,setSelected,handleChange,post}){
     return(
-<div className="formPost">
-     <form onSubmit={handleSubmit} >
+
+     <form onSubmit={onPostSubmit}  >
       <input
         onClick={() => setSelected(false)} // how to make close when click out
         type="text"
@@ -9,11 +9,11 @@ export function FormPost({handleSubmit,setSelected,handleChange,post}){
         onChange={handleChange}
         value={post}
       ></input>
-        <button className="post" type="submit">
+        <button type="submit">
     POST
   </button>
     </form>
-    </div>
+
 
     )
 }

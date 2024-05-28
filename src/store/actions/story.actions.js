@@ -4,7 +4,7 @@ import { ADD_STORY, REMOVE_STORY, SET_STORIES,UPDATE_STORY } from '../reducers/s
 
 import { storageService } from '../../services/async-storage.service.js'
 // Action Creators
-let STORY = "story"
+let STORY_DB = "story"
 export function getActionRemoveStory(reviewId) {
     return { type: REMOVE_STORY, reviewId }
 }
@@ -26,8 +26,14 @@ export async function loadStories() {
 
 export async function saveStory(story) {
 	try {
+        let savedStory
 		const type = story._id ? UPDATE_STORY : ADD_STORY
-		const savedStory = await storageService.put(STORY,story)
+        if(story._id){
+            savedStory = await storageService.put(STORY_DB,story)
+        }else{
+            savedStory = await storageService.post(STORY_DB,story)
+        }
+	
 		store.dispatch({ type, story: savedStory })
 	} catch (err) {
 		console.log('Had issues saving story', err)

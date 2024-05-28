@@ -1,7 +1,9 @@
 .main{
+    width:100%;
     display: grid;
-    grid-template-columns: 1fr 2fr 7fr 2fr ;
-    grid-template-areas: "side . home ."
+    grid-template-columns: 1fr 1fr 7fr 2fr ;
+    grid-template-areas: "side . home .";
+    overflow-x: hidden;
 
 }
 .side-menu{

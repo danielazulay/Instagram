@@ -1,27 +1,19 @@
-.formPost {
-
-        margin-left: 2%;
-       display: flex;
-       justify-content:flex-start;
-
-  
+form{
+    width: 100%;
+    display: flex;
         input{
+        width: 88%;
           padding: 0;
           border: 0;
-          width: 80%;
           height: 25px;
+          outline: none;
+          margin: 0;
         }   
 
   
-        }
-        input:focus {
-          outline: none;
-          box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.5);
-
-        }
-        form{
-          display: flex;
-          .post{
+        
+          button{
+            width: 50px;
             display: inline;
             margin-top: 0;
             background: none;
@@ -31,6 +23,9 @@
             font: inherit;
             cursor: pointer;
             outline: inherit;
+            color: $color-prime;
+            font-weight: 800;
+            font-size: 14px;
   
           }
 
