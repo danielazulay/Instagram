@@ -9,21 +9,20 @@
     background-color: white;
     
     .instagran-logo{
-        margin-left: 15%;
+        margin-left: 10%;
         margin-top: 15%;
 
     }
-    ul.menu{
-        margin-left: 0;
-    }
 
     .menu{
+        padding-left: 0;
         height: 100vh;
 
         
         .list-menu{
             width: 100%;
-            margin-top: 20px;
+            margin-top: 5px;
+            padding: 10%;
             display: flex;
             gap: 10px;
             height: 60px;

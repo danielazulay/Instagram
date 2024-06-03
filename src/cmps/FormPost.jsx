@@ -1,15 +1,16 @@
 export function FormPost({onPostSubmit,setSelected,handleChange,post}){
     return(
 
-     <form onSubmit={onPostSubmit}  >
+     <form  className="form-post" onSubmit={onPostSubmit}  >
       <input
+        className="input-post"
         onClick={() => setSelected(false)} // how to make close when click out
         type="text"
         placeholder=" Add comment..."
         onChange={handleChange}
         value={post}
       ></input>
-        <button type="submit">
+        <button className="button-post" type="submit">
     POST
   </button>
     </form>

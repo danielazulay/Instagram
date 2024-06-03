@@ -34,7 +34,9 @@ function generateUser(){
             "fullname":"daniel",
             "password":"123",
             "email":"da@gmail.com",
-            "imgUrl":"https://source.unsplash.com/random/800x600/?landscape1"
+            "imgUrl":"https://source.unsplash.com/random/800x600/?landscape1",
+            "followers":[],
+            "following":[],
         }
         utilService.saveToStorage(USER_DB,user)
     }

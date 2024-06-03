@@ -1,7 +1,7 @@
-form{
+.form-post{
     width: 100%;
     display: flex;
-        input{
+        .input-post{
         width: 88%;
           padding: 0;
           border: 0;
@@ -12,7 +12,7 @@ form{
 
   
         
-          button{
+          .button-post{
             width: 50px;
             display: inline;
             margin-top: 0;

@@ -2,14 +2,11 @@
     width:100%;
     display: grid;
     grid-template-columns: 1fr 1fr 7fr 2fr ;
-    grid-template-areas: "side . home .";
+    grid-template-areas: ". . home .";
     overflow-x: hidden;
 
 }
-.side-menu{
-    grid-area: side;
-    // grid-area: 0/2;
-}
+
 .pages{
     grid-area: home;
     // grid-area: 3/6;

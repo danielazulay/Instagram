@@ -1,30 +1,10 @@
+import { Link } from "react-router-dom";
 import { SvgService } from "../services/svg.service";
-import { saveStory } from "../store/actions/story.actions";
+// import { saveStory } from "../store/actions/story.actions";
 import { CircleImg } from "./buttons/CircleImg";
 
 
-export function SideMenu({user}) {
-
-function addStory(){
-  const story = {
-    "txt": `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. `,
-    "imgUrl": `https://images.pexels.com/photos/1266810/pexels-photo-1266810.jpeg?cs=srgb&dl=pexels-8moments-1266810.jpg&fm=jpg`,
-    "by": user
-    ,
-    "loc": {
-        "lat": 11.11 ,
-        "lng": 22.22,
-        "name": `Location`
-    },
-    "comments": [],
-    "likedBy": [],
-    "tags": []
-}
-
-saveStory(story)
-console.log("post",story)
-
-}
+export function SideMenu({user,onCloseCreate}) {
 
   return (
     <div className="side-menu">
@@ -67,7 +47,7 @@ console.log("post",story)
           Messages
         </li>
         <li className="list-menu gray"
-        onClick={addStory}
+        onClick={onCloseCreate}
         >
           <div
             className="icon"
@@ -76,12 +56,14 @@ console.log("post",story)
             }}
           />
           Create
-        </li>
+          </li>
 
+        <Link to={`/profile`}>
         <li className="list-menu gray">
         <CircleImg img={user.imgUrl}/>
           Profile
         </li>
+        </Link>
 
       </ul>
     </div>

@@ -1,5 +1,6 @@
-import { StoryDetails } from './cmps/StoryDetails.jsx'
+
 import { HomePage } from './pages/HomePage.jsx'
+import { Profile } from './pages/Profile.jsx'
 
 
 
@@ -9,6 +10,11 @@ const routes = [
         path: '/',
         component: <HomePage/>,
         label: 'Home 🏠',
+    },
+    {
+        path: '/profile',
+        component: <Profile/>,
+        label: 'Profile',
     }
     // {
     //     path: 'about',

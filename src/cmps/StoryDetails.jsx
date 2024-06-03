@@ -26,13 +26,11 @@ export function StoryDetails({
 
   function checkLikeComment(comment) {
     if(comment.likedBy.length === 0)return false
-    
 
     const res = comment.likedBy.findIndex((element)=>element._id === user._id)
     console.log(res)
     return res === 0 ? true: false
    
-
   }
 
   function handleLike(action, commnetId) {

@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { loadStories } from "../store/actions/story.actions";
 import { StoryDetails } from "../cmps/StoryDetails";
 import { Create } from "./Create";
+import { SideMenu } from "../cmps/SideMenu";
 
 export function HomePage() {
   const [story, setStory] = useState(null);
@@ -43,14 +44,15 @@ function onCloseCreate(){
   
   return (
     <div className="home-page">
+    <SideMenu user={user} onCloseCreate={onCloseCreate} />
       {story && <StoryDetails   selected={selected} setSelected={setSelected} setEmojiPicker={setEmojiPicker} story={story} user={user} onCloseStory={onCloseStory}/>}
-      { create && <Create onCloseCreate={onCloseCreate} />}
+      { create && <Create onCloseCreate={onCloseCreate}  user={user}  />}
       <div>
         <Friends />
         <StoryList  stories={stories} user={user} onOpenStory={onOpenStory} />
       </div>
       <div className="side-sugestion">
-        <SideSugestion user={user} />
+      
       </div>
     </div>
   );

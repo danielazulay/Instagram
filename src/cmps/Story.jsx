@@ -54,7 +54,7 @@ export function Story({ story, user, onOpenStory }) {
   return (
     <div className="story-block">
       <div className="story-titlle">
-        <CircleImg img={story.imgUrl} />
+        <CircleImg img={user.imgUrl} />
         <h2>{story.by.fullname}</h2>
       </div>
 
@@ -93,6 +93,7 @@ export function Story({ story, user, onOpenStory }) {
         />
         {selected ? (
           <Emoji
+          setSelected={setSelected}
             setPost={setPost}
             height={250}
             style={{

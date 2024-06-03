@@ -48,7 +48,11 @@
     overflow-x: hidden;
     gap: 5%;
    }
-
+   .side-menu{
+    position: absolute;
+    left:0;
+    // grid-area: 0/2;
+}
 .Friends{
     margin-top: 15px;
     margin-bottom: 15px;
