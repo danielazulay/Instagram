@@ -1,7 +1,5 @@
 import EmojiPicker from "emoji-picker-react";
 
-console.log("clicked")
-
 export function Emoji({setSelected,setPost,height,style}){
 
    return( <EmojiPicker

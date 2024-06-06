@@ -2,9 +2,26 @@ import { Link } from "react-router-dom";
 import { SvgService } from "../services/svg.service";
 // import { saveStory } from "../store/actions/story.actions";
 import { CircleImg } from "./buttons/CircleImg";
+import { useSelector } from "react-redux";
+import { useState } from "react";
+import { Create } from "../pages/Create";
 
 
-export function SideMenu({user,onCloseCreate}) {
+
+export function SideMenu() {
+
+
+
+  const user = useSelector((userSate) => userSate.userModule.user);
+
+  const [create, setCreate] = useState(false);
+
+  
+
+  function onCloseCreate(){
+      setCreate((status)=>!status)
+    }
+  
 
   return (
     <div className="side-menu">
@@ -15,7 +32,7 @@ export function SideMenu({user,onCloseCreate}) {
         }}
       />
       <ul className="menu">
-
+        <Link to={`/`}>
         <li className="list-menu gray">
           <div
             className="icon"
@@ -25,7 +42,7 @@ export function SideMenu({user,onCloseCreate}) {
           />
           Home
         </li>
-
+        </Link>
   
         <li className="list-menu gray">
           <div
@@ -66,6 +83,8 @@ export function SideMenu({user,onCloseCreate}) {
         </Link>
 
       </ul>
+     
+      { create && <Create onCloseCreate={onCloseCreate}  user={user}  />}
     </div>
   );
 }

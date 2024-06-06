@@ -142,6 +142,7 @@ export function StoryDetails({
               />
               {selected ? (
                 <Emoji
+                setSelected={setSelected}
                   setPost={setPost}
                   height={250}
                   style={{

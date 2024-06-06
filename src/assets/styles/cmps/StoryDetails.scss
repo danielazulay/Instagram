@@ -21,12 +21,12 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    height: 95%;
+    height: 88%;
     width: 67%;
     transform: translate(-55%, -50%);
     background-color: white;
     border-radius: 5px;
-
+overflow-x: hidden;
     .divide-post {
       display: flex;
       align-items: flex-start;
@@ -76,7 +76,7 @@
         margin-top: 2%;
         flex-direction: column;
         width: 40%;
-        height: 95vh;
+        height: 85vh;
 
 
         .post-list {

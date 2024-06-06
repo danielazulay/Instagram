@@ -45,7 +45,7 @@
     width: 100vw;
     height: 100vh;
     display: flex;
-    overflow-x: hidden;
+   // overflow-x: hidden;
     gap: 5%;
    }
    .side-menu{
@@ -58,7 +58,12 @@
     margin-bottom: 15px;
     border: 1px solid black;
     height: 120px;
-    width: 45vw;
+    width: 55vw;
+}
+.side-sugestion{
+    width: 15vw;
+    margin-left: 64px;
+    margin-top: 13vh;
 }
 
 .story-list{
@@ -66,7 +71,3 @@
     width: 25%;
 }
 
-.side-sugestion{
-    border: 1px solid black;
-    width: 25%;
-}

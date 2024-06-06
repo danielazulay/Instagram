@@ -3,6 +3,7 @@ import { httpService } from './http.service'
 import { utilService } from './util.service'
 
 const USER_DB = 'loggedinUser'
+const USER_FRINDS = 'friends'
 
 export const userService = {
     generateUser,
@@ -21,6 +22,37 @@ export const userService = {
 
 window.userService = userService
 generateUser()
+generateFriends()
+
+async function generateFriends(){
+
+    let friends = utilService.loadFromStorage(USER_FRINDS)
+
+    if(!friends){
+        let url ="https://robohash.org/asd"
+        let tempArr = [];
+        for(let i=0; i < 6;i++){
+            let rb = await fetch(url + i);
+            if (rb.ok) {
+                let user = {
+                    "_id":"u101",
+                    "userName":"admin",
+                    "fullname":"daniel",
+                    "password":"123",
+                    "email":"da@gmail.com",
+                    "imgUrl":rb.url,
+                    "followers":[],
+                    "following":[],
+                }
+                tempArr.push(user);
+    
+            }
+        }
+    
+        utilService.saveToStorage(USER_FRINDS,tempArr)
+    }
+
+}
 
 function generateUser(){
 

@@ -15,7 +15,6 @@ export function getActionAddStory(review) {
 export async function loadStories() {
     try {
         const stories = await storyService.query() // Change to Redux way (action -> query)
-        console.log("stories->"+stories)
         store.dispatch({ type: SET_STORIES, stories })
 
     } catch (err) {

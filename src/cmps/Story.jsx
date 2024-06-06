@@ -86,7 +86,8 @@ export function Story({ story, user, onOpenStory }) {
         />
         <span
           className="emoji"
-          onClick={() => setSelected((prev) => !prev)}
+          onClick={(ev) => { console.log("event ",ev) 
+            setSelected((prev) => !prev)  }}
           dangerouslySetInnerHTML={{
             __html: SvgService.getSvg("smile"),
           }}
@@ -94,7 +95,8 @@ export function Story({ story, user, onOpenStory }) {
         {selected ? (
           <Emoji
           setSelected={setSelected}
-            setPost={setPost}
+            setPost={setPost}malware
+            
             height={250}
             style={{
               position: "absolute",

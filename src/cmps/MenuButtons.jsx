@@ -3,7 +3,7 @@ import { SvgService } from "../services/svg.service";
 
 
 
-export function MenuButton({ handleLike,checkLike,story,  onOpenStory}) {
+export function MenuButton({ handleLike,checkLike,story,onOpenStory}) {
   return (
     <div>
       <div className="svgMenuLine">

@@ -10,7 +10,10 @@ export const storyService = {
 }
 let STORY = "story"
 generateStories()
-function generateStories() {
+
+
+async function generateStories() {
+
     let stories = utilService.loadFromStorage(STORY)
  
     if(!stories || !stories.length){
@@ -20,32 +23,34 @@ function generateStories() {
         for(let j = 1 ;j <= 5; j++){
 
            let newRandomCommnet ={ 
-            "id": `${j}`,
+            "id": `c${j}`,
             "by": {
-                "_id": `u${j}1`,
+                "_id": `u101`,
                 "fullname": `Commenter ${j}`,
                 "imgUrl": `https://images.pexels.com/photos/1266810/pexels-photo-1266810.jpeg?cs=srgb&amp;dl=pexels-8moments-1266810.jpg&amp;fm=jpg`
             },
             "txt": "This is a comment is number 1",
             "likedBy": [
-                {
-                    "_id": `u101`,
-                    "fullname": `Liker ${j}`,
-                    "imgUrl": `https://source.unsplash.com/random/40x40/?user1`
-                }
+                // {
+                //     "_id": `u101`,
+                //     "fullname": `Liker ${j}`,
+                //     "imgUrl": `https://source.unsplash.com/random/40x40/?user1`
+                // }
             ]
         }
         coments.push(newRandomCommnet)
         }
 
         for (let i = 1; i <= 10; i++) {
+
+            let img = await  fetch("https://picsum.photos/200/300")
             const story = {
-                "_id": `u${i}1`,
+                "_id": `s${i}1`,
                 "txt": `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ${i}`,
-                "imgUrl": `https://images.pexels.com/photos/1266810/pexels-photo-1266810.jpeg?cs=srgb&dl=pexels-8moments-1266810.jpg&fm=jpg`,
+                "imgUrl": img.url,
                 "by": {
-                    "_id": `u${i}`,
-                    "fullname": `User ${i}`,
+                    "_id": `u101`,
+                    "fullname": `User u101`,
                     "imgUrl": `https://source.unsplash.com/random/40x40/?user${i}`
                 },
                 "loc": {
@@ -54,13 +59,7 @@ function generateStories() {
                     "name": `Location ${i}`
                 },
                 "comments": coments,
-                "likedBy": [
-                    {
-                        "_id": `u${i}`,
-                        "fullname": `Liker ${i}`,
-                        "imgUrl": `https://source.unsplash.com/random/40x40/?liker${i}`
-                    }
-                ],
+                "likedBy": [],
                 "tags": ["tag1", "tag2"]
             };
             stories.push(story)
