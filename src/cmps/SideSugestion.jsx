@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { CircleImg } from "./buttons/CircleImg";
+import { useSelector } from "react-redux";
 
 
 export function SideSugestion(){
+    const user = useSelector((userSate) => userSate.userModule.user);
 
     const [robots, setRobots] = useState([]);
 
@@ -34,14 +36,26 @@ export function SideSugestion(){
 
     return(
         <div className="sugestion-container">
-            <h5>Suggested for you</h5>
+    
+            <div className="sugestion-loginuser">
+            <CircleImg  img={user.imgUrl}  height={44} width={44} />
+            <div className="login-user">
+              <h6 >{user.email}</h6>
+                <h6 className="gray">{user.fullname}</h6>
+                </div>
+            </div>
+            <h5 className="suggestion-title gray">Suggested for you</h5>
             {robots.map((el, index) => (
         
                 <div className="sugestions" key={index}>
-                            {console.log(el)}
+        
                 <CircleImg  img={el.picture.medium}  height={44} width={44} />
-                <h5>{el.fullname}</h5>
-                <h6>Suggested for you</h6>
+                <div className="sugestion-name">
+                <h6>{el.name.first+" "+el.name.last}</h6>
+                <h6 className="gray">Suggested for you</h6>
+
+                </div>
+                <button className="button-follow">Follow</button>
                 </div>
 
             ))}

@@ -22,8 +22,8 @@ export function UploadTxt({ setText,text, url, user, }) {
         <h2>{user.fullname}</h2>
         </div>
       <form>
-        <input type="text" placeholder="Write a caption..." onChange={handleChange} value={text} className="input-share" ></input>
-    
+        <textarea type="text" placeholder="Write a caption..." onChange={handleChange} value={text} className="input-share" ></textarea>
+    {/* <textarea ></textarea> */}
       </form>
       </div>
 

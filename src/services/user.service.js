@@ -69,6 +69,7 @@ function generateUser(){
             "imgUrl":"https://source.unsplash.com/random/800x600/?landscape1",
             "followers":[],
             "following":[],
+            "saved":[],
         }
         utilService.saveToStorage(USER_DB,user)
     }

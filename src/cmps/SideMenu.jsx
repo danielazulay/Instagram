@@ -85,6 +85,7 @@ export function SideMenu() {
       </ul>
      
       { create && <Create onCloseCreate={onCloseCreate}  user={user}  />}
+      
     </div>
   );
 }

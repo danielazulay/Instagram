@@ -19,10 +19,11 @@ changePage()
             }}
           />
           <h3>Drag photos and videos here</h3>
-          <div className="form-load">
+          
         <form   onSubmit={onSubmit}>
         <input
         className="input-upload"
+          // onClick={() => setSelected(false)} // how to make close when click out
           type="text"
           placeholder="Link"
            onChange={handleChange}
@@ -30,7 +31,6 @@ changePage()
         ></input>
         <button className="button-upload" type="submit">upload</button>
       </form>
-      </div>
       </div>
     )
 }
