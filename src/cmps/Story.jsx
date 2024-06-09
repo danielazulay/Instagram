@@ -72,7 +72,7 @@ export function Story({ story, user, onOpenStory }) {
         </span>
       </h5>
      
-        <a onClick={() => onOpenStory(story)}  className="vill-all">
+        <a onClick={() => onOpenStory(story._id)}  className="vill-all">
           <span  to={`/${story._id}`}> 
             View all {story.comments.length} comments
           </span>

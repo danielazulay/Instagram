@@ -1,22 +1,37 @@
 import { useSelector } from "react-redux";
 import { CircleImg } from "../cmps/buttons/CircleImg";
 import { SvgService } from "../services/svg.service";
-import { Create } from "./Create";
-import { useState } from "react";
+import {  useState } from "react";
+import { StoryDetails } from "../cmps/StoryDetails";
+
 
 export function Profile() {
   const user = useSelector((userSate) => userSate.userModule.user);
   const stories = useSelector((storeState) => storeState.storyModule.stories);
+  let found = []
   let [tab,setTab] = useState(true)
 
 
-  function countStories() {
+    const [emojie, setEmojiPicker] = useState(null);
+    const [selected, setSelected] = useState(true);
+    const [storyId, setStoryId] = useState(null);
+
+    function onCloseStory(){
+      setStoryId(null)
+    }
 
 
-    let storyCount = stories.filter((el) => el.by._id === user._id);
+    function countStories(){
 
-    return storyCount.length;
-  }
+      if (!stories || !user) return 0;
+
+       found = stories.filter((el) => {return el.by._id===user._id });
+
+       return found.length;
+    }
+
+
+  
   return (
     <div className="profile-page">
       <div className="grid-container">
@@ -59,15 +74,17 @@ export function Profile() {
         <div className="grid-posts">
             {tab?stories.map((el)=>{
                 return(
-                    <div className="block-story" key={el._id}>
+                  // <Link to={`/profile/${el._id}`}  key={el._id}>
+                    <div className="block-story" key={el._id} onClick={()=>{setStoryId(el._id)}}>
                     <img src={el.imgUrl}></img>
                     </div>
+                    // </Link>
                 )
             }):<></>}
         </div>
  
       </div>
-            
+      {storyId && (<StoryDetails storyId={storyId}   selected={selected} setSelected={setSelected} setEmojiPicker={setEmojiPicker}  user={user} onCloseStory={onCloseStory}/>)} 
     </div>
   );
 }

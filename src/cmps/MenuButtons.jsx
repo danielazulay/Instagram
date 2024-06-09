@@ -21,7 +21,7 @@ export function MenuButton({ handleLike,checkLike,story,onOpenStory}) {
               />
             )}
           </div>
-          <button className="commnet-button" onClick={() => onOpenStory(story)}>
+          <button className="commnet-button" onClick={() => onOpenStory(story._id)}>
             <span
               to={`/${story._id}`}
               className="compose-button"
@@ -37,6 +37,8 @@ export function MenuButton({ handleLike,checkLike,story,onOpenStory}) {
         <span dangerouslySetInnerHTML={{ __html: SvgService.getSvg("save") }} />
       </div>
       <div className="likescount">{story.likedBy.length + " likes"}</div>
+
+      
     </div>
   );
 }

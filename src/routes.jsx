@@ -15,7 +15,12 @@ const routes = [
         path: '/profile',
         component: <Profile/>,
         label: 'Profile',
-    }
+    },
+    // {
+    //     path: '/profile/:id',
+    //     component: <Profile/>,
+    //     label: 'Profile',
+    // }
     // {
     //     path: 'about',
     //     component: <AboutUs />,

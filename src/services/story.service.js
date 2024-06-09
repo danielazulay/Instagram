@@ -5,6 +5,7 @@ import { utilService } from "./util.service";
 export const storyService = {
     generateStories,
     query,
+    queryById,
     remove,
     add
 }
@@ -69,14 +70,21 @@ async function generateStories() {
     }
 
 }
-
+async function queryById(storyId){
+    let stories = await storageService.get(STORY,storyId) 
+    return stories
+}
 
 
 async function query() {
     try{
+      
+
         let stories = await storageService.query(STORY) 
 
             return stories
+    
+
     }catch{
         throw new Error()
     }
@@ -84,6 +92,8 @@ async function query() {
     //return httpService.get(`story${queryStr}`)
     // return storageService.query('review')
 }
+
+
 
 
 

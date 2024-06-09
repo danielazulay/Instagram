@@ -6,19 +6,13 @@ import { useSelector } from "react-redux";
 import { loadStories } from "../store/actions/story.actions";
 import { StoryDetails } from "../cmps/StoryDetails";
 
-
-
 export function HomePage() {
-  const [story, setStory] = useState(null);
-
-
-const stories = useSelector((storeState) => storeState.storyModule.stories);
+  const stories = useSelector((storeState) => storeState.storyModule.stories);
   const user = useSelector((userSate) => userSate.userModule.user);
 
-  
+  const [storyId, setStoryId] = useState(null);
   const [emojie, setEmojiPicker] = useState(null);
   const [selected, setSelected] = useState(true);
-
 
   useEffect(() => {
     onLoadStories();
@@ -28,26 +22,33 @@ const stories = useSelector((storeState) => storeState.storyModule.stories);
     loadStories();
   }
 
-  function onCloseStory(){
-    setStory(null)
+  function onCloseStory() {
+    setStoryId(null);
   }
 
-  function onOpenStory(story){
-    setStory(story)
+  function onOpenStory(story) {
+    setStoryId(story);
   }
-  
-  
+
   return (
     <div className="home-page">
-  
-      {story && <StoryDetails   selected={selected} setSelected={setSelected} setEmojiPicker={setEmojiPicker} story={story} user={user} onCloseStory={onCloseStory}/>}
-   
+      {storyId && (
+        <StoryDetails
+          storyId={storyId}
+          selected={selected}
+          setSelected={setSelected}
+          setEmojiPicker={setEmojiPicker}
+          user={user}
+          onCloseStory={onCloseStory}
+        />
+      )}
+      {/* {story && <StoryDetails   selected={selected} setSelected={setSelected} setEmojiPicker={setEmojiPicker} story={story} user={user} onCloseStory={onCloseStory}/>} */}
+
       <div>
-        {/* <Friends /> */}
-        <StoryList  stories={stories} user={user} onOpenStory={onOpenStory} />
+        <StoryList stories={stories} user={user} onOpenStory={onOpenStory} />
       </div>
       <div className="side-sugestion">
-      <SideSugestion/>
+        <SideSugestion />
       </div>
     </div>
   );
