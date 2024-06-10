@@ -8,30 +8,28 @@ import { CircleImg } from "./buttons/CircleImg";
 import { utilService } from "../services/util.service";
 import { storyService } from "../services/story.service";
 
-
 export function StoryDetails({
   selected,
   setSelected,
-  // story,
   onCloseStory,
   user,
-  storyId 
+  storyId,
 }) {
-    const [story,setStory] = useState()
+  const [story, setStory] = useState();
   const [post, setPost] = useState("");
-  
-   useEffect(()=>{
-    getStory()
-  },[storyId])
+  const [emojiPosition, setEmojiPosition] = useState({ x: 0, y: 0 });
 
+  useEffect(() => {
+    getStory();
+  }, [storyId]);
 
-  async function getStory(){
-
-    let stories = await storyService.queryById(storyId)
-
-    setStory(stories);
-    console.log(story.imgUrl)
-
+  async function getStory() {
+    try {
+      let stories = await storyService.queryById(storyId);
+      setStory(stories);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   function checkLike() {
@@ -42,11 +40,12 @@ export function StoryDetails({
   }
 
   function checkLikeComment(comment) {
-    if(comment.likedBy.length === 0)return false
+    if (comment.likedBy.length === 0) return false;
 
-    const res = comment.likedBy.findIndex((element)=>element._id === user._id)
-    return res === 0 ? true: false
-   
+    const res = comment.likedBy.findIndex(
+      (element) => element._id === user._id
+    );
+    return res === 0 ? true : false;
   }
 
   function handleLike(action, commnetId) {
@@ -56,17 +55,18 @@ export function StoryDetails({
       imgUrl: user.imgUrl,
     };
     if (commnetId) {
-      let commentIdx = story.comments.findIndex((element) => element.id === commnetId)
+      let commentIdx = story.comments.findIndex(
+        (element) => element.id === commnetId
+      );
       if (action) {
         story.comments[commentIdx].likedBy.push(newLike);
       } else {
-        story.comments[commentIdx].likedBy = story.comments[commentIdx].likedBy.filter((el) => el._id !== user._id);
+        story.comments[commentIdx].likedBy = story.comments[
+          commentIdx
+        ].likedBy.filter((el) => el._id !== user._id);
       }
-
     } else {
-
       if (action) {
-
         story.likedBy.push(newLike);
       } else if (!action) {
         story.likedBy = story.likedBy.filter((el) => el._id !== user._id);
@@ -81,10 +81,21 @@ export function StoryDetails({
 
   function onPostSubmit(event) {
     event.preventDefault();
-    let obj = { id: utilService.makeId(), by: {_id:user._id,fullname:user.fullname,imgUrl:user.imgUrl }, txt: post ,likedBy:[]};
+    let obj = {
+      id: utilService.makeId(),
+      by: { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl },
+      txt: post,
+      likedBy: [],
+    };
     story.comments.push(obj);
     saveStory(story);
     setPost("");
+  }
+
+  function handleSmileClick(ev) {
+    console.log(ev);
+    setEmojiPosition({ x: ev.screenX, y: ev.screenY });
+    setSelected((prev) => !prev);
   }
 
   if (!story) {
@@ -92,102 +103,99 @@ export function StoryDetails({
   }
 
   return (
-  
-      <div className="story-details">
-        <button className="story-button" onClick={onCloseStory}>
-          x
-        </button>
-        <div className="story">
-          <div className="divide-post">
-            <img className="img-story" src={story.imgUrl}></img>
-            <div className="coments-story">
-              <div className="story-header">
-                <div className="story-titlle-detailed">
-                  <CircleImg img={story.imgUrl} />
-                  <h2>{story.by.fullname}</h2>
-                </div>
-
-                <button
-                  className="compose-button"
-                  dangerouslySetInnerHTML={{ __html: SvgService.getSvg("dots") }}
-                />
+    <div className="story-details">
+      <button className="story-button" onClick={onCloseStory}>
+        x
+      </button>
+      <div className="story">
+        <div className="divide-post">
+          <img className="img-story" src={story.imgUrl}></img>
+          <div className="coments-story">
+            <div className="story-header">
+              <div className="story-titlle-detailed">
+                <CircleImg img={user.imgUrl} />
+                <h2>{story.by.fullname}</h2>
               </div>
 
-              <ul>
-                {story.comments.map((commnet) => {
-                  console.log("img "+commnet.by.imgUrl)
-                  return (
-                    <li key={commnet.id}>
-                      <div className="post-list">
-                        <div className="storyTitlle">
-                          <CircleImg img={commnet.by.imgUrl} />
-                          <h3>{commnet.by.fullname}</h3>
+              <button
+                className="compose-button"
+                dangerouslySetInnerHTML={{ __html: SvgService.getSvg("dots") }}
+              />
+            </div>
 
-                          {checkLikeComment(commnet) ? (
-                            <span
-                              onClick={() => handleLike(false, commnet.id)}
-                              dangerouslySetInnerHTML={{
-                                __html: SvgService.getSvg("like"),
-                              }}
-                            />
-                          ) : (
-                            <span
-                              onClick={() => handleLike(true, commnet.id)}
-                              dangerouslySetInnerHTML={{
-                                __html: SvgService.getSvg("lev"),
-                              }}
-                            />
-                          )}
-                        </div>
-                        <p>{commnet.txt}</p>
+            <ul>
+              {story.comments.map((commnet) => {
+                return (
+                  <li key={commnet.id}>
+                    <div className="post-list">
+                      <div className="storyTitlle">
+                        <CircleImg img={commnet.by.imgUrl} />
+                        <h3>{commnet.by.fullname}</h3>
+
+                        {checkLikeComment(commnet) ? (
+                          <span
+                            onClick={() => handleLike(false, commnet.id)}
+                            dangerouslySetInnerHTML={{
+                              __html: SvgService.getSvg("like"),
+                            }}
+                          />
+                        ) : (
+                          <span
+                            onClick={() => handleLike(true, commnet.id)}
+                            dangerouslySetInnerHTML={{
+                              __html: SvgService.getSvg("lev"),
+                            }}
+                          />
+                        )}
                       </div>
-                    </li>
-                  );
-                })}
-              </ul>
-              <div className="menu-bar">
-                <MenuButton
-                  handleLike={handleLike}
-                  checkLike={checkLike}
-                  story={story}
-                  user={user}
-                />
-              </div>
-              <div className="story-post">
-                <span
-                  className="img-smile"
-                  onClick={() => setSelected((prev) => !prev)}
-                  dangerouslySetInnerHTML={{
-                    __html: SvgService.getSvg("smile"),
+                      <p>{commnet.txt}</p>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+            <div className="menu-bar">
+              <MenuButton
+                handleLike={handleLike}
+                checkLike={checkLike}
+                story={story}
+                user={user}
+              />
+            </div>
+            <div className="story-post">
+              <span
+                className="img-smile"
+                onClick={handleSmileClick}
+                dangerouslySetInnerHTML={{
+                  __html: SvgService.getSvg("smile2"),
+                }}
+              />
+              {selected ? (
+                <Emoji
+                  setSelected={setSelected}
+                  setPost={setPost}
+                  height={250}
+                  style={{
+                    position: "absolute",
+                    left: `${emojiPosition.x}`,
+                    bottom: `${emojiPosition.y}` - 680,
+                    zIndex: 999,
                   }}
                 />
-                {selected ? (
-                  <Emoji
-                  setSelected={setSelected}
-                    setPost={setPost}
-                    height={250}
-                    style={{
-                      position: "absolute",
-                      bottom: "202px",
-                      zIndex: 999,
-                      left: 860,
-                    }}
-                  />
-                ) : (
-                  <></>
-                )}
+              ) : (
+                <></>
+              )}
 
-                <FormPost
-                  onPostSubmit={onPostSubmit}
-                  setSelected={setSelected}
-                  handleChange={handleChange}
-                  post={post}
-                ></FormPost>
-              </div>
+              <FormPost
+                onPostSubmit={onPostSubmit}
+                setSelected={setSelected}
+                handleChange={handleChange}
+                post={post}
+              ></FormPost>
             </div>
           </div>
         </div>
       </div>
-    
+    </div>
   );
 }

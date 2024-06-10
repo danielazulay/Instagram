@@ -8,6 +8,7 @@ export const SET_WATCHED_USER = 'SET_WATCHED_USER'
 export const REMOVE_USER = 'REMOVE_USER'
 export const SET_USERS = 'SET_USERS'
 export const SET_SCORE = 'SET_SCORE'
+export const UPDATE_USER = 'UPDATE_USER'
 
 const initialState = {
     user: userService.getLoggedinUser(),
@@ -32,12 +33,16 @@ export function userReducer(state = initialState, action) {
                 users: state.users.filter(user => user._id !== action.userId)
             }
             break
-        case SET_USERS:
-            newState = { ...state, users: action.users }
+        case UPDATE_USER:
+            newState = { ...state, user: action.user }
             break
-        case SET_SCORE:
-            newState = { ...state, user: { ...state.user, score: action.score } }
-            break
+    //         case UPDATE_STORY:
+    //   return {
+    //     ...state,
+    //     stories: state.stories.map((story) =>
+    //     story._id === action.story._id ? action.story : story
+    //     ),
+    //   };
         default:
     }
     // For debug:

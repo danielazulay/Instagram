@@ -32,7 +32,6 @@ export async function saveStory(story) {
         }else{
             savedStory = await storageService.post(STORY_DB,story)
         }
-	
 		store.dispatch({ type, story: savedStory })
 	} catch (err) {
 		console.log('Had issues saving story', err)

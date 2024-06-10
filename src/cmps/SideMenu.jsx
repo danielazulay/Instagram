@@ -26,14 +26,14 @@ export function SideMenu() {
   return (
     <div className="side-menu">
       <div
-        className="instagran-logo"
+        className="instagran-logo icon"
         dangerouslySetInnerHTML={{
           __html: SvgService.getSvg("instagran"),
         }}
       />
       <ul className="menu">
         <Link to={`/`}>
-        <li className="list-menu gray">
+        <li className="list-menu gray icon">
           <div
             className="icon"
             dangerouslySetInnerHTML={{
@@ -44,7 +44,7 @@ export function SideMenu() {
         </li>
         </Link>
   
-        <li className="list-menu gray">
+        <li className="list-menu gray icon">
           <div
             className="icon"
             dangerouslySetInnerHTML={{
@@ -54,7 +54,7 @@ export function SideMenu() {
           Search
         </li>
 
-        <li className="list-menu gray">
+        <li className="list-menu gray icon">
           <div
             className="icon"
             dangerouslySetInnerHTML={{
@@ -63,7 +63,7 @@ export function SideMenu() {
           />
           Messages
         </li>
-        <li className="list-menu gray"
+        <li className="list-menu gray "
         onClick={onCloseCreate}
         >
           <div

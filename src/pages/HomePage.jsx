@@ -12,7 +12,7 @@ export function HomePage() {
 
   const [storyId, setStoryId] = useState(null);
   const [emojie, setEmojiPicker] = useState(null);
-  const [selected, setSelected] = useState(true);
+  const [selected, setSelected] = useState(false);
 
   useEffect(() => {
     onLoadStories();

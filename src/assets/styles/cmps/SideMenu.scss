@@ -21,6 +21,7 @@
         
         .list-menu{
             width: 100%;
+            margin-left: 10px;
             margin-top: 5px;
             padding: 10%;
             display: flex;
@@ -28,23 +29,26 @@
             height: 60px;
             align-items: center;
             outline-color: transparent;
+            font-size: 16px;
         
 
     }
     .list-menu:hover {
-        width: 100%;
+        width: 94%;
         background-color: #e7e7e7;
         border-radius: 10px;
         border-bottom: transparent;
-        font-weight: bold; 
+        // font-weight: bold; 
+        .icon{
+            transform: scale(1.1);
+        }
+        
     }
 
+
     .list-menu:active {
-        width: 100%;
-        background-color: #e7e7e7;
-        border-radius: 10px;
-        border-bottom: transparent;
-        font-weight: bold;
+
+        font-weight: bold; 
       }
     }
 

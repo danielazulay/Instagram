@@ -4,7 +4,7 @@ import { store } from '../store.js'
 
 import { showErrorMsg } from '../../services/event-bus.service.js'
 import { LOADING_DONE, LOADING_START } from "../reducers/system.reducer.js";
-import { REMOVE_USER, SET_USER, SET_USERS, SET_WATCHED_USER } from "../reducers/user.reducer.js";
+import { REMOVE_USER, SET_USER, SET_USERS, SET_WATCHED_USER,UPDATE_USER } from "../reducers/user.reducer.js";
 
 export async function loadUsers() {
     try {
@@ -80,3 +80,13 @@ export async function loadUser(userId) {
         console.log('Cannot load user', err)
     }
 }
+
+export async function UpdateUSer(user) {
+    try {
+        store.dispatch({ type: UPDATE_USER, user })
+    } catch (err) {
+        showErrorMsg('Cannot load user')
+        console.log('Cannot load user', err)
+    }
+}
+

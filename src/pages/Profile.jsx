@@ -8,13 +8,24 @@ import { StoryDetails } from "../cmps/StoryDetails";
 export function Profile() {
   const user = useSelector((userSate) => userSate.userModule.user);
   const stories = useSelector((storeState) => storeState.storyModule.stories);
+  
+  const [emojie, setEmojiPicker] = useState(null);
+  const [selected, setSelected] = useState(false);
+  const [storyId, setStoryId] = useState(null);
+    let [tab,setTab] = useState(true)
+
   let found = []
-  let [tab,setTab] = useState(true)
 
 
-    const [emojie, setEmojiPicker] = useState(null);
-    const [selected, setSelected] = useState(true);
-    const [storyId, setStoryId] = useState(null);
+ function loadSimg(id){
+
+    let story =   stories.find((el)=>el._id===id)
+    console.log("->>>"+story.imgUrl)
+
+  return story.imgUrl
+
+}
+
 
     function onCloseStory(){
       setStoryId(null)
@@ -55,7 +66,7 @@ export function Profile() {
           
         </div>
         <div className="profile-menu">
-          <button onClick={()=>setTab((prev)=>!prev)}>
+          <button onClick={()=>setTab(true)}>
           <div
             className="icon"
             dangerouslySetInnerHTML={{
@@ -63,7 +74,7 @@ export function Profile() {
             }}
           />
             POST</button>
-            <button onClick={()=>setTab((prev)=>{!prev})}> <div
+            <button onClick={()=>setTab(false)}> <div
             className="icon"
             dangerouslySetInnerHTML={{
               __html: SvgService.getSvg("saved-svg"),
@@ -80,7 +91,17 @@ export function Profile() {
                     </div>
                     // </Link>
                 )
-            }):<></>}
+            }):
+            user.saved.map((el)=>{
+              return(
+                // <Link to={`/profile/${el._id}`}  key={el._id}>
+                  <div className="block-story" key={el} onClick={()=>{setStoryId(el)}}>
+                  <img src={loadSimg(el)}></img>
+                  </div>
+                  // </Link>
+              )
+          })
+            }
         </div>
  
       </div>

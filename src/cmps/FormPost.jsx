@@ -10,7 +10,7 @@ export function FormPost({onPostSubmit,setSelected,handleChange,post}){
         onChange={handleChange}
         value={post}
       ></input>
-        <button className="button-post" type="submit">
+        <button className={`button-post ${!post ? 'hide' : 'show'}`} type="submit">
     POST
   </button>
     </form>
