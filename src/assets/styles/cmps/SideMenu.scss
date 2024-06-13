@@ -8,6 +8,21 @@
   top: 0;
   background-color: white;
 
+
+  .top-menu {
+    visibility: hidden;
+    position: absolute;
+    display: flex;
+    top: 0;
+    width: 100vw;
+    height: 7vh;
+    margin-top: 0;
+    gap: 5%;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+  }
+
   .instagran-logo {
     margin-left: 10%;
     margin-top: 15%;
@@ -47,8 +62,9 @@
 }
 
 @media only screen and (max-width: 1320px) {
-  .side-menu {
-    width: 250px;
+
+      .top-menu  {
+    visibility: hidden;
   }
 }
 @media only screen and (max-width: 1133px) {
@@ -65,6 +81,9 @@
     text-align: center;
     transition: 0.3s;
     box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+  }
+      .top-menu  {
+    visibility: hidden;
   }
 
   .list-menu {
@@ -83,6 +102,7 @@
 }
 
 @media only screen and (max-width: 1009px) {
+
   .side-menu {
     position: fixed;
     left: -9%;
@@ -96,6 +116,9 @@
     text-align: center;
     transition: 0.3s;
     box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+  }
+      .top-menu  {
+    visibility: hidden;
   }
 
   .instagran-logo {
@@ -121,20 +144,23 @@
   }
 }
 
-@media only screen and (max-width: 430) {
+@media only screen and (max-width: 495px) {
+
   .side-menu {
     position: fixed;
     left: -10%;
     top: 0;
     left: 0;
     flex-direction: column;
-    background-color: #fff;
+    background-color: white;
     height: 100%;
-    width: 20%;
-    // border-radius: 10px;
+    width: 12%;
     text-align: center;
     transition: 0.3s;
     box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+  }
+      .top-menu  {
+    visibility: hidden;
   }
 
   .instagran-logo {
@@ -160,8 +186,31 @@
   }
 }
 
+
+
 @media only screen and (max-width: 430px) {
   .side-menu {
     visibility: hidden;
   }
+  .home-page{
+    padding: 13%;
+  }
+
+
+.side-menu .top-menu{
+    visibility: visible;
+  }
+  .story-block{
+width: 310px;
+  }
+}
+
+
+@media only screen and (max-width: 390px){
+  .story-block{
+    width: 280px;
+      }
+      .home-page{
+        padding: 10%;
+      }
 }

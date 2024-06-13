@@ -43,12 +43,12 @@
 .home-page {
   padding-left: 30%;
   padding-right: 10%;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   display: flex;
   gap: 5%;
 }
-.side-menu {
+.side-menu .top-menu{
   position: absolute;
   left: 0;
 }
@@ -150,37 +150,34 @@
   }
 
 @media only screen and (max-width: 520px) {
-    .home-page{
-        padding: 0;
-    }
+
   .story-block {
-    margin-left: 15%;
-    margin-right: 25%;
+    margin-left: 0;
+
     width: 80%;
   }
 
 }
 
 
-@media only screen and (max-width: 380px) {
-    .home-page{
-        padding: 0;
-    }
+
+@media only screen and (max-width: 425px) {
+  .home-page{
+    margin-top: 45px;
+    padding: 10%;
+    
+        }
+
+        .top-menu {
+          visibility: visible;
+        }
   .story-block {
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 0;
+    margin-right: 44%;
     width: 80%;
   }
 
 }
-@media only screen and (max-width: 344px) {
-    .home-page{
-        padding: 0;
-    }
-  .story-block {
-    margin-left: 3%;
-    margin-right: 0;
-    width: 80%;
-  }
 
-}
+
+

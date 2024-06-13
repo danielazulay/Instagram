@@ -2,7 +2,8 @@
     width:100%;
     display: grid;
     grid-template-columns: 1fr 1fr 7fr 2fr ;
-    grid-template-areas: ". . home .";
+    grid-template-areas:  ". . home .";
+                       
     overflow-x: hidden;
 
 }
@@ -12,4 +13,3 @@
     // grid-area: 3/6;
     // white-space : nowrap;
 }
-

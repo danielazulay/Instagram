@@ -25,7 +25,19 @@ export function SideMenu() {
 
   return (
     <div className="side-menu">
-   
+    <div className="top-menu">
+    <span
+        dangerouslySetInnerHTML={{
+          __html: SvgService.getSvg("instagran"),
+        }}
+      />
+      <form><input type="text"></input>
+      </form>
+      <span 
+       dangerouslySetInnerHTML={{ __html: SvgService.getSvg("lev") }}
+              />
+    </div>
+ 
       <div
         className="instagran-logo icon"
         dangerouslySetInnerHTML={{
