@@ -1,0 +1,43 @@
+// Setup
+@import "setup/variables";
+@import "setup/functions";
+@import "setup/mixins";
+@import "setup/typography";
+
+// Basics
+@import "basics/helpers";
+@import "basics/layout";
+@import "basics/base";
+@import "basics/links";
+@import "basics/forms";
+
+// Basics
+
+
+// Views
+@import "views/Chat.scss";
+@import "views/Explore.scss";
+@import "views/HomePage.scss";
+@import "views/LoginPage.scss";
+@import "views/Message.scss";
+@import "views/Profile.scss";
+@import "views/Home.scss";
+@import "views/Create.scss";
+@import "views/CreateShare.scss";
+// Components
+@import "cmps/CircleImg.scss";
+@import "cmps/ButtonPost.scss";
+@import "cmps/MenuButtons.scss";
+@import "cmps/story.scss";
+@import "cmps/storyList.scss";
+@import "cmps/storyDetails.scss";
+@import "cmps/SideMenu.scss";
+@import "cmps/SugestionsNav.scss";
+
+@import "cmps/FormStory.scss";
+
+
+
+
+
+

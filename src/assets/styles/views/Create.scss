@@ -1,0 +1,155 @@
+.profile-model {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(89, 89, 89, 0.8);
+
+  .create-button {
+    appearance: none;
+    color: white;
+    background-color: #7a7a7a;
+    font-size: 20px;
+    font-weight: 100;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+  .model {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 80%;
+    width: 40%;
+    transform: translate(-55%, -50%);
+    background-color: white;
+    border-radius: 15px;
+
+    .header {
+      border-bottom: 0.1px solid rgb(198, 191, 191);
+      display: flex;
+      justify-content: center;
+      height: 5%;
+      margin-top: 1%;
+      .back-button {
+        width: 50px;
+        display: inline;
+        margin-top: 0;
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+        font-weight: 800;
+        margin-right: 30%;
+      }
+      .tittle-share{
+        font-family: "-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif";
+        font-family: 300;
+        font-size: 19px;
+      }
+      .share-button {
+        width: 50px;
+        display: inline;
+        margin-top: 0;
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+        font-weight: 800;
+        color: $color-prime;
+        margin-left: 25%;
+      }
+    }
+    .modal-upload {
+      height: 95%;
+      .form-img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 50%;
+        margin-top: 30%;
+        margin-left: 30%;
+
+        .icon-upload {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 5%;
+        }
+        h3 {
+          font-family: "-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif";
+        
+          font-weight: 500;
+        }
+
+        .input-upload {
+          display: block;
+          width: 240px;
+          margin-bottom: 5%;
+        }
+        .button-upload {
+          width: 150px;
+          border-radius: 5px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-left: 15%;
+        }
+      }
+
+      .form-txt {
+        .upload-text {
+          display: flex;
+          gap: 5%;
+
+          // flex-direction: row;
+
+          .img-container {
+            height: 80vh;
+            width: 60%;
+            border-right: 0.5px solid gray;
+            justify-content: center;
+            
+            img {
+              width: 100%;
+
+              height: 94%;
+            }
+          }
+
+          .desc-container{
+            .detail-share {
+              display: flex;
+              gap: 5px;
+              font-size: 10px;
+              align-items: center;
+              margin-top: 5%;
+              margin-bottom: 5%;
+            }
+
+            .input-share {
+              width:200px;
+              height: 250px;
+              border:none;
+
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.hide {
+  visibility: hidden;
+}
+.show {
+  visibility: visible;
+}

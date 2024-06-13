@@ -1,0 +1,40 @@
+.form-post{
+    width: 100%;
+    display: flex;
+        .input-post{
+        width: 88%;
+          padding: 0;
+          border: 0;
+          height: 25px;
+          outline: none;
+          margin: 0;
+        }   
+
+  
+        
+          .button-post{
+            width: 50px;
+            display: inline;
+            margin-top: 0;
+            background: none;
+            color: inherit;
+            border: none;
+            padding: 0;
+            font: inherit;
+            cursor: pointer;
+            outline: inherit;
+            color: $color-prime;
+            font-weight: 800;
+            font-size: 14px;
+  
+          }
+
+        }
+
+        .hide{
+          visibility: hidden;
+        }
+        
+        .show{
+          visibility: visible;
+        }
