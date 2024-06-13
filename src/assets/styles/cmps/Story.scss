@@ -86,4 +86,19 @@
 //     outline: inherit;
 // }
 
+@media only screen and (max-width: 768px) {
+  .story-block{
+    width: 380px;
+  }
+}
+
+@media only screen and (max-width: 470px) {
+  .story-block{
+    width: 320px;
+  }
+}
+
+
+
+
 

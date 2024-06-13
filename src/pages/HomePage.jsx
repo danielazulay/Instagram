@@ -31,7 +31,10 @@ export function HomePage() {
   }
 
   return (
+
+
     <div className="home-page">
+         
       {storyId && (
         <StoryDetails
           storyId={storyId}
@@ -51,5 +54,6 @@ export function HomePage() {
         <SideSugestion />
       </div>
     </div>
+
   );
 }

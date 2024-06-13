@@ -25,6 +25,7 @@ export function SideMenu() {
 
   return (
     <div className="side-menu">
+   
       <div
         className="instagran-logo icon"
         dangerouslySetInnerHTML={{
@@ -40,7 +41,8 @@ export function SideMenu() {
               __html: SvgService.getSvg("home"),
             }}
           />
-          Home
+          <span className="btn-name">Home</span>
+          
         </li>
         </Link>
   
@@ -51,7 +53,7 @@ export function SideMenu() {
               __html: SvgService.getSvg("search"),
             }}
           />
-          Search
+          <span className="btn-name">Search</span>
         </li>
 
         <li className="list-menu gray icon">
@@ -61,7 +63,7 @@ export function SideMenu() {
               __html: SvgService.getSvg("message"),
             }}
           />
-          Messages
+          <span className="btn-name">Messages</span>
         </li>
         <li className="list-menu gray "
         onClick={onCloseCreate}
@@ -72,17 +74,20 @@ export function SideMenu() {
               __html: SvgService.getSvg("create"),
             }}
           />
-          Create
+          <span className="btn-name">Create</span>
+          
           </li>
 
         <Link to={`/profile`}>
         <li className="list-menu gray">
         <CircleImg img={user.imgUrl}/>
-          Profile
+          <span className="btn-name">Profile</span>
         </li>
         </Link>
 
       </ul>
+
+
      
       { create && <Create onCloseCreate={onCloseCreate}  user={user}  />}
       
