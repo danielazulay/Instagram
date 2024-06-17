@@ -47,7 +47,7 @@ export function HomePage() {
       )}
       {/* {story && <StoryDetails   selected={selected} setSelected={setSelected} setEmojiPicker={setEmojiPicker} story={story} user={user} onCloseStory={onCloseStory}/>} */}
 
-      <div>
+      <div className="story-list">
         <StoryList stories={stories} user={user} onOpenStory={onOpenStory} />
       </div>
       <div className="side-sugestion">

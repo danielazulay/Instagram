@@ -1,10 +1,13 @@
 .story-details {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
+
   width: 100vw;
   height: 100vh;
   background-color: rgba(89, 89, 89, 0.8);
+  overflow-y: hidden;
+
 
   .story-button {
     appearance: none;
@@ -208,8 +211,92 @@ li {
 
     }
 
-    .story-details .story {
-      height: 75vh;
+  }
+
+    
+    @media only screen and (max-width: 1020px) and (max-height: 1024px) {
+
+ 
+      @media only screen and (max-width: 820px){
+
+        .story-details .story {
+          height: 90vh;
+        }
+      
+      }
+
+      @media only screen and (max-width: 600px){
+
+        .story-details .story {
+          height: 95vh;
+        }
+      
+      }
+
+          
+    @media only screen and (max-width: 500px){
+
+      .story-details .story {
+        height: 80vh;
+      }
+    
     }
 
-  }
+    @media only screen and (max-width: 545px){
+
+      .story-details .story {
+        height: 92vh;
+      }
+    
+    }
+
+    @media only screen and (max-width: 450px){
+
+      .story-details .story {
+        height: 60vh;
+      }
+    
+    }
+
+    @media only screen and (max-width: 395px){
+
+      .story-details .story {
+        height: 65vh;
+      }
+    
+    }
+
+    @media only screen and (max-width: 380px){
+
+      .story-details .story {
+        height: 75vh;
+      }
+    
+    }
+
+    @media only screen and (max-width: 370px){
+
+      .story-details .story {
+        height: 68vh;
+      }
+    
+    }
+    @media only screen and (max-width: 355px){
+
+      .story-details .story {
+        height: 55vh;
+      }
+    
+    }
+
+    @media only screen and (max-width: 280px){
+
+      .story-details .story {
+        height: 50vh;
+      }
+    
+    }
+
+}
+  
+

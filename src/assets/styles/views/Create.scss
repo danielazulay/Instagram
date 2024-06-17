@@ -153,3 +153,97 @@
 .show {
   visibility: visible;
 }
+
+
+
+    // }
+
+    
+        
+        @media only screen and (max-width: 1020px) and (max-height: 1024px) {
+    
+     
+          @media only screen and (max-width: 820px){
+    
+           .profile-model .model  {
+              height: 60vh;
+              width: 50vw;
+            }
+          
+          }
+    
+          @media only screen and (max-width: 720px){
+    
+           .profile-model .model  {
+            height: 60vh;
+            width: 40vw;
+            }
+
+          
+          }
+    
+              
+        @media only screen and (max-width: 500px){
+    
+         .profile-model .model  {
+            height: 80vh;
+          }
+        
+        }
+    
+        @media only screen and (max-width: 545px){
+    
+         .profile-model .model  {
+            height: 92vh;
+          }
+        
+        }
+    
+        @media only screen and (max-width: 450px){
+    
+         .profile-model .model  {
+            height: 60vh;
+          }
+        
+        }
+    
+        @media only screen and (max-width: 395px){
+    
+         .profile-model .model  {
+            height: 65vh;
+          }
+        
+        }
+    
+        @media only screen and (max-width: 380px){
+    
+         .profile-model .model  {
+            height: 75vh;
+          }
+        
+        }
+    
+        @media only screen and (max-width: 370px){
+    
+         .profile-model .model  {
+            height: 68vh;
+          }
+        
+        }
+        @media only screen and (max-width: 355px){
+    
+         .profile-model .model  {
+            height: 55vh;
+          }
+        
+        }
+    
+        @media only screen and (max-width: 280px){
+    
+          .profile-model .model {
+            height: 50vh;
+          }
+        
+        }
+    
+    }

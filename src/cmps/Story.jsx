@@ -1,18 +1,38 @@
 import { utilService } from "../services/util.service";
 import { useState } from "react";
 import { MenuButton } from "./MenuButtons";
-
 import { Emoji } from "./buttons/Emoji";
 import { SvgService } from "../services/svg.service";
 import { FormPost } from "./FormPost";
-import { saveStory } from "../store/actions/story.actions";
 import { CircleImg } from "./buttons/CircleImg";
+import { UpdateUSer } from "../store/actions/user.actions";
+import { saveStory } from "../store/actions/story.actions";
 
 export function Story({ story, user, onOpenStory }) {
-  let [spand, setSpand] = useState(false);
+  const [spand, setSpand] = useState(false);
   const [post, setPost] = useState("");
   const [selected, setSelected] = useState(false);
   const [emojiPosition, setEmojiPosition] = useState({x :0,y :0})
+  const [save,setSave] =useState(false)
+
+  function postSaved(id) {
+
+    let index = user.saved.indexOf(id)
+
+    if(-1 !== index){
+    user.saved.splice(index,1);
+    }else{
+      user.saved.push(id);
+    }
+
+    UpdateUSer(user);
+    setSave((past)=>!past)
+
+  }
+
+  function checkIfSaved(id) {
+    return user.saved.indexOf(id) ===-1 ? false : true;
+  }
 
   function checkLike() {
     return story.likedBy.find((element) => user._id == element._id) !==
@@ -30,7 +50,7 @@ export function Story({ story, user, onOpenStory }) {
 
     if (action) {
       story.likedBy.push(newLike);
-    } else if (!action) {
+    } else  {
       story.likedBy = story.likedBy.filter((el) => el._id !== user._id);
     }
     saveStory(story);
@@ -58,7 +78,6 @@ export function Story({ story, user, onOpenStory }) {
   }
 
   function handleSmileClick (ev){
-    console.log(ev)
     setEmojiPosition({ x: ev.screenX, y: ev.screenY });
     setSelected(prev => !prev);
   }
@@ -70,8 +89,10 @@ export function Story({ story, user, onOpenStory }) {
         <h2>{story.by.fullname}</h2>
       </div>
 
-      <img className="story-img" src={story.imgUrl} alt="blah blah" />
+      <img className="story-img" src={story.imgUrl} alt="img" />
       <MenuButton
+      postSaved={postSaved}
+      checkIfSaved={checkIfSaved}
         handleLike={handleLike}
         checkLike={checkLike}
         story={story}
@@ -79,16 +100,15 @@ export function Story({ story, user, onOpenStory }) {
         onOpenStory={onOpenStory}
       />
 
-      <h5 className="story-text">
+      <div className="story-text">
         <b>{story.by.fullname + " "}</b>
-        {!spand ? utilService.resumeText(story.txt) : story.txt}
+        <pre>{!spand ? utilService.resumeText(story.txt):story.txt}</pre> 
         <span
           style={{ visibility: spand ? "hidden" : "visible" }}
-          onClick={expand}
-        >
+          onClick={expand}>
           <h3> ...more</h3>
         </span>
-      </h5>
+      </div>
 
       <a onClick={() => onOpenStory(story._id)} className="vill-all">
         <span to={`/${story._id}`}>

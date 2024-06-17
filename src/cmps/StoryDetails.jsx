@@ -7,6 +7,7 @@ import { Emoji } from "./buttons/Emoji";
 import { CircleImg } from "./buttons/CircleImg";
 import { utilService } from "../services/util.service";
 import { storyService } from "../services/story.service";
+import { UpdateUSer } from "../store/actions/user.actions";
 
 export function StoryDetails({
   selected,
@@ -18,6 +19,7 @@ export function StoryDetails({
   const [story, setStory] = useState();
   const [post, setPost] = useState("");
   const [emojiPosition, setEmojiPosition] = useState({ x: 0, y: 0 });
+  const [save, setSave] = useState(false);
 
   useEffect(() => {
     getStory();
@@ -30,6 +32,23 @@ export function StoryDetails({
     } catch (err) {
       console.log(err);
     }
+  }
+
+  function postSaved(id) {
+    let index = user.saved.indexOf(id);
+
+    if (-1 !== index) {
+      user.saved.splice(index, 1);
+    } else {
+      user.saved.push(id);
+    }
+
+    UpdateUSer(user);
+    setSave((past) => !past);
+  }
+
+  function checkIfSaved(id) {
+    return user.saved.indexOf(id) === -1 ? false : true;
   }
 
   function checkLike() {
@@ -156,6 +175,8 @@ export function StoryDetails({
             </ul>
             <div className="menu-bar">
               <MenuButton
+                postSaved={postSaved}
+                checkIfSaved={checkIfSaved}
                 handleLike={handleLike}
                 checkLike={checkLike}
                 story={story}

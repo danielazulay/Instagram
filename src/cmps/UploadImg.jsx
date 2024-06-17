@@ -1,36 +1,33 @@
 import { SvgService } from "../services/svg.service";
 
+export function UploadImg({ changePage, url, handleChange }) {
+  function onSubmit(event) {
+    event.preventDefault();
+    changePage();
+  }
 
-export function UploadImg({changePage,url,handleChange}){
+  return (
+    <div className="form-upload">
+      <div
+        className="icon-upload"
+        dangerouslySetInnerHTML={{
+          __html: SvgService.getSvg("upload"),
+        }}
+      />
+      <h3>Drag photos and videos here</h3>
 
-function onSubmit(event){
-  event.preventDefault();
-changePage()
-
-
-}
-
-    return(
-      <div className="form-upload">
-            <div
-            className="icon-upload"
-            dangerouslySetInnerHTML={{
-              __html: SvgService.getSvg("upload"),
-            }}
-          />
-          <h3>Drag photos and videos here</h3>
-          
-        <form   onSubmit={onSubmit}>
+      <form onSubmit={onSubmit}>
         <input
-        className="input-upload"
-          // onClick={() => setSelected(false)} // how to make close when click out
+          className="input-upload"
           type="text"
           placeholder="Link"
-           onChange={handleChange}
-           value={url}
+          onChange={handleChange}
+          value={url}
         ></input>
-        <button className="button-upload" type="submit">upload</button>
+        <button className="button-upload" type="submit">
+          upload
+        </button>
       </form>
-      </div>
-    )
+    </div>
+  );
 }

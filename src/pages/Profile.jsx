@@ -17,7 +17,6 @@ export function Profile() {
 
   function loadSimg(id) {
     let story = stories.find((el) => el._id === id);
-    console.log("->>>" + story.imgUrl);
 
     return story.imgUrl;
   }
