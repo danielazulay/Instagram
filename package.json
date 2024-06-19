@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://danielazulay.github.io/instagran/",
+  "homepage": "https://danielazulay.github.io/instagram/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
