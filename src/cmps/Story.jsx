@@ -15,6 +15,8 @@ export function Story({ story, user, onOpenStory }) {
   const [emojiPosition, setEmojiPosition] = useState({x :0,y :0})
   const [save,setSave] =useState(false)
 
+
+
   function postSaved(id) {
 
     let index = user.saved.indexOf(id)
@@ -100,13 +102,13 @@ export function Story({ story, user, onOpenStory }) {
         onOpenStory={onOpenStory}
       />
 
-      <div className="story-text">
-        <b>{story.by.fullname + " "}</b>
-        <pre>{!spand ? utilService.resumeText(story.txt):story.txt}</pre> 
+      <div className="story-text">        
+        <pre><b className="gray">{story.by.fullname + " "}</b>{!spand ? utilService.resumeText(story.txt):story.txt}</pre> 
+
         <span
           style={{ visibility: spand ? "hidden" : "visible" }}
           onClick={expand}>
-          <h3> ...more</h3>
+          <span> ...more</span>
         </span>
       </div>
 

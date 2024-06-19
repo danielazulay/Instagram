@@ -24,7 +24,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    height: 88%;
+    height: 89%;
     width: 67%;
     transform: translate(-55%, -50%);
     background-color: white;
@@ -38,67 +38,105 @@ overflow-x: hidden;
       .img-story {
         width: 60%;
         height: 100%;
+
+        object-fit: cover;
       }
-  
-      .story-header{
-        display: flex;
-        justify-content: space-between;
-        border-bottom: 1px solid  rgb(214, 198, 198);
-        padding: 15px;
-        margin-top: 0;
-
-        
-        .story-titlle-detailed {
-
-          display: flex;
-          justify-content: flex-start;
-          padding-left: 40px;
-          h2 {
-            margin-top: 5px;
-            font-size: 18px;
-            margin-left: 10px;
-            font-weight: 500;
-          }
-        }
-
-        button {
-          margin-top: 0;
-          background: none;
-          color: inherit;
-          border: none;
-          padding: 0;
-          font: inherit;
-          cursor: pointer;
-          outline: inherit;
-        }
-      }
+ 
 
       .coments-story {
         display: flex;
         list-style: none;
-        margin-top: 2%;
+
         flex-direction: column;
         width: 40%;
         height: 85vh;
+        .coments-story{
+          width: 100%;
+        }
+        .story-header{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid  rgb(214, 198, 198);
+          padding-top: 15px;
+          padding-bottom: 15px;
+          padding-left: 18px;
+          margin-top: 0;
+  
+          
+          .story-titlle-detailed {
+  
+            display: flex;
+            justify-content: flex-start;
+            padding-left:2%;
+            h2 {
+              margin-top: 5px;
+              font-size: 18px;
+              margin-left: 10px;
+              font-weight: 500;
+            }
+          }
+  
+          button {
+            margin-top: 0;
+            background: none;
+            color: inherit;
+            border: none;
+            padding: 0;
+            font: inherit;
+            cursor: pointer;
+            outline: inherit;
+          }
+        }
+
+        .post-detailed{
+          display: flex;
+          margin-left: 3px;
+          margin-top: 5%;
+          margin-bottom: 7%;
+        }
+        .tilte-block{
+          width: 90%;
+          display: flex;
+          font-family:$fi;
+
+          p{
+            margin-left: 3%;
+            margin-bottom: 0;
+          }
+
+        }
 
 
         .post-list {
           flex-direction: column;
           align-items: flex-start;
+          margin-bottom: 5%;
+          .comment-time{
+            margin-left: 45px;
+          }
         
           .storyTitlle{
-            justify-content: flex-start;          
-            h3{
-              width: 100px;
-            }
+            margin-right: 2%;
+            margin-bottom: 0;
+            justify-content: space-between; 
+              
+            .tilte-block{
+              display: flex;
+              h3{
+                width: 100px;
+              }
+            } 
+          
             .love{
-              margin-left: 50%;
+              
+              margin-left: 10%;
             }
           }
           }
           h3 {
             margin-top: 5px;
-            margin-left: 10px;
+            margin-left: 3%;
             margin-bottom: 0;
             font-size: 15px;
             font-weight: 700;
@@ -121,6 +159,7 @@ overflow-x: hidden;
             gap: 10px;
             padding: 5px;
           }
+
   
         
 
@@ -151,6 +190,7 @@ overflow-x: hidden;
 ul{
   height: 60vh;
   overflow: auto;
+  padding-left: 5%;
   ::-webkit-scrollbar {
     width: 10px;
 }
@@ -165,7 +205,7 @@ li {
 
 
 
-  @media only screen and (max-width: 825px) {
+  @media only screen and (max-width: 1030px) {
  
 
     .divide-post {
@@ -194,12 +234,17 @@ li {
       visibility: hidden;
     }
     .story-details {
+      .story {
+
+        height: 72%;
+      }
       position: fixed;
       overflow: hidden;
     }
     .story-details .story .divide-post .img-story {
       width: 100%;
-      height: auto;
+      height: 70%;
+
 
     }
    .story-details .story .divide-post .coments-story {
@@ -214,89 +259,37 @@ li {
   }
 
     
-    @media only screen and (max-width: 1020px) and (max-height: 1024px) {
-
- 
-      @media only screen and (max-width: 820px){
-
-        .story-details .story {
-          height: 90vh;
-        }
-      
-      }
-
-      @media only screen and (max-width: 600px){
-
-        .story-details .story {
-          height: 95vh;
-        }
-      
-      }
 
           
-    @media only screen and (max-width: 500px){
 
-      .story-details .story {
-        height: 80vh;
-      }
+
+    // @media only screen and (max-width: 700px){
+
+    //   .story-details .story {
+    //     height: 60vh;
+    //   }
     
-    }
+    // }
 
-    @media only screen and (max-width: 545px){
+    // @media only screen and (max-width: 395px){
 
-      .story-details .story {
-        height: 92vh;
-      }
+    //   .story-details .story {
+    //     height: 65vh;
+    //   }
     
-    }
+    // }
 
-    @media only screen and (max-width: 450px){
+    // @media only screen and (max-width: 380px){
 
-      .story-details .story {
-        height: 60vh;
-      }
+    //   .story-details .story {
+    //     height:48vh;
+    //   }
     
-    }
+    // }
 
-    @media only screen and (max-width: 395px){
 
-      .story-details .story {
-        height: 65vh;
-      }
-    
-    }
 
-    @media only screen and (max-width: 380px){
 
-      .story-details .story {
-        height: 75vh;
-      }
-    
-    }
 
-    @media only screen and (max-width: 370px){
-
-      .story-details .story {
-        height: 68vh;
-      }
-    
-    }
-    @media only screen and (max-width: 355px){
-
-      .story-details .story {
-        height: 55vh;
-      }
-    
-    }
-
-    @media only screen and (max-width: 280px){
-
-      .story-details .story {
-        height: 50vh;
-      }
-    
-    }
-
-}
   
 

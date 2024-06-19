@@ -3,19 +3,16 @@ import { CircleImg } from "./buttons/CircleImg";
 import { useSelector } from "react-redux";
 
 
-export function SideSugestion(){
+export function SideSugestion({friendSave,btnFriend}){
     const user = useSelector((userSate) => userSate.userModule.user);
 
     const [robots, setRobots] = useState([]);
-
+    
+    
     useEffect(() => {
         generateRobot();
     }, []); 
 
-    // async function loadFrinds(){
-
-        
-    // }
 
     async function generateRobot(){
 
@@ -23,7 +20,7 @@ export function SideSugestion(){
         let tempArr = [];
         for(let i=0; i < 6;i++){
             let rb = await fetch(url);
-
+        
             if (rb.ok) {
 
                 let data = await rb.json();
@@ -51,11 +48,11 @@ export function SideSugestion(){
         
                 <CircleImg  img={el.picture.medium}  height={44} width={44} />
                 <div className="sugestion-name">
-                <h6>{el.name.first+" "+el.name.last}</h6>
+                <h6>{el.name.first+el._id+" "+el.name.last}</h6>
                 <h6 className="gray">Suggested for you</h6>
 
                 </div>
-                <button className="button-follow">Follow</button>
+                <button className="button-follow" onClick={()=>friendSave(el.id.value)}>{btnFriend ?`Follow`:"Unfollow"}</button>
                 </div>
 
             ))}

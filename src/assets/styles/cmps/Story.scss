@@ -3,12 +3,14 @@
  margin-top: 10%;
   border-bottom: 1px solid  rgb(214, 198, 198);
   width: 468px;
+
   .story-titlle{
     margin-bottom: 15px;
     display: flex;
     justify-content:flex-start;
     gap: 8px;
     font-size: 8px;
+    margin-left: 15px;
 
    h2{
       margin-top: 10px;
@@ -28,14 +30,17 @@
     resize: vertical;
     font-size: 14px;
     font-weight: 450;
-    
+    padding-left: 15px;
     width: 100%;
 
 
     font-weight: 100;
-    color: gray;
+   
     width: break-word;
     pre{
+      margin-bottom: 0;
+      font-weight: 400;
+      color: black;
       text-wrap: wrap;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
@@ -46,47 +51,17 @@
     font-weight: lighter;
     color: gray;
     font-size: 14PX;
+    padding-left: 10px;
   }
   .coment-block{
     display: flex;
     justify-content: flex-start;
     width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
   
   }
 }
-
-
-// .svgMenuLine{
-//     display: flex;
-//     width: 468px;
-//     justify-content:space-between;
-// }
-// .story-text{
-//     width: 90%;
-//     font-family:Georgia, 'Times New Roman', Times, serif
-
-// }
-// .svgMenu{
-//     display: flex;
-//     justify-content:flex-start;
-// }
-
-// .storyTitlle{
-//     display: flex;
-//     justify-content: flex-start;
-//     margin-bottom: 2px;
-//     font-size: 14px;
-// }
-// .commnet-button{
-//     margin-top: 0;
-//     background: none;
-//     color: inherit;
-//     border: none;
-//     padding: 0;
-//     font: inherit;
-//     cursor: pointer;
-//     outline: inherit;
-// }
 
 
 
@@ -94,8 +69,6 @@
   .story-block{
     width: 80vw;
     overflow: hidden;
-    //  margin-left: 10%;
-    // margin-right: 10%;
     .story-img {
 
     height: 60vh;
@@ -111,8 +84,6 @@
   .story-block{
     width: 100vw;
     overflow: hidden;
-    //  margin-left: 10%;
-    // margin-right: 10%;
     .story-img {
       
     height: 60vh;
@@ -121,14 +92,6 @@
 }
 
 
-// @media only screen and  (max-height: 720px) {
-//   .story-block{
-
-//      margin-left: 10%;
-//     margin-right: 10%;
-// }
-
-// }
 }
 
 

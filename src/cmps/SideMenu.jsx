@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 import { SvgService } from "../services/svg.service";
 // import { saveStory } from "../store/actions/story.actions";
 import { CircleImg } from "./buttons/CircleImg";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { Create } from "../pages/Create";
+
 
 export function SideMenu() {
   const user = useSelector((userSate) => userSate.userModule.user);
@@ -36,8 +37,8 @@ export function SideMenu() {
         }}
       />
       <ul className="menu">
-        <Link to={`/`}>
-          <li className="list-menu gray icon">
+        <NavLink to={`/`} className="black" activeClassName="bold">
+          <li className="list-menu  icon">
             <div
               className="icon"
               dangerouslySetInnerHTML={{
@@ -46,9 +47,9 @@ export function SideMenu() {
             />
             <span className="btn-name">Home</span>
           </li>
-        </Link>
+        </NavLink>
 
-        <li className="list-menu gray icon">
+        <li className="list-menu icon">
           <div
             className="icon"
             dangerouslySetInnerHTML={{
@@ -58,7 +59,7 @@ export function SideMenu() {
           <span className="btn-name">Search</span>
         </li>
 
-        <li className="list-menu gray icon">
+        <li className="list-menu icon">
           <div
             className="icon"
             dangerouslySetInnerHTML={{
@@ -67,7 +68,7 @@ export function SideMenu() {
           />
           <span className="btn-name">Messages</span>
         </li>
-        <li className="list-menu gray " onClick={onCloseCreate}>
+        <li className="list-menu " onClick={onCloseCreate}>
           <div
             className="icon"
             dangerouslySetInnerHTML={{
@@ -77,18 +78,18 @@ export function SideMenu() {
           <span className="btn-name">Create</span>
         </li>
 
-        <Link to={`/profile`}>
-          <li className="list-menu gray">
+        <NavLink to={`/profile`}>
+          <li className="list-menu">
             <CircleImg img={user.imgUrl} />
             <span className="btn-name">Profile</span>
           </li>
-        </Link>
+        </NavLink>
       </ul>
 
       <div className="bottom-menu">
         <ol className="bottom-bts">
-          <Link to={`/`}>
-            <li className="list-menu gray icon">
+          <NavLink to={`/`}>
+            <li className="list-menu icon">
               <div
                 className="icon"
                 dangerouslySetInnerHTML={{
@@ -97,9 +98,9 @@ export function SideMenu() {
               />
               <span className="btn-name">Home</span>
             </li>
-          </Link>
+          </NavLink>
 
-          <li className="list-menu gray icon">
+          <li className="list-menu icon">
             <div
               className="icon"
               dangerouslySetInnerHTML={{
@@ -109,7 +110,7 @@ export function SideMenu() {
             <span className="btn-name">Search</span>
           </li>
 
-          <li className="list-menu gray icon">
+          <li className="list-menu icon">
             <div
               className="icon"
               dangerouslySetInnerHTML={{
@@ -118,7 +119,7 @@ export function SideMenu() {
             />
             <span className="btn-name">Messages</span>
           </li>
-          <li className="list-menu gray " onClick={onCloseCreate}>
+          <li className="list-menu" onClick={onCloseCreate}>
             <div
               className="icon"
               dangerouslySetInnerHTML={{
@@ -128,12 +129,12 @@ export function SideMenu() {
             <span className="btn-name">Create</span>
           </li>
 
-          <Link to={`/profile`}>
-            <li className="list-menu gray">
+          <NavLink to={`/profile`} >
+            <li className=".list-menu" >
               <CircleImg img={user.imgUrl} />
-              <span className="btn-name">Profile</span>
+              <span className="btn-name ">Profile</span>
             </li>
-          </Link>
+          </NavLink>
         </ol>
       </div>
 

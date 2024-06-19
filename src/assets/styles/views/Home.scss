@@ -3,7 +3,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 7fr 2fr ;
     grid-template-areas:  ". . home .";
-    overflow-x: hidden;        
+    overflow-x: hidden;       
 
 }
 
@@ -15,7 +15,7 @@
 }
 
 
-@media only screen and (max-width: 670px) {
+@media only screen and (max-width: 1600px) {
     .main{
         justify-content: center;
         display: grid;

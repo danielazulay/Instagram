@@ -1,6 +1,6 @@
 .side-menu {
   border-right: 1px solid rgb(214, 198, 198);
-  width: 278px;
+  width: 335px;
   height: 100vh;
   padding-top: 8px;
   padding-bottom: 20px;
@@ -20,6 +20,9 @@
     background-color: white;
     justify-content: center;
     align-items: center;
+    color: black;
+    
+    
   }
 
   .bottom-menu {
@@ -29,31 +32,45 @@
 
     bottom: 0;
     width: 100vw;
-    height: 10vh;
-    margin-bottom: 0;
+    height: 8vh;
+    margin-top: 0;
     gap: 1%;
     background-color: white;
     justify-content: center;
     align-items: center;
     padding: 0;
+    color: black;
+    a{
+      color: black;
+      .list-menu {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+      }
+    }
 
     .bottom-bts {
       display: flex;
       justify-content: space-evenly;
-      padding: 0;
-      gap: 2%;
-      margin-top: 0;
-    }
-    li {
-      width: 20%;
       justify-content: center;
       align-items: center;
+      padding: 0;
+      gap: 2%;
+      margin-top: 5;
+
+  
+    }
+    li {
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+
     }
   }
 
   .instagran-logo {
-    margin-left: 10%;
-    margin-top: 15%;
+    margin-left: 30px;
+    margin-top: 12%;
   }
 
   .menu {
@@ -62,42 +79,60 @@
 
     .list-menu {
       width: 100%;
-      margin-left: 20px;
-      margin-top: 5px;
-      padding: 10%;
+      margin: 6px;
+      padding: 24px;
+      margin-left: 10px;
+
       display: flex;
       gap: 10px;
-      height: 60px;
+      height: 5px;
       align-items: center;
       outline-color: transparent;
       font-size: 16px;
+      color: black;
     }
     .list-menu:hover {
-      width: 94%;
-      background-color: #e7e7e7;
+      width: 92%;
+      background-color: #f1ecec;
       border-radius: 10px;
       border-bottom: transparent;
-      // font-weight: bold;
+
       .icon {
         transform: scale(1.1);
+
       }
     }
 
     .list-menu:active {
       font-weight: bold;
     }
+
+    .active{
+      font-weight: bold;
+    }
   }
 }
 
-@media only screen and (max-width: 1320px) {
-  .top-menu {
-    visibility: hidden;
+@media only screen and (max-width: 1660px) {
+  .instagran-logo {
+    margin-left: 10px;
+    margin-top: 12%;
   }
-  .bottom-menu {
-    visibility: hidden;
+  .side-menu {
+    width: 15%;
   }
+
 }
-@media only screen and (max-width: 1133px) {
+
+
+@media only screen and (max-width: 1175px) {
+
+  .side-menu  .instagran-logo {
+    width: 15px;
+    margin-left: 30px;
+    margin-top: 12%;
+  }
+
   .side-menu {
     position: fixed;
     left: -10%;
@@ -118,7 +153,7 @@
     visibility: hidden;
   }
 
-  .list-menu {
+  .list-menu li{
     margin: 2.5rem 0;
     width: 0%;
     left: 0;
@@ -131,12 +166,17 @@
     outline-color: transparent;
     font-size: 0;
     margin-left: 30px;
+
   }
 }
 
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 1157px) {
+  
   .side-menu {
     width: 12%;
+  }
+ .list-menu {
+  padding: 0;
   }
   .top-menu {
     visibility: hidden;
@@ -151,15 +191,20 @@
 
   .list-menu {
     padding: 0;
+
   }
+
 
   .btn-name {
     visibility: hidden;
   }
 }
 
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 1024px) {
+
+  
   .top-menu {
+
     visibility: hidden;
   }
 
@@ -211,8 +256,10 @@
 }
 
 @media only screen and (max-width: 620px) {
+
   .story-block {
-    margin-top: 20%;
+    margin-top: 10%;
+   
   }
   .home-page {
     padding: 0;
@@ -220,10 +267,21 @@
 }
 
 @media only screen and (max-width: 530px) {
+
+
   .home-page {
     padding: 0;
   }
   .side-menu {
     width: 0;
   }
+}
+
+
+.bold {
+  color: red;
+}
+
+.black {
+  color: black;
 }

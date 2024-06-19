@@ -1,49 +1,10 @@
-// .home-page{
-//     padding-left: 200px;
-//     padding-right: 200px;
-//     width: 1408px;
-//     height: 100vh;
-//     display: grid;
-//     grid-template-columns: 2fr 6fr 6fr;
-//     grid-template-rows: 2fr 6fr 6fr;
-//      grid-template-areas: "friends friends side"
-//                          "sugestion sugestion side"
-//                          ". storys side"
-
-// }
-
-// .Friends{
-//     margin-top: 15px;
-//     margin-bottom: 15px;
-//     grid-area: friends;
-//     border: 1px solid black;
-// }
-// .nav-sugestion{
-//     margin-left: 70px;
-//     margin-top: 35px;
-//     grid-area: sugestion;
-//     justify-content: center;
-//     align-items: center;
-//     border: 1px solid black;
-// }
-// .side-sugestion{
-//     grid-area: side;
-//     padding-left: 64px;
-//     height: 50vh;
-//     border: 1px solid black;
-// }
-
-// .story-list{
-//     grid-area: storys;
-//     border: 1px solid black;
-// }
 .home {
   height: 100vh;
+  overflow-x: hidden;   
 }
 .home-page {
-  margin-top: 3vh;
-  padding-left: 35%;
-  padding-right: 10%;
+
+  margin-left: 25%;
   width: 80vw;
   height: 100vh;
   display: flex;
@@ -64,7 +25,7 @@
     display: flex;
     margin-bottom: 10%;
     gap: 5%;
-    margin-left: 1%;
+    margin-left: 0;
     .sugestion-name {
       display: flex;
       flex-direction: row;
@@ -78,11 +39,11 @@
     display: flex;
     gap: 10px;
     margin-bottom: 15px;
-    justify-content: center;
     align-items: center;
     width: 270px;
     .suggestion-title {
       font-size: 14px;
+ 
       font-family: "-apple-system, BlinkMacSystemFont, " Segoe UI
         ", Roboto, Helvetica, Arial, sans-serif";
     }
@@ -110,12 +71,16 @@
   }
 }
 .gray {
-  color: #737373;
+  color: gray;
 }
 
-@media only screen and (max-width: 1518px) {
+.black{
+  color: black;
+}
+
+@media only screen and (max-width: 1660px) {
   .home-page {
-    margin-left: 0;
+    margin-left: 25%;
     
   }
   .side-sugestion {
@@ -123,10 +88,10 @@
   }
 }
 
-@media only screen and (max-width: 1320px) {
+@media only screen and (max-width: 1390px) {
   .home-page {
-    margin-left: 0;
-    margin-left: 0;
+    margin-left: 25%;
+
   }
 
   .side-sugestion{
@@ -134,9 +99,8 @@
   }
 }
 
-@media only screen and (max-width: 1133px) {
+@media only screen and (max-width: 1260px) {
   .home-page {
-    // padding-left: 10%;
     padding-right: 10%;
     width: 80vw;
     height: 90%;
@@ -145,14 +109,16 @@
  
 }
 
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 1160px) {
+
+  
     .side-sugestion {
         visibility: hidden;
       }
 
       .home-page {
-        padding-left: 30%;
-        padding-right: 5%;
+        padding-left: 5%;
+        padding-right: 6%;
         width: 75vw; 
  
       }
@@ -160,6 +126,10 @@
   }
 
 @media only screen and (max-width: 860px) {
+
+  .top-menu{
+    gap: 10px;
+  }
 
   .story-block {
 
@@ -169,7 +139,7 @@
   .home-page {
     padding-left: 0;
     padding-right: 0;
-    margin-left: 20%;
+
     width: 75vw; 
 
   }
@@ -179,34 +149,38 @@
 
 @media only screen and (max-width: 700px) {
   .home-page{
-    margin-top: 2vh;
-    margin-left: 10%;
+    margin-top: 5vh;
+    margin-left:15%;
+
     .story-list{
-      width: 80%;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
     }
         }
         .top-menu {
           visibility: visible;
         }
   .story-block {
-    margin-left: 0;
-    margin-right: 10%;
+
+
     height: 70%;
     width: 80%;
   }
 
 }
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 600px) {
   .home-page{
     width: 100%;
-
+    margin-left: 10%;
+    
         }
 
   .story-block {
 
 
     height: 70%;
-    width: 60%;
+    width: 0%;
   }
 
 

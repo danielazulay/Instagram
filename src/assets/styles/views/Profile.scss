@@ -1,26 +1,28 @@
 .profile-page {
+  padding-top: 7vh;
   width:100%;
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  margin-left: 15px;
 
+  justify-content: center;
   background-color: white;
   .grid-container {
-    margin-left: 150px;
-    width: 75%;
+    margin-left: 20%;
+
+    justify-content: center;
+    width: 100%;
     height: 98%;
 
 
     .profile-container {
       height: 30%;
       display: grid;
-      //grid-template-rows: 0.4fr 0.4fr 0.2fr 0.1fr 0.4fr 1fr;
       grid-template-rows: 0.4fr 0.4fr 0.2fr 0.1fr;
       grid-template-columns: 3fr 6fr;
-
+      width: 70%;
       margin-bottom: 0;
+
       .img-grid {
         display: flex;
         grid-row: 1 / 4;
@@ -53,6 +55,7 @@
       display: flex;
       justify-content: center;
       border-top: 0.1px solid rgb(221, 216, 216);
+      width: 85%;
       button {
         display: flex;
         gap: 5px;
@@ -67,15 +70,15 @@
     }
     .grid-posts {
       width: 100%;
-      display: flex;
+      display:  inline-flex;
       justify-content: flex-start;
       flex-grow: 3;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 4px;
 
       .block-story {
-        height: 290px;
-        width: 290px;
+        height: 270px;
+        width:  270px;
 
         img {
           border-radius: 3px;
@@ -102,9 +105,46 @@ visibility:none;
 }
 
 
-@media only screen and (max-width: 1918px) {
-    .grid-posts.block-story {
-    height: 100px;
-    width: 100px;
+
+@media only screen and (max-width: 1300px) {
+
+ .profile-page .grid-container{
+    width: 80%;
+    margin-left: 25%;
+    margin-right: 15%;
   }
+  .profile-menu{
+    width: 100%;
+    
+  }
+
+
+  .grid-posts {
+    width: 100%;
+    display:  inline-flex;
+    justify-content: flex-start;
+    flex-grow: 3;
+    flex-wrap: wrap;
+    gap: 4px;
+
+    .block-story {
+      height: 207px;
+      width:  207px;
+    }
+  }
+
+}
+
+
+@media only screen and (max-width: 500px) {
+  .profile-page .grid-container .profile-container{
+    grid-template-rows: 0.3fr 0.4fr 0.2fr 0.1fr;
+    grid-template-columns: 2fr 6fr;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+
+  }
+ 
+
 }

@@ -34,6 +34,26 @@ export function StoryDetails({
     }
   }
 
+  function calculateTimeDifference(postTime){
+// Get the current time in milliseconds
+let now = new Date().getTime();
+
+// Calculate the difference in milliseconds
+let differenceInMilliseconds = now - postTime;
+
+// Convert milliseconds to hours
+let differenceInHours = differenceInMilliseconds / (1000 * 60 * 60);
+
+if(differenceInHours > 24 ){
+  return  Math.floor(differenceInHours/24) +"d"
+}
+
+
+
+return differenceInHours < 1 ? Math.floor(differenceInHours*60) +"m": Math.floor(differenceInHours) +"h";
+
+  }
+
   function postSaved(id) {
     let index = user.saved.indexOf(id);
 
@@ -128,46 +148,60 @@ export function StoryDetails({
       </button>
       <div className="story">
         <div className="divide-post">
-          <img className="img-story" src={story.imgUrl}></img>
+          <img className="img-story" src={story.imgUrl} ></img>
           <div className="coments-story">
-            <div className="story-header">
-              <div className="story-titlle-detailed">
-                <CircleImg img={user.imgUrl} />
-                <h2>{story.by.fullname}</h2>
+
+              <div className="story-header">
+                <div className="story-titlle-detailed">
+                  <CircleImg img={user.imgUrl} />
+                  <h2>{story.by.fullname}</h2>
+                </div>
+
+                <button
+                  className="compose-button"
+                  dangerouslySetInnerHTML={{
+                    __html: SvgService.getSvg("dots"),
+                  }}
+                />
               </div>
 
-              <button
-                className="compose-button"
-                dangerouslySetInnerHTML={{ __html: SvgService.getSvg("dots") }}
-              />
-            </div>
-
+ 
             <ul>
+            <li className="tilte-block">
+                <div className="post-detailed">
+                  <CircleImg img={user.imgUrl} />
+                  <p>{story.txt}</p>
+                </div>
+              </li>
               {story.comments.map((commnet) => {
                 return (
                   <li key={commnet.id}>
                     <div className="post-list">
                       <div className="storyTitlle">
-                        <CircleImg img={commnet.by.imgUrl} />
-                        <h3>{commnet.by.fullname}</h3>
+                        <div className="tilte-block">
+                          <CircleImg img={commnet.by.imgUrl} />
+                          <h3>{commnet.by.fullname}</h3>
+                        </div>
 
                         {checkLikeComment(commnet) ? (
                           <span
                             onClick={() => handleLike(false, commnet.id)}
                             dangerouslySetInnerHTML={{
-                              __html: SvgService.getSvg("like"),
+                              __html: SvgService.getSvg("like-small"),
                             }}
                           />
                         ) : (
                           <span
                             onClick={() => handleLike(true, commnet.id)}
                             dangerouslySetInnerHTML={{
-                              __html: SvgService.getSvg("lev"),
+                              __html: SvgService.getSvg("lev-small"),
                             }}
                           />
                         )}
                       </div>
-                      <p>{commnet.txt}</p>
+                      <p>{commnet.txt}
+                      </p>
+                      <span className="comment-time">{calculateTimeDifference(commnet.time)}</span>
                     </div>
                   </li>
                 );

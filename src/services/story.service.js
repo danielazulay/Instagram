@@ -10,7 +10,7 @@ export const storyService = {
   add,
 };
 let STORY = "story";
-generateStories();
+
 
 async function generateStories() {
   let stories = utilService.loadFromStorage(STORY);
@@ -34,6 +34,7 @@ async function generateStories() {
           //     "imgUrl": `https://source.unsplash.com/random/40x40/?user1`
           // }
         ],
+        time:new Date().getTime(),
       };
       coments.push(newRandomCommnet);
     }
@@ -57,6 +58,7 @@ async function generateStories() {
         comments: coments,
         likedBy: [],
         tags: ["tag1", "tag2"],
+        time:new Date().getTime(),
       };
       stories.push(story);
     }
@@ -88,21 +90,6 @@ async function remove(storyId) {
 
 async function add({ txt, aboutUserId }) {
   const addedStory = await httpService.story(`story`, { txt, aboutUserId });
-
-  // const aboutUser = await userService.getById(aboutUserId)
-  // const reviewToAdd = {
-  //     txt,
-  //     byUser: userService.getLoggedinUser(),
-  //     aboutUser: {
-  //         _id: aboutUser._id,
-  //         fullname: aboutUser.fullname,
-  //         imgUrl: aboutUser.imgUrl
-  //     }
-  // }
-
-  // reviewToAdd.byUser.score += 10
-  // await userService.update(reviewToAdd.byUser)
-  // const addedReview = await storageService.story('review', reviewToAdd)
 
   return addedStory;
 }
