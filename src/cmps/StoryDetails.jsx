@@ -149,6 +149,8 @@ return differenceInHours < 1 ? Math.floor(differenceInHours*60) +"m": Math.floor
       <div className="story">
         <div className="divide-post">
           <img className="img-story" src={story.imgUrl} ></img>
+
+          
           <div className="coments-story">
 
               <div className="story-header">
