@@ -1,6 +1,6 @@
 .profile-page {
   padding-top: 7vh;
-  width:100%;
+  width:100vw;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -8,19 +8,22 @@
   justify-content: center;
   background-color: white;
   .grid-container {
-    margin-left: 20%;
+   padding-left: 25%;
 
     justify-content: center;
-    width: 100%;
+    width:100vw;
     height: 98%;
 
 
     .profile-container {
-      height: 30%;
+      min-height: 25%;
+     max-height: 30%;
+     min-width: 30%;
+     max-width: 50%;
       display: grid;
       grid-template-rows: 0.4fr 0.4fr 0.2fr 0.1fr;
       grid-template-columns: 3fr 6fr;
-      width: 70%;
+      width: 75%;
       margin-bottom: 0;
 
       .img-grid {
@@ -50,12 +53,44 @@
         gap: 25px;
       }
     }
+
+    .mobile-profile{
+
+      visibility: hidden;
+    
+    
+      .img-profile{
+        
+        display: flex;
+        gap:35px;
+      }
+      .profile-edit{
+        background-color: rgb(216, 208, 208);
+        border-radius: 5px;
+        color: black;
+        font-weight: 520;
+      }
+
+      .mobile-profile-info{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100vw;
+        height: 50px;
+        border: 0.1px gray solid;
+      }
+    }
     .profile-menu {
       margin-top: 0;
       display: flex;
       justify-content: center;
-      border-top: 0.1px solid rgb(221, 216, 216);
-      width: 85%;
+      border-top: 1px  rgb(36, 35, 35) solid;
+  
+
+      min-height: 12%;
+      max-height: 30%;
+      max-width: 70%;
+      min-width: 30%;
       button {
         display: flex;
         gap: 5px;
@@ -69,23 +104,27 @@
       }
     }
     .grid-posts {
-      width: 100%;
+      max-width: 80%;
+      min-width: 10%;
       display:  inline-flex;
       justify-content: flex-start;
-      flex-grow: 3;
       flex-wrap: wrap;
+      flex-grow: 3;
+
       gap: 4px;
 
       .block-story {
-        height: 270px;
-        width:  270px;
+        max-height: 307px;
+        max-width: 307px;
+
+        align-items: center;
+        
 
         img {
           border-radius: 3px;
           box-shadow: 0 13px 27px -5px #32325d40, 0 8px 16px -8px #0000004d, 0 -6px 16px -6px #00000008;
           height: auto;
           width: 100%;
-          height: 100%;
         }
 
         img:hover{
@@ -106,45 +145,72 @@ visibility:none;
 
 
 
-@media only screen and (max-width: 1300px) {
+@media only screen and (max-width: 666px) {
 
- .profile-page .grid-container{
-    width: 80%;
-    margin-left: 25%;
-    margin-right: 15%;
-  }
-  .profile-menu{
-    width: 100%;
-    
-  }
+  .profile-page .grid-container{
+    left: 0;
+    margin-left: 0;
+    padding-left: 0.7%;
 
+  }
 
   .grid-posts {
     width: 100%;
-    display:  inline-flex;
-    justify-content: flex-start;
-    flex-grow: 3;
-    flex-wrap: wrap;
-    gap: 4px;
+    padding: 1%;
+    margin-left: 15%;
+ .block-story-info {
+    max-width: 100%;
+    max-width: 100%;
+    min-width: 25%;
 
-    .block-story {
-      height: 207px;
-      width:  207px;
+    img {
+      width:100%;
+      height: 100%;
     }
   }
+}
+ .profile-page .grid-container .profile-container  {
+    visibility:hidden;
+  display: none;
+    }
+
+    .profile-menu{
+      width: 100%;
+    }
+
+    .profile-page .grid-container  .mobile-profile{
+
+      visibility: visible;
+    }
 
 }
 
+//   .grid-posts {
+//     width: 100%;
+//     display:  inline-flex;
+//     justify-content: flex-start;
+//     flex-grow: 3;
+//     flex-wrap: wrap;
+//     gap: 4px;
 
-@media only screen and (max-width: 500px) {
-  .profile-page .grid-container .profile-container{
-    grid-template-rows: 0.3fr 0.4fr 0.2fr 0.1fr;
-    grid-template-columns: 2fr 6fr;
-    width: 90%;
-    display: flex;
-    flex-direction: column;
+//     .block-story {
+//       height: 207px;
+//       width:  207px;
+//     }
+//   }
 
-  }
+// }
+
+
+// @media only screen and (max-width: 500px) {
+//   .profile-page .grid-container .profile-container{
+//     grid-template-rows: 0.3fr 0.4fr 0.2fr 0.1fr;
+//     grid-template-columns: 2fr 6fr;
+//     width: 90%;
+//     display: flex;
+//     flex-direction: column;
+
+//   }
  
 
-}
+// }

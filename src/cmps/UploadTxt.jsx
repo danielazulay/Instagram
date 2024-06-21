@@ -23,13 +23,10 @@ export function UploadTxt({ setText,text, url, user, }) {
         </div>
       <form>
         <textarea type="text" placeholder="Write a caption..." onChange={handleChange} value={text} className="input-share" ></textarea>
-    {/* <textarea ></textarea> */}
+
       </form>
       </div>
 
-      {/* <div className="detail-share">
-        <CircleImg img={url} />
-        </div> */}
     </div>
 
   );

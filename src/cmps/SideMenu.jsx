@@ -37,7 +37,7 @@ export function SideMenu() {
         }}
       />
       <ul className="menu">
-        <NavLink to={`/`} className="black" activeClassName="bold">
+        <NavLink to={`/`} className="black" >
           <li className="list-menu  icon">
             <div
               className="icon"

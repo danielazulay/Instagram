@@ -56,6 +56,24 @@ export function Profile() {
             <h5>{user.fullname}</h5>
           </div>
         </div>
+        <div className="mobile-profile">
+        <div className="img-profile">
+            <CircleImg img={user.imgUrl} height={100} width={100} />
+            <div className="profile-loginname">
+            <h2>{user.fullname}</h2>
+            <button className="profile-edit">Edit Profile</button>
+            <button className="profile-edit">View archive</button>
+          </div>
+          </div>
+          <h5>{user.fullname}</h5>
+        
+          <div className="mobile-profile-info">
+            <span className="info-profile">{countStories()} post</span>
+            <span className="info-profile">{user.following.length} following</span>
+            <span className="info-profile">{user.followers.length} followers</span>
+          </div>
+
+        </div>
         <div className="profile-menu">
           <button onClick={() => setTab(true)}>
             <div
@@ -81,7 +99,6 @@ export function Profile() {
           {tab
             ? stories.map((el) => {
                 return (
-                  // <Link to={`/profile/${el._id}`}  key={el._id}>
                   <div
                     className="block-story info"
                     key={el._id}
@@ -90,19 +107,17 @@ export function Profile() {
                     }}
                   >
                     <img src={el.imgUrl} alt="Story" />
-                    <span
+                    {/* <span
                       className="overlay-svg"
                       dangerouslySetInnerHTML={{
                         __html: SvgService.getSvg("lev"),
                       }}
-                    />
+                    /> */}
                   </div>
-                  // </Link>
                 );
               })
             : user.saved.map((el) => {
                 return (
-                  // <Link to={`/profile/${el._id}`}  key={el._id}>
                   <div
                     className="block-story info"
                     key={el}
@@ -112,7 +127,6 @@ export function Profile() {
                   >
                     <img src={loadSimg(el)}></img>
                   </div>
-                  // </Link>
                 );
               })}
         </div>
