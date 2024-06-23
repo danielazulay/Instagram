@@ -83,6 +83,7 @@ export async function loadUser(userId) {
 
 export async function UpdateUSer(user) {
     try {
+        
         store.dispatch({ type: UPDATE_USER, user })
     } catch (err) {
         showErrorMsg('Cannot load user')
