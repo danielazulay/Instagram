@@ -7,7 +7,7 @@ import { Profile } from './pages/Profile.jsx'
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
     {
-        path: '/',
+        path: '',
         component: <HomePage/>,
         label: 'Home 🏠',
     },
