@@ -8,11 +8,13 @@
   top: 0;
   background-color: white;
   // text-align: center;
+  z-index: 1;
 
   .top-menu {
     visibility: hidden;
-    position: absolute;
+
     display: flex;
+    position: fixed;
     top: 0;
     width: 100vw;
     height: 7vh;
@@ -152,6 +154,7 @@
   }
   .bottom-menu {
     visibility: hidden;
+
   }
 
   .list-menu li{
@@ -237,13 +240,13 @@
   .side-menu {
   width: 0 !important;
 }
-.side-menu .top-menu {
+.side-menu .top-menu,
+.side-menu .bottom-menu
+ {
     visibility: visible;
   }
 
-  .side-menu .bottom-menu {
-    visibility: visible;
-  }
+
   .side-menu .menu{
     visibility: hidden;
     width: 0 !important;

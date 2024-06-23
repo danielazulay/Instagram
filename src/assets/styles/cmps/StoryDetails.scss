@@ -17,7 +17,7 @@
     font-weight: 100;
     position: absolute;
     top: 5px;
-    right: 5px;
+    right: 45px;
   }
 
   .story {
@@ -26,7 +26,7 @@
     left: 50%;
     height: 89%;
     width: 67%;
-    transform: translate(-55%, -50%);
+    transform: translate(-50%, -50%);
     background-color: white;
     border-radius: 5px;
 overflow-x: hidden;
@@ -206,7 +206,6 @@ li {
 
 
   @media only screen and (max-width: 1030px) {
- 
 
     .divide-post {
       display: flex;
@@ -234,6 +233,12 @@ li {
       visibility: hidden;
     }
     .story-details {
+ .story-button{
+    display: block;
+    top: 80px;
+        
+      }
+  
       .story {
 
         height: 72%;
