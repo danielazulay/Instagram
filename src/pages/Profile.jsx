@@ -125,7 +125,7 @@ export function Profile() {
                       setStoryId(el);
                     }}
                   >
-                    <img src={loadSimg(el)}></img>
+                    <img src={loadSimg(el)}/>
                   </div>
                 );
               })}
