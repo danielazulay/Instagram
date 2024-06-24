@@ -43,7 +43,12 @@ export function Create({ onCloseCreate, user }) {
   return (
     <div className="profile-model">
       <button className="create-button" onClick={onCloseCreate}>
-        x
+      <span 
+            
+                  dangerouslySetInnerHTML={{
+                    __html: SvgService.getSvg("X"),
+                  }}
+                />
       </button>
       <div className="model">
         <div className="header">
@@ -71,12 +76,6 @@ export function Create({ onCloseCreate, user }) {
         <div className="modal-upload">
           {!page && (
             <div className="form-img">
-              {/* <UploadImg
-              setUrl={setUrl}
-              changePage={changePage}
-              handleChange={handleChange}
-              url={url}
-            /> */}
               <div
                 className="icon-upload"
                 dangerouslySetInnerHTML={{

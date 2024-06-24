@@ -143,9 +143,8 @@ return differenceInHours < 1 ? Math.floor(differenceInHours*60) +"m": Math.floor
 
   return (
     <div className="story-details">
-      <button  onClick={onCloseStory}>
-      <button
-                  className="story-button"
+      <button className="story-button"  onClick={onCloseStory}>
+      <span  
                   dangerouslySetInnerHTML={{
                     __html: SvgService.getSvg("X"),
                   }}

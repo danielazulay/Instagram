@@ -58,7 +58,7 @@ export function Profile() {
         </div>
         <div className="mobile-profile">
         <div className="img-profile">
-            <CircleImg img={user.imgUrl} height={100} width={100} />
+            <CircleImg img={user.imgUrl} height={77} width={77} />
             <div className="profile-loginname">
             <h2>{user.fullname}</h2>
             <button className="profile-edit">Edit Profile</button>
@@ -75,16 +75,16 @@ export function Profile() {
 
         </div>
         <div className="profile-menu">
-          <button onClick={() => setTab(true)}>
+          <button className="opt-menu" onClick={() => setTab(true)}>
             <div
               className="icon"
               dangerouslySetInnerHTML={{
                 __html: SvgService.getSvg("post-svg"),
               }}
             />
-            POST
+            <span>POST</span>
           </button>
-          <button onClick={() => setTab(false)}>
+          <button className="opt-menu"  onClick={() => setTab(false)}>
             {" "}
             <div
               className="icon"
@@ -92,7 +92,7 @@ export function Profile() {
                 __html: SvgService.getSvg("saved-svg"),
               }}
             />
-            SAVED
+           SAVED
           </button>
         </div>
         <div className="grid-posts">
