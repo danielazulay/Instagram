@@ -19,15 +19,15 @@ export function SideMenu() {
   return (
     <div className="side-menu">
       <div className="top-menu">
-        <span
+        <span className="heart-top-menu"
           dangerouslySetInnerHTML={{
             __html: SvgService.getSvg("instagran"),
           }}
         />
-        <form>
-          <input type="text"></input>
+        <form className="search-menu heart-top-menu">
+          <input placeholder= "Search" type="text"></input>
         </form>
-        <span dangerouslySetInnerHTML={{ __html: SvgService.getSvg("lev") }} />
+        <span className="heart-top-menu" dangerouslySetInnerHTML={{ __html: SvgService.getSvg("lev") }} />
       </div>
           <div   className="instagran-logo icon">
       <span
@@ -91,7 +91,7 @@ export function SideMenu() {
 
         <NavLink to={`/profile`}>
           <li className="list-menu">
-            <CircleImg img={user.imgUrl} />
+            <CircleImg img={user.imgUrl} width={24} height={24} />
             <span className="btn-name">Profile</span>
           </li>
         </NavLink>
