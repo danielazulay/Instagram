@@ -14,12 +14,12 @@ export function MenuButton({
         <div className="svgMenu">
           <div className="menu-buttons">
             {checkLike() ? (
-              <span
+              <span className="black"
                 onClick={() => handleLike(false)}
                 dangerouslySetInnerHTML={{ __html: SvgService.getSvg("like") }}
               />
             ) : (
-              <span
+              <span className="black"
                 onClick={() => handleLike(true)}
                 dangerouslySetInnerHTML={{ __html: SvgService.getSvg("lev") }}
               />
@@ -29,15 +29,15 @@ export function MenuButton({
             className="commnet-button"
             onClick={() => onOpenStory(story._id)}
           >
-            <span
+            <span 
               to={`/${story._id}`}
-              className="compose-button"
+              className="compose-button black"
               dangerouslySetInnerHTML={{ __html: SvgService.getSvg("comment") }}
             />
           </button>
 
           <span
-            className="compose-button"
+            className="compose-button black"
             dangerouslySetInnerHTML={{ __html: SvgService.getSvg("send") }}
           />
         </div>

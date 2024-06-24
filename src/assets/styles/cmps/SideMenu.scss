@@ -32,17 +32,16 @@
     visibility: hidden;
     position: absolute;
     justify-content: center;
-
     bottom: 0;
     width: 100vw;
-    height: 8vh;
+    height: 7vh;
     margin-top: 0;
     gap: 1%;
     background-color: white;
     justify-content: center;
     align-items: center;
-    padding: 0;
     color: black;
+
     a{
       color: black;
       .list-menu {
@@ -60,8 +59,7 @@
       padding: 0;
       gap: 2%;
       margin-top: 5;
-
-  
+      align-items: stretch;
     }
     li {
       width: 100%;
@@ -74,6 +72,11 @@
   .instagran-logo {
     margin-left: 30px;
     margin-top: 12%;
+
+
+  }
+  .small {
+    visibility: hidden;
   }
 
   .menu {
@@ -88,11 +91,12 @@
 
       display: flex;
       gap: 10px;
-      height: 5px;
+      height: 20px;
       align-items: center;
       outline-color: transparent;
       font-size: 16px;
       color: black;
+
     }
     .list-menu:hover {
       width: 92%;
@@ -120,6 +124,7 @@
   .instagran-logo {
     margin-left: 10px;
     margin-top: 12%;
+
   }
   .side-menu {
     width: 15%;
@@ -134,6 +139,11 @@
     width: 15px;
     margin-left: 30px;
     margin-top: 12%;
+
+    .small{
+      visibility: visible;
+   
+  }
   }
 
   .side-menu {
@@ -165,14 +175,16 @@
     padding: 0;
     display: flex;
     gap: 5px;
-    height: 60px;
+    height: 70px;
     align-items: center;
     outline-color: transparent;
     font-size: 0;
     margin-left: 30px;
 
   }
+
 }
+
 
 @media only screen and (max-width: 1157px) {
   
@@ -206,7 +218,7 @@
 
 @media only screen and (max-width: 1024px) {
 
-  
+
   .top-menu {
 
     visibility: hidden;
@@ -234,6 +246,7 @@
   .home-page {
     padding: 0;
   }
+
 }
 
 @media only screen and (max-width: 667px) {
@@ -257,6 +270,14 @@
   .story-block {
     width: 100hw;
   }
+
+  .side-menu  .instagran-logo {
+
+    .small{
+      visibility: hidden;
+   
+  }
+  }
 }
 
 @media only screen and (max-width: 620px) {
@@ -269,6 +290,19 @@
   .home-page {
     padding: 0;
   }
+  .small{
+    visibility: visible;
+   
+  }
+  .side-menu  .instagran-logo {
+
+
+    .small{
+      visibility: hidden;
+   
+  }
+  }
+  
 }
 
 @media only screen and (max-width: 530px) {

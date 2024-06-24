@@ -1,4 +1,4 @@
-import {  NavLink } from "react-router-dom";
+import {  Link, NavLink } from "react-router-dom";
 import { SvgService } from "../services/svg.service";
 // import { saveStory } from "../store/actions/story.actions";
 import { CircleImg } from "./buttons/CircleImg";
@@ -29,14 +29,25 @@ export function SideMenu() {
         </form>
         <span dangerouslySetInnerHTML={{ __html: SvgService.getSvg("lev") }} />
       </div>
-
-      <div
-        className="instagran-logo icon"
+          <div   className="instagran-logo icon">
+      <span
+      
         dangerouslySetInnerHTML={{
           __html: SvgService.getSvg("instagran"),
         }}
       />
+
+      <Link to="/"><span
+         className="icon small black"
+        dangerouslySetInnerHTML={{
+          __html: SvgService.getSvg("int"),
+        }}
+      /></Link>
+      </div>
+
+      
       <ul className="menu">
+   
         <NavLink to={`/`} className="black" >
           <li className="list-menu  icon">
             <div
@@ -131,7 +142,7 @@ export function SideMenu() {
 
           <NavLink to={`/profile`} >
             <li className=".list-menu" >
-              <CircleImg img={user.imgUrl} />
+              <CircleImg img={user.imgUrl} height={24} width={24}/>
               <span className="btn-name ">Profile</span>
             </li>
           </NavLink>
