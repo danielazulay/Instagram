@@ -34,24 +34,28 @@ export function StoryDetails({
     }
   }
 
-  function calculateTimeDifference(postTime){
-// Get the current time in milliseconds
-let now = new Date().getTime();
-
-// Calculate the difference in milliseconds
-let differenceInMilliseconds = now - postTime;
-
-// Convert milliseconds to hours
-let differenceInHours = differenceInMilliseconds / (1000 * 60 * 60);
-
-if(differenceInHours > 24 ){
-  return  Math.floor(differenceInHours/24) +"d"
-}
-
-
-
-return differenceInHours < 1 ? Math.floor(differenceInHours*60) +"m": Math.floor(differenceInHours) +"h";
-
+  function calculateTimeDifference(postTime) {
+    // Get the current time in milliseconds since epoch
+    let now = new Date().getTime();
+  
+    // Calculate the difference in milliseconds between now and postTime
+    let differenceInMilliseconds = now - postTime;
+  
+    // Convert milliseconds to hours
+    let differenceInHours = differenceInMilliseconds / (1000 * 60 * 60);
+  
+    // If the difference is greater than 24 hours, return days ago
+    if (differenceInHours > 24) {
+      return Math.floor(differenceInHours / 24) + "d";
+    }
+  
+    // If the difference is less than 1 hour, return minutes ago
+    if (differenceInHours < 1) {
+      return Math.floor(differenceInHours * 60) + "m";
+    }
+  
+    // Otherwise, return hours ago
+    return Math.floor(differenceInHours) + "h";
   }
 
   function postSaved(id) {
@@ -125,6 +129,7 @@ return differenceInHours < 1 ? Math.floor(differenceInHours*60) +"m": Math.floor
       by: { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl },
       txt: post,
       likedBy: [],
+      time: new Date().getTime(),
     };
     story.comments.push(obj);
     saveStory(story);
@@ -132,7 +137,7 @@ return differenceInHours < 1 ? Math.floor(differenceInHours*60) +"m": Math.floor
   }
 
   function handleSmileClick(ev) {
-    console.log(ev);
+
     setEmojiPosition({ x: ev.screenX, y: ev.screenY });
     setSelected((prev) => !prev);
   }
@@ -162,7 +167,6 @@ return differenceInHours < 1 ? Math.floor(differenceInHours*60) +"m": Math.floor
                   <CircleImg img={user.imgUrl} />
                   <h2>{story.by.fullname}</h2>
                 </div>
-
                 <button
                   className="compose-button"
                   dangerouslySetInnerHTML={{
