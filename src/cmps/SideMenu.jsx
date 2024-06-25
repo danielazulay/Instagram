@@ -3,21 +3,53 @@ import { SvgService } from "../services/svg.service";
 // import { saveStory } from "../store/actions/story.actions";
 import { CircleImg } from "./buttons/CircleImg";
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Create } from "../pages/Create";
+
 
 
 export function SideMenu() {
   const user = useSelector((userSate) => userSate.userModule.user);
-
+  const [search, setSearch] = useState(false);
   const [create, setCreate] = useState(false);
+  const searchBarRef = useRef(null);
+
+
 
   function onCloseCreate() {
     setCreate((status) => !status);
   }
 
+  function setSearchBar(){
+    setSearch((prev)=>!prev);
+  }
+
+
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      console.log(event.target)
+      if (searchBarRef && !searchBarRef.current.contains(event.target)) {
+        setSearch(false);
+      }
+      
+    }
+
+    if (search) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [search]);
+
+
+
   return (
-    <div className="side-menu">
+    <div className={`side-menu`} >
       <div className="top-menu">
         <span className="heart-top-menu"
           dangerouslySetInnerHTML={{
@@ -38,7 +70,7 @@ export function SideMenu() {
       />
 
       <Link to="/"><span
-         className="icon small black"
+         className="small black icon"
         dangerouslySetInnerHTML={{
           __html: SvgService.getSvg("int"),
         }}
@@ -49,9 +81,10 @@ export function SideMenu() {
       <ul className="menu">
    
         <NavLink to={`/`} className="black" >
-          <li className="list-menu  icon">
+          <li className="list-menu" >
             <div
-              className="icon"
+       
+              className={`icon`}
               dangerouslySetInnerHTML={{
                 __html: SvgService.getSvg("home"),
               }}
@@ -60,7 +93,9 @@ export function SideMenu() {
           </li>
         </NavLink>
 
-        <li className="list-menu icon">
+        <li className="list-menu" 
+        onClick={setSearchBar}
+        >
           <div
             className="icon"
             dangerouslySetInnerHTML={{
@@ -70,7 +105,7 @@ export function SideMenu() {
           <span className="btn-name">Search</span>
         </li>
 
-        <li className="list-menu icon">
+        <li className="list-menu">
           <div
             className="icon"
             dangerouslySetInnerHTML={{
@@ -79,7 +114,7 @@ export function SideMenu() {
           />
           <span className="btn-name">Messages</span>
         </li>
-        <li className="list-menu " onClick={onCloseCreate}>
+        <li className="list-menu" onClick={onCloseCreate}>
           <div
             className="icon"
             dangerouslySetInnerHTML={{
@@ -95,7 +130,10 @@ export function SideMenu() {
             <span className="btn-name">Profile</span>
           </li>
         </NavLink>
+
+  
       </ul>
+   
 
       <div className="bottom-menu">
         <ol className="bottom-bts">
@@ -111,7 +149,7 @@ export function SideMenu() {
             </li>
           </NavLink>
 
-          <li className="list-menu icon">
+          <li className="list-menu icon" onClick={setSearchBar}>
             <div
               className="icon"
               dangerouslySetInnerHTML={{
@@ -148,8 +186,36 @@ export function SideMenu() {
           </NavLink>
         </ol>
       </div>
-
+      <div className={`${search ? "show" : "hide"} search-bar `} ref={searchBarRef}>
+      <div className="header-search">
+      <span className="search-title">Search</span>
+      <div className="search-input">
+      <form ><input  type="text" placeholder="Search"></input>
+      <div
+              className="exclude"
+              dangerouslySetInnerHTML={{
+                __html: SvgService.getSvg("clean"),
+              }}
+            />
+      </form>
+     
+      </div>
+      </div>
+      <div className="recent-list">
+      <span >Recent</span>
+      </div>
+     
+      {/* <ul>{frinds.map((el)=>{
+        return(
+          <li key={el._id}>{el.fullname}</li>
+        )
+      })}</ul> */}
+      </div>
+           
       {create && <Create  onCloseCreate={onCloseCreate} user={user} />}
     </div>
+
+
+
   );
 }
