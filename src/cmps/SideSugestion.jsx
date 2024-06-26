@@ -52,7 +52,7 @@ export function SideSugestion({friendSave,btnFriend}){
                 <h6 className="gray">Suggested for you</h6>
 
                 </div>
-                <button className="button-follow" onClick={()=>friendSave(el.id.value)}>{btnFriend ?`Follow`:"Unfollow"}</button>
+                <button className="button-follow" onClick={()=>friendSave(el.id.value)}>{btnFriend ?`Unfollow`:"Follow"}</button>
                 </div>
 
             ))}
