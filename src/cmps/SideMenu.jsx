@@ -138,7 +138,7 @@ export function SideMenu() {
       <div className="bottom-menu">
         <ol className="bottom-bts">
           <NavLink to={`/`}>
-            <li className="list-menu icon">
+            <li className="list-menu">
               <div
                 className="icon"
                 dangerouslySetInnerHTML={{
@@ -149,7 +149,7 @@ export function SideMenu() {
             </li>
           </NavLink>
 
-          <li className="list-menu icon" onClick={setSearchBar}>
+          {/* <li className="list-menu icon" onClick={setSearchBar}>
             <div
               className="icon"
               dangerouslySetInnerHTML={{
@@ -157,9 +157,9 @@ export function SideMenu() {
               }}
             />
             <span className="btn-name">Search</span>
-          </li>
+          </li> */}
 
-          <li className="list-menu icon">
+          <li className="list-menu">
             <div
               className="icon"
               dangerouslySetInnerHTML={{

@@ -48,9 +48,9 @@ export function Profile() {
             <button>View archive</button>
           </div>
           <div className="profile-info">
-            <h5>{countStories()} post</h5>
-            <h5>{user.following.length} following</h5>
-            <h5>{user.followers.length} followers</h5>
+            <span className="user-data">{countStories()} post </span>
+            <span className="user-data">{user.followers.length} followers</span>
+            <span className="user-data">{user.following.length}following </span>
           </div>
           <div className="profile-name">
             <h5>{user.fullname}</h5>
@@ -68,9 +68,9 @@ export function Profile() {
           <h5>{user.fullname}</h5>
         
           <div className="mobile-profile-info">
-            <span className="info-profile">{countStories()} post</span>
-            <span className="info-profile">{user.following.length} following</span>
-            <span className="info-profile">{user.followers.length} followers</span>
+            <span className="info-profile"><h5>{countStories()}</h5> posts</span>
+            <span className="info-profile"><h5>{user.followers.length}</h5> followers</span>
+            <span className="info-profile"><h5>{user.following.length}</h5> following</span>
           </div>
 
         </div>

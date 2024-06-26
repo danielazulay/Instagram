@@ -19,13 +19,14 @@
     position: fixed;
     top: 0;
     width: 100vw;
-    height: 7vh;
+    height: 8vh;
     margin-top: 0;
     gap: 0.5%;
     background-color: white;
     padding: 2%;
     align-items: center;
     color: black;
+    box-shadow: 0 8px 16px -8px #0000004d, 0 -6px 16px -6px #00000008;
 
     .heart-top-menu {
       display: flex;
@@ -51,40 +52,43 @@
   .bottom-menu {
     visibility: hidden;
     position: absolute;
-    justify-content: center;
+
     bottom: 0;
     width: 100vw;
     height: 7vh;
     margin-top: 0;
     gap: 1%;
     background-color: white;
-    justify-content: center;
-    align-items: center;
+    box-shadow: 0 8px 16px -8px #0000004d, 0 -6px 16px -6px #00000008;
     color: black;
 
-    a {
-      color: black;
-      .list-menu {
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-      }
-    }
+ 
 
+      .list-menu {
+        width: 25px;
+        align-items: center;
+       
+        
+      }
+  
+a{
+  width: 25px;
+  color: black;
+}
     .bottom-bts {
       display: flex;
       justify-content: space-evenly;
-      justify-content: center;
-      align-items: center;
-      padding: 0;
-      gap: 2%;
-      margin-top: 5;
-      align-items: stretch;
+      gap: 5%;
+      margin-top: 0;
+      padding: 3px;
+
     }
     li {
-      width: 100%;
-      justify-content: center;
-      align-items: center;
+
+
+      justify-content: space-evenly;
+      align-items: flex-start;
+      padding: 7px;
     }
   }
 
@@ -105,7 +109,7 @@
       margin: 6px;
       padding: 24px;
       margin-left: 10px;
-
+      
       display: flex;
       gap: 10px;
       height: 20px;
@@ -120,21 +124,24 @@
       border-radius: 10px;
       border-bottom: transparent;
 
-      .icon {
+     .icon {
+     
         transform: scale(1.1);
         fill: none !important;
+       
       }
     }
-    .list-menu:active,.filled 
+    .list-menu:active,
 
     .active {
       font-weight: bold; 
     }
     
     /* Ensuring .home-icon-path inside .list-menu with class .filled is black */
-  //  .filled .home-icon-path {
-  //     fill: black !important;
-  //   }
+    // .list-menu:filled,home-icon-path,
+    // .filled .home-icon-path {
+    //   fill: black !important;
+    // }
     
 
   }
@@ -341,6 +348,7 @@
   .side-menu .top-menu,
   .side-menu .bottom-menu {
     visibility: visible;
+
   }
 
   .side-menu    .search-bar{
@@ -353,14 +361,18 @@
     ul {
       visibility: hidden;
     }
- 
-    
-  
-
-    
+     
   }
   .story-block {
     width: 100hw;
+  }
+  li .list-menu{
+    width: 150px;
+ 
+    .icon{
+      
+      width: 150px;
+    }
   }
 
   .side-menu .instagran-logo {
