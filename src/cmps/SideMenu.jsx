@@ -1,38 +1,64 @@
-import {  Link, NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { SvgService } from "../services/svg.service";
 // import { saveStory } from "../store/actions/story.actions";
 import { CircleImg } from "./buttons/CircleImg";
 import { useSelector } from "react-redux";
 import { useEffect, useRef, useState } from "react";
 import { Create } from "../pages/Create";
-
-
+import { Friend } from "./Friend";
+import { userService } from "../services/user.service";
+import { UpdateUSer } from "../store/actions/user.actions";
 
 export function SideMenu() {
   const user = useSelector((userSate) => userSate.userModule.user);
+  const friends = useSelector((userSate) => userSate.userModule.users);
   const [search, setSearch] = useState(false);
   const [create, setCreate] = useState(false);
+  const [searchTxt, SetSearchTxt] = useState("");
+
   const searchBarRef = useRef(null);
 
+  function checkFriend(id){
+    return user.following.indexOf(id) !== -1 ? true : false
+}
 
+  function friendSave(friend_id){
+
+    let index = user.following.indexOf(friend_id)
+
+    if(-1 !== index){
+    user.following.splice(index,1);
+
+    }else{
+  
+      user.following.push(friend_id);
+
+    }
+
+    userService.updateLocalUserFields(user)
+
+
+    UpdateUSer(user);
+  }
+
+  function handleSeach(event) {
+    SetSearchTxt(event.currentTarget.value);
+  }
 
   function onCloseCreate() {
     setCreate((status) => !status);
   }
 
-  function setSearchBar(){
-    setSearch((prev)=>!prev);
+  function setSearchBar() {
+    setSearch((prev) => !prev);
   }
-
-
 
   useEffect(() => {
     function handleClickOutside(event) {
-      console.log(event.target)
+      console.log(event.target);
       if (searchBarRef && !searchBarRef.current.contains(event.target)) {
         setSearch(false);
       }
-      
     }
 
     if (search) {
@@ -46,44 +72,44 @@ export function SideMenu() {
     };
   }, [search]);
 
-
-
   return (
-    <div className={`side-menu`} >
+    <div className={`side-menu`}>
       <div className="top-menu">
-        <span className="heart-top-menu"
+        <span
+          className="heart-top-menu"
           dangerouslySetInnerHTML={{
             __html: SvgService.getSvg("instagran"),
           }}
         />
         <form className="search-menu heart-top-menu">
-          <input placeholder= "Search" type="text"></input>
+          <input placeholder="Search" type="text"></input>
         </form>
-        <span className="heart-top-menu" dangerouslySetInnerHTML={{ __html: SvgService.getSvg("lev") }} />
+        <span
+          className="heart-top-menu"
+          dangerouslySetInnerHTML={{ __html: SvgService.getSvg("lev") }}
+        />
       </div>
-          <div   className="instagran-logo icon">
-      <span
-      
-        dangerouslySetInnerHTML={{
-          __html: SvgService.getSvg("instagran"),
-        }}
-      />
+      <div className="instagran-logo icon">
+        <span
+          dangerouslySetInnerHTML={{
+            __html: SvgService.getSvg("instagran"),
+          }}
+        />
 
-      <Link to="/"><span
-         className="small black icon"
-        dangerouslySetInnerHTML={{
-          __html: SvgService.getSvg("int"),
-        }}
-      /></Link>
+        <Link to="/">
+          <span
+            className="small black icon"
+            dangerouslySetInnerHTML={{
+              __html: SvgService.getSvg("int"),
+            }}
+          />
+        </Link>
       </div>
 
-      
       <ul className="menu">
-   
-        <NavLink to={`/`} className="black" >
-          <li className="list-menu" >
+        <NavLink to={`/`} className="black">
+          <li className="list-menu">
             <div
-       
               className={`icon`}
               dangerouslySetInnerHTML={{
                 __html: SvgService.getSvg("home"),
@@ -93,9 +119,7 @@ export function SideMenu() {
           </li>
         </NavLink>
 
-        <li className="list-menu" 
-        onClick={setSearchBar}
-        >
+        <li className="list-menu" onClick={setSearchBar}>
           <div
             className="icon"
             dangerouslySetInnerHTML={{
@@ -130,10 +154,7 @@ export function SideMenu() {
             <span className="btn-name">Profile</span>
           </li>
         </NavLink>
-
-  
       </ul>
-   
 
       <div className="bottom-menu">
         <ol className="bottom-bts">
@@ -178,44 +199,56 @@ export function SideMenu() {
             <span className="btn-name">Create</span>
           </li>
 
-          <NavLink to={`/profile`} >
-            <li className=".list-menu" >
-              <CircleImg img={user.imgUrl} height={24} width={24}/>
+          <NavLink to={`/profile`}>
+            <li className=".list-menu">
+              <CircleImg img={user.imgUrl} height={24} width={24} />
               <span className="btn-name ">Profile</span>
             </li>
           </NavLink>
         </ol>
       </div>
-      <div className={`${search ? "show" : "hide"} search-bar `} ref={searchBarRef}>
-      <div className="header-search">
-      <span className="search-title">Search</span>
-      <div className="search-input">
-      <form ><input  type="text" placeholder="Search"></input>
       <div
-              className="exclude"
-              dangerouslySetInnerHTML={{
-                __html: SvgService.getSvg("clean"),
-              }}
-            />
-      </form>
-     
+        className={`${search ? "show" : "hide"} search-bar `}
+        ref={searchBarRef}
+      >
+        <div className="header-search">
+          <span className="search-title">Search</span>
+          <div className="search-input">
+            <form>
+              <input
+                type="text"
+                placeholder="Search"
+                value={searchTxt}
+                onChange={handleSeach}
+              ></input>
+              <div
+                className="exclude"
+                dangerouslySetInnerHTML={{
+                  __html: SvgService.getSvg("clean"),
+                }}
+              />
+            </form>
+          </div>
+        </div>
+        <div className="recent-list">
+          <span>Recent</span>
+          {searchTxt && (
+            <ul>
+              {friends
+                .filter((el) =>
+                  el.fullname.toLowerCase().includes(searchTxt.toLowerCase()) && !checkFriend(el._id)
+                )
+                .map((el) => (
+                  <li key={el._id}>
+                    <Friend user={el}  friendSave={friendSave}></Friend>
+                  </li>
+                ))}
+            </ul>
+          )}
+        </div>
       </div>
-      </div>
-      <div className="recent-list">
-      <span >Recent</span>
-      </div>
-     
-      {/* <ul>{frinds.map((el)=>{
-        return(
-          <li key={el._id}>{el.fullname}</li>
-        )
-      })}</ul> */}
-      </div>
-           
-      {create && <Create  onCloseCreate={onCloseCreate} user={user} />}
+
+      {create && <Create onCloseCreate={onCloseCreate} user={user} />}
     </div>
-
-
-
   );
 }

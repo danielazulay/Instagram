@@ -12,7 +12,7 @@ export const UPDATE_USER = 'UPDATE_USER'
 
 const initialState = {
     user: userService.getLoggedinUser(),
-    users: [],
+    users: [...userService.loadFrinds()],
 }
 
 export function userReducer(state = initialState, action) {

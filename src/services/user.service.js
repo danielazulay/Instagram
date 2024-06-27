@@ -42,7 +42,7 @@ async function generateFriends(){
                 let user = {
                     "_id":data.results[0].id.value,
                     "userName":data.results[0].name.first,
-                    "fullname":data.results[0].name.last,
+                    "fullname":data.results[0].name.first+" "+data.results[0].name.last,
                     "password":"123",
                     "email":data.results[0].email,
                     "imgUrl":data.results[0].picture,
@@ -60,7 +60,7 @@ async function generateFriends(){
 }
 
 function loadFrinds(){
-   return  utilService.loadFromStorage(USER_FRINDS)
+   return  utilService.loadFromStorage(USER_FRINDS) || null
 }
 
 
