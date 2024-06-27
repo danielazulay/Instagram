@@ -10,7 +10,7 @@ export function Friend({user,friendSave}){
         <CircleImg  img={user.imgUrl.medium}  height={44} width={44} />
         <div className="sugestion-name">
         <h6>{user.fullname}</h6>
-        <h6 className="gray">Suggested for you</h6>
+        <h6 className="gray">{user.following.length} following</h6>
 
         </div>
         <button className="button-follow" onClick={()=>friendSave(user._id)}>{"Follow"}</button>
