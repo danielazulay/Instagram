@@ -17,7 +17,8 @@ export const userService = {
     remove,
     update,
     changeScore,
-    updateLocalUserFields
+    updateLocalUserFields,
+    loadFrinds
 }
 
 window.userService = userService
@@ -29,18 +30,22 @@ async function generateFriends(){
     let friends = utilService.loadFromStorage(USER_FRINDS)
 
     if(!friends){
-        let url ="https://robohash.org/asd"
+        let url ="https://randomuser.me//api"
         let tempArr = [];
+
         for(let i=0; i < 6;i++){
-            let rb = await fetch(url + i);
+            let rb = await fetch(url);
             if (rb.ok) {
+                let data = await rb.json();
+                console.log(data.results)
+                console.log(data.results[0].picture.medium)
                 let user = {
-                    "_id":"u101",
-                    "userName":"admin",
-                    "fullname":"daniel",
+                    "_id":data.results[0].id.value,
+                    "userName":data.results[0].name.first,
+                    "fullname":data.results[0].name.last,
                     "password":"123",
-                    "email":"da@gmail.com",
-                    "imgUrl":rb.url,
+                    "email":data.results[0].email,
+                    "imgUrl":data.results[0].picture,
                     "followers":[],
                     "following":[],
                 }
@@ -53,6 +58,12 @@ async function generateFriends(){
     }
 
 }
+
+function loadFrinds(){
+   return  utilService.loadFromStorage(USER_FRINDS)
+}
+
+
 
 function generateUser(){
 

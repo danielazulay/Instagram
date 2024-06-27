@@ -8,6 +8,7 @@ import { CircleImg } from "./buttons/CircleImg";
 import { UpdateUSer } from "../store/actions/user.actions";
 import { saveStory } from "../store/actions/story.actions";
 
+
 export function Story({ story, user, onOpenStory }) {
   const [spand, setSpand] = useState(false);
   const [post, setPost] = useState("");
@@ -89,6 +90,15 @@ export function Story({ story, user, onOpenStory }) {
       <div className="story-titlle">
         <CircleImg img={user.imgUrl} />
         <h2>{story.by.fullname}</h2>
+
+
+        <button
+                  className="compose-button"
+                  dangerouslySetInnerHTML={{
+                    __html: SvgService.getSvg("dots"),
+                  }}
+                />
+       
       </div>
 
       <img className="story-img" src={story.imgUrl} alt="img" />
@@ -133,6 +143,7 @@ export function Story({ story, user, onOpenStory }) {
           }}
 
         />
+          
         {selected ? (
        <Emoji
        setSelected={setSelected}
@@ -149,6 +160,8 @@ export function Story({ story, user, onOpenStory }) {
           <></>
         )}
       </div>
+
+
     </div>
   );
 }

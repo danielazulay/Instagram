@@ -3,6 +3,7 @@ import { CircleImg } from "../cmps/buttons/CircleImg";
 import { SvgService } from "../services/svg.service";
 import { useState } from "react";
 import { StoryDetails } from "../cmps/StoryDetails";
+import { UploadTxt } from "../cmps/UploadTxt";
 
 export function Profile() {
   const user = useSelector((userSate) => userSate.userModule.user);
@@ -50,7 +51,7 @@ export function Profile() {
           <div className="profile-info">
             <span className="user-data">{countStories()} post </span>
             <span className="user-data">{user.followers.length} followers</span>
-            <span className="user-data">{user.following.length}following </span>
+            <span className="user-data">{user.following.length} following </span>
           </div>
           <div className="profile-name">
             <h5>{user.fullname}</h5>
@@ -132,6 +133,7 @@ export function Profile() {
               })}
         </div>
       </div>
+   
       {storyId && (
         <StoryDetails
           storyId={storyId}
