@@ -12,7 +12,7 @@ const routes = [
         label: 'Home 🏠',
     },
     {
-        path: '/profile',
+        path: '/:id',
         component: <Profile/>,
         label: 'Profile',
     },

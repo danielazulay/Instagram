@@ -200,18 +200,19 @@ a{
         }
         input:focus { outline: none; }
       }
+      .recent-list{
+        top:25%;
+        height: 100%;
+        padding: 5%;
+        span{
+          display: block;
+          text-align: start;
+        }
+      }
 
       
-  }
-  .recent-list{
-    top:25%;
-    height: 100%;
-    padding: 5%;
-    span{
-      display: block;
-      text-align: start;
-    }
-  }
+   }
+
 }
 }
 
@@ -352,6 +353,11 @@ a{
   .side-menu    .search-bar{
    visibility: hidden;   
   }
+  .side-menu    .recent-list
+  {
+    display: none;
+    visibility: hidden;   
+   }
 
   .side-menu .menu {
     visibility: hidden;
@@ -416,12 +422,15 @@ a{
 }
 
 
-.show{
-  visibility: hidden;
+
+
+
+.show {
+  visibility: visible;
+  display: block;
 }
 
-.hide{
+.hide {
   visibility: hidden;
+  display: none;
 }
-
-

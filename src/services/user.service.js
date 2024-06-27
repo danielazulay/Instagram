@@ -22,10 +22,13 @@ export const userService = {
 }
 
 window.userService = userService
+
 generateUser()
 generateFriends()
 
+
 async function generateFriends(){
+
 
     let friends = utilService.loadFromStorage(USER_FRINDS)
 
@@ -37,15 +40,13 @@ async function generateFriends(){
             let rb = await fetch(url);
             if (rb.ok) {
                 let data = await rb.json();
-                console.log(data.results)
-                console.log(data.results[0].picture.medium)
                 let user = {
                     "_id":data.results[0].id.value,
                     "userName":data.results[0].name.first,
                     "fullname":data.results[0].name.first+" "+data.results[0].name.last,
                     "password":"123",
                     "email":data.results[0].email,
-                    "imgUrl":data.results[0].picture,
+                    "imgUrl":data.results[0].picture.medium,
                     "followers":[],
                     "following":[],
                 }

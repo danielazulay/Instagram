@@ -12,6 +12,7 @@ export const storyService = {
 let STORY = "story";
 
 
+generateStories()
 async function generateStories() {
   let stories = utilService.loadFromStorage(STORY);
 
@@ -65,6 +66,8 @@ async function generateStories() {
     utilService.saveToStorage(STORY, stories);
   }
 }
+
+
 async function queryById(storyId) {
   let stories = await storageService.get(STORY, storyId);
   return stories;

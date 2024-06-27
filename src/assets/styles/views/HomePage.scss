@@ -27,48 +27,50 @@
     gap: 5%;
     margin-left: 0;
     .sugestion-name {
+      
       display: flex;
       flex-direction: row;
 
       h6 {
+        color: black;
         display: grid;
       }
     }
   }
-  .sugestions {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
-    align-items: center;
-    width: 270px;
-    .suggestion-title {
-      font-size: 14px;
+  // .sugestions {
+  //   display: flex;
+  //   gap: 10px;
+  //   margin-bottom: 15px;
+  //   align-items: center;
+  //   width: 270px;
+  //   .suggestion-title {
+  //     font-size: 14px;
  
-      font-family: "-apple-system, BlinkMacSystemFont, " Segoe UI
-        ", Roboto, Helvetica, Arial, sans-serif";
-    }
-    .sugestion-name {
-      align-items: center;
-      justify-content: center;
-      width: 150px;
-      flex-direction: row;
-      font-size: 16px;
-      font-family: "-apple-system, BlinkMacSystemFont, " Segoe UI
-        ", Roboto, Helvetica, Arial, sans-serif";
-    }
-    button {
-      align-items: center;
-      justify-content: center;
-      margin: 0;
-      padding: 0;
-      color: $color-prime;
-      background-color: white;
-      font-weight: 600;
-      font-size: 12px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        Helvetica, Arial, sans-serif;
-    }
-  }
+  //     font-family: "-apple-system, BlinkMacSystemFont, " Segoe UI
+  //       ", Roboto, Helvetica, Arial, sans-serif";
+  //   }
+  //   .sugestion-name {
+  //     align-items: center;
+  //     justify-content: center;
+  //     width: 150px;
+  //     flex-direction: row;
+  //     font-size: 16px;
+  //     font-family: "-apple-system, BlinkMacSystemFont, " Segoe UI
+  //       ", Roboto, Helvetica, Arial, sans-serif";
+  //   }
+  //   button {
+  //     align-items: center;
+  //     justify-content: center;
+  //     margin: 0;
+  //     padding: 0;
+  //     color: $color-prime;
+  //     background-color: white;
+  //     font-weight: 600;
+  //     font-size: 12px;
+  //     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  //       Helvetica, Arial, sans-serif;
+  //   }
+  // }
 }
 .gray {
   color: gray;

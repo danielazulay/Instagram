@@ -148,12 +148,12 @@ export function SideMenu() {
           <span className="btn-name">Create</span>
         </li>
 
-        <NavLink to={`/profile`}>
+        <NavLink to={`/${user.userName}`}>
           <li className="list-menu">
             <CircleImg img={user.imgUrl} width={24} height={24} />
             <span className="btn-name">Profile</span>
           </li>
-        </NavLink>
+          </NavLink>
       </ul>
 
       <div className="bottom-menu">
@@ -169,16 +169,6 @@ export function SideMenu() {
               <span className="btn-name">Home</span>
             </li>
           </NavLink>
-
-          {/* <li className="list-menu icon" onClick={setSearchBar}>
-            <div
-              className="icon"
-              dangerouslySetInnerHTML={{
-                __html: SvgService.getSvg("search"),
-              }}
-            />
-            <span className="btn-name">Search</span>
-          </li> */}
 
           <li className="list-menu">
             <div
@@ -199,7 +189,7 @@ export function SideMenu() {
             <span className="btn-name">Create</span>
           </li>
 
-          <NavLink to={`/profile`}>
+          <NavLink to={`/${user.userName}`}>
             <li className=".list-menu">
               <CircleImg img={user.imgUrl} height={24} width={24} />
               <span className="btn-name ">Profile</span>
@@ -208,7 +198,7 @@ export function SideMenu() {
         </ol>
       </div>
       <div
-        className={`${search ? "show" : "hide"} search-bar `}
+        className={`search-bar ${search ? "show" : "hide"}`}
         ref={searchBarRef}
       >
         <div className="header-search">
@@ -222,6 +212,7 @@ export function SideMenu() {
                 onChange={handleSeach}
               ></input>
               <div
+              onClick={()=>SetSearchTxt("")}
                 className="exclude"
                 dangerouslySetInnerHTML={{
                   __html: SvgService.getSvg("clean"),
@@ -229,8 +220,7 @@ export function SideMenu() {
               />
             </form>
           </div>
-        </div>
-        <div className="recent-list">
+          <div className={`recent-list`}>
           <span>Recent</span>
           {searchTxt && (
             <ul>
@@ -240,12 +230,14 @@ export function SideMenu() {
                 )
                 .map((el) => (
                   <li key={el._id}>
-                    <Friend user={el}  friendSave={friendSave}></Friend>
+                    <Friend user={el}  friendSave={friendSave} checkFriend={checkFriend}></Friend>
                   </li>
                 ))}
             </ul>
           )}
         </div>
+        </div>
+
       </div>
 
       {create && <Create onCloseCreate={onCloseCreate} user={user} />}

@@ -1,4 +1,5 @@
 
+import { Friend } from "./Friend";
 import { CircleImg } from "./buttons/CircleImg";
 import { useSelector } from "react-redux";
 
@@ -34,19 +35,11 @@ export function SideSugestion({friendSave,btnFriend}){
             </div>
             <h5 className="suggestion-title gray">Suggested for you</h5>
             {friends.map((el, index) => (
-     
-            
+
                 <div className="sugestions" key={index}>
+                    <Friend user={el} txt="Suggested for you" checkFriend={checkFriend} friendSave={friendSave}/>
+              </div>
         
-                <CircleImg  img={el.imgUrl.medium}  height={44} width={44} />
-                <div className="sugestion-name">
-                <h6>{el.fullname}</h6>
-                <h6 className="gray">Suggested for you</h6>
-
-                </div>
-                <button className="button-follow" onClick={()=>friendSave(el._id)}>{checkFriend(el._id) ?`Unfollow`:"Follow"}</button>
-                </div>  
-
             ))}
         </div>
     )

@@ -1,19 +1,23 @@
+import { NavLink } from "react-router-dom";
 import { CircleImg } from "./buttons/CircleImg";
 
 
-export function Friend({user,friendSave}){
+export function Friend({txt,user,friendSave,checkFriend}){
 
     return(
         <section className="Friends">
               <div className="sugestions">
         
-        <CircleImg  img={user.imgUrl.medium}  height={44} width={44} />
+        <CircleImg  img={user.imgUrl }  height={44} width={44} />
         <div className="sugestion-name">
-        <h6>{user.fullname}</h6>
-        <h6 className="gray">{user.following.length} following</h6>
+        <NavLink to={`/${user.userName}`}>
+        <h6 className="name">{user.fullname}</h6>
+        </NavLink>
+        <h6 className="gray">{txt?txt :user.following.length} following</h6>
 
         </div>
-        <button className="button-follow" onClick={()=>friendSave(user._id)}>{"Follow"}</button>
+        <button className="button-follow" onClick={()=>friendSave(user._id)}>{checkFriend(user._id)?`Unfollow`:`Follow`}</button>
+    
         </div>
         </section>
     )

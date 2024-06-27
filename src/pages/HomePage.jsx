@@ -17,11 +17,15 @@ export function HomePage() {
   const [emojie, setEmojiPicker] = useState(null);
   const [selected, setSelected] = useState(false);
   const [btnFriend,setBtnFriend] = useState()
+ 
+
+
   useEffect( () => {
-    storyService.generateStories();
-     onLoadStories();
+
+    onLoadStories();
+
      
-  }, []);
+  }, [stories]);
 
   function friendSave(friend_id){
 
@@ -44,6 +48,7 @@ export function HomePage() {
   }
 
   function onLoadStories() {
+    
     loadStories();
   }
 
@@ -54,6 +59,8 @@ export function HomePage() {
   function onOpenStory(story) {
     setStoryId(story);
   }
+
+
 
   return (
 

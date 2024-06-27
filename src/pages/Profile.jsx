@@ -3,11 +3,22 @@ import { CircleImg } from "../cmps/buttons/CircleImg";
 import { SvgService } from "../services/svg.service";
 import { useState } from "react";
 import { StoryDetails } from "../cmps/StoryDetails";
-import { UploadTxt } from "../cmps/UploadTxt";
+
+import { useParams } from 'react-router-dom';
 
 export function Profile() {
-  const user = useSelector((userSate) => userSate.userModule.user);
+  const users = useSelector((userSate) => userSate.userModule.users);
+
+  const usr = useSelector((userSate) => userSate.userModule.user);
+
+  let { id } = useParams();
+
+  const profile = users.find((usr)=>usr.userName === id)
+  console.log("->>> "+id)
+let user =  profile ? profile : usr;
+
   const stories = useSelector((storeState) => storeState.storyModule.stories);
+
 
   const [emojie, setEmojiPicker] = useState(null);
   const [selected, setSelected] = useState(false);
@@ -41,7 +52,7 @@ export function Profile() {
       <div className="grid-container">
         <div className="profile-container">
           <div className="img-grid">
-            <CircleImg img={user.imgUrl} height={150} width={150} />
+            <CircleImg img={user.imgUrl || user.imgUrl.medium} height={150} width={150} />
           </div>
           <div className="profile-loginname">
             <h2>{user.fullname}</h2>
@@ -98,27 +109,23 @@ export function Profile() {
         </div>
         <div className="grid-posts">
           {tab
-            ? stories.map((el) => {
+            ? stories.filter((el) =>  el.by._id === user._id).map((story)=>{
+
+           
                 return (
                   <div
                     className="block-story info"
-                    key={el._id}
+                    key={story._id}
                     onClick={() => {
-                      setStoryId(el._id);
+                      setStoryId(story._id);
                     }}
                   >
-                    <img src={el.imgUrl} alt="Story" />
+                    <img src={story.imgUrl} alt="Story" />
 
-                    {/* <span
-                      className="overlay-svg"
-                      dangerouslySetInnerHTML={{
-                        __html: SvgService.getSvg("lev"),
-                      }}
-                    /> */}
                   </div>
                 );
               })
-            : user.saved.map((el) => {
+            : user.saved? user.saved.map((el) => {
                 return (
                   <div
                     className="block-story info"
@@ -130,7 +137,7 @@ export function Profile() {
                     <img src={loadSimg(el)}/>
                   </div>
                 );
-              })}
+              }):<></>}
         </div>
       </div>
    
