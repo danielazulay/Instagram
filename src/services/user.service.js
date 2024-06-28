@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+
 import { httpService } from './http.service'
 import { utilService } from './util.service'
 
@@ -22,9 +22,9 @@ export const userService = {
 
 window.userService = userService
 
+await generateFriends()
+await generateUser()
 
-generateUser()
-     generateFriends()
 
 
 
@@ -50,7 +50,7 @@ generateUser()
     }
 }
 
-generateFriends()
+
  async function  generateFriends(){
 
     let friends = utilService.loadFromStorage(USER_FRINDS)
@@ -156,10 +156,9 @@ function getLoggedinUser() {
     return utilService.loadFromStorage(USER_DB) || null
 }
 
-function getFriends() {
+ function getFriends() {
 
-    console.log(utilService.loadFromStorage(USER_FRINDS) )
-    return utilService.loadFromStorage(USER_FRINDS) || null
+    return  utilService.loadFromStorage(USER_FRINDS)
 }
 
 

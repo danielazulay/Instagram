@@ -14,7 +14,7 @@ export function Profile() {
   let { id } = useParams();
 
   const profile = users.find((usr)=>usr.userName === id)
-  console.log("->>> "+id)
+
 let user =  profile ? profile : usr;
 
   const stories = useSelector((storeState) => storeState.storyModule.stories);

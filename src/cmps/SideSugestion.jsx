@@ -22,7 +22,7 @@ export function SideSugestion({friendSave}){
     //    setFriends(friends)
     // }, []); 
 
-
+if(!friends) return <>...loading sugestions</>
     return(
         <div className="sugestion-container">
     
@@ -34,13 +34,13 @@ export function SideSugestion({friendSave}){
                 </div>
             </div>
             <h5 className="suggestion-title gray">Suggested for you</h5>
-            {friends?friends.map((el, index) => (
+            {friends.map((el, index) => (
 
                 <div className="sugestions" key={index}>
                     <Friend user={el} txt="Suggested for you" checkFriend={checkFriend} friendSave={friendSave}/>
               </div>
         
-            )):<></>}
+            ))}
         </div>
     )
 }

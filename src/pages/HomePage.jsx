@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+
 import { SideSugestion } from "../cmps/SideSugestion";
 import { StoryList } from "../cmps/StoryList";
 import { useSelector } from "react-redux";
@@ -9,6 +10,7 @@ import { storyService } from "../services/story.service";
 import { UpdateUSer } from "../store/actions/user.actions";
 import { userService } from "../services/user.service";
 
+
 export function HomePage() {
   const stories = useSelector((storeState) => storeState.storyModule.stories);
   const user = useSelector((userSate) => userSate.userModule.user);
@@ -17,7 +19,6 @@ export function HomePage() {
   const [emojie, setEmojiPicker] = useState(null);
   const [selected, setSelected] = useState(false);
   const [btnFriend,setBtnFriend] = useState()
-  const [loading, setLoading] = useState(true);
 
 
   useEffect(  () => {
@@ -59,7 +60,7 @@ export function HomePage() {
     setStoryId(story);
   }
 
-
+  if(!stories) return <>...loading</>
   return (
 
 

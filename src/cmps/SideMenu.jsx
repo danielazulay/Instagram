@@ -12,7 +12,7 @@ import { UpdateUSer } from "../store/actions/user.actions";
 export function SideMenu() {
 
   const user = useSelector((userSate) => userSate.userModule.user);
-  console.log(user)
+
   const friends = useSelector((userSate) => userSate.userModule.users);
   const [search, setSearch] = useState(false);
   const [create, setCreate] = useState(false);
