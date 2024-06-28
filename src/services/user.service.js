@@ -23,7 +23,7 @@ export const userService = {
 window.userService = userService
 
 await generateFriends()
-await generateUser()
+ generateUser()
 
 
 
