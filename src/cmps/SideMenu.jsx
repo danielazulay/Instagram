@@ -10,7 +10,9 @@ import { userService } from "../services/user.service";
 import { UpdateUSer } from "../store/actions/user.actions";
 
 export function SideMenu() {
+
   const user = useSelector((userSate) => userSate.userModule.user);
+  console.log(user)
   const friends = useSelector((userSate) => userSate.userModule.users);
   const [search, setSearch] = useState(false);
   const [create, setCreate] = useState(false);
@@ -107,7 +109,7 @@ export function SideMenu() {
       </div>
 
       <ul className="menu">
-        <NavLink to={`/`} className="black">
+        <NavLink to={`/Instagram`} className="black">
           <li className="list-menu">
             <div
               className={`icon`}
@@ -148,7 +150,7 @@ export function SideMenu() {
           <span className="btn-name">Create</span>
         </li>
 
-        <NavLink to={`/${user.userName}`}>
+        <NavLink to={`/Instagram/${user.userName}`}>
           <li className="list-menu">
             <CircleImg img={user.imgUrl} width={24} height={24} />
             <span className="btn-name">Profile</span>
@@ -158,7 +160,7 @@ export function SideMenu() {
 
       <div className="bottom-menu">
         <ol className="bottom-bts">
-          <NavLink to={`/`}>
+          <NavLink to={`/Instagram`}>
             <li className="list-menu">
               <div
                 className="icon"
@@ -189,7 +191,7 @@ export function SideMenu() {
             <span className="btn-name">Create</span>
           </li>
 
-          <NavLink to={`/${user.userName}`}>
+          <NavLink to={`/Instagram/${user.userName}`}>
             <li className=".list-menu">
               <CircleImg img={user.imgUrl} height={24} width={24} />
               <span className="btn-name ">Profile</span>
@@ -228,9 +230,9 @@ export function SideMenu() {
                 .filter((el) =>
                   el.fullname.toLowerCase().includes(searchTxt.toLowerCase()) && !checkFriend(el._id)
                 )
-                .map((el) => (
-                  <li key={el._id}>
-                    <Friend user={el}  friendSave={friendSave} checkFriend={checkFriend}></Friend>
+                .map((firend) => (
+                  <li key={firend._id}>
+                    <Friend user={firend}  friendSave={friendSave} checkFriend={checkFriend}></Friend>
                   </li>
                 ))}
             </ul>

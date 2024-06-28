@@ -4,7 +4,6 @@ import routes from './routes'
 import { SideMenu } from './cmps/SideMenu'
 
 
-
 export function RootCmp() {
 
 

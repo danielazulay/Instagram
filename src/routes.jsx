@@ -7,12 +7,12 @@ import { Profile } from './pages/Profile.jsx'
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
     {
-        path: '/',
+        path: '/Instagram',
         component: <HomePage/>,
         label: 'Home 🏠',
     },
     {
-        path: '/:id',
+        path: '/Instagram/:id',
         component: <Profile/>,
         label: 'Profile',
     },

@@ -10,9 +10,10 @@ export const SET_USERS = 'SET_USERS'
 export const SET_SCORE = 'SET_SCORE'
 export const UPDATE_USER = 'UPDATE_USER'
 
+   
 const initialState = {
     user: userService.getLoggedinUser(),
-    users: [...userService.loadFrinds()],
+    users: [...userService.getFriends()],
 }
 
 export function userReducer(state = initialState, action) {

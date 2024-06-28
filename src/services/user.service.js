@@ -1,4 +1,4 @@
-
+import { useEffect } from 'react'
 import { httpService } from './http.service'
 import { utilService } from './util.service'
 
@@ -12,63 +12,26 @@ export const userService = {
     signup,
     getLoggedinUser,
     saveLocalUser,
-    getUser,
     getById,
     remove,
     update,
     changeScore,
     updateLocalUserFields,
-    loadFrinds
+    getFriends
 }
 
 window.userService = userService
 
+
 generateUser()
-generateFriends()
-
-
-async function generateFriends(){
-
-
-    let friends = utilService.loadFromStorage(USER_FRINDS)
-
-    if(!friends){
-        let url ="https://randomuser.me//api"
-        let tempArr = [];
-
-        for(let i=0; i < 6;i++){
-            let rb = await fetch(url);
-            if (rb.ok) {
-                let data = await rb.json();
-                let user = {
-                    "_id":data.results[0].id.value,
-                    "userName":data.results[0].name.first,
-                    "fullname":data.results[0].name.first+" "+data.results[0].name.last,
-                    "password":"123",
-                    "email":data.results[0].email,
-                    "imgUrl":data.results[0].picture.medium,
-                    "followers":[],
-                    "following":[],
-                }
-                tempArr.push(user);
-    
-            }
-        }
-    
-        utilService.saveToStorage(USER_FRINDS,tempArr)
-    }
-
-}
-
-function loadFrinds(){
-   return  utilService.loadFromStorage(USER_FRINDS) || null
-}
+     generateFriends()
 
 
 
-function generateUser(){
 
-    let loggedInUser = utilService.loadFromStorage(USER_DB)
+ function generateUser(){
+
+    let loggedInUser =  utilService.loadFromStorage(USER_DB)
 
     if(!loggedInUser)
     {
@@ -87,10 +50,40 @@ function generateUser(){
     }
 }
 
-function getUser() {
-    return utilService.loadFromStorage(USER_DB)
-    // return httpService.get(`user`)
+generateFriends()
+ async function  generateFriends(){
+
+    let friends = utilService.loadFromStorage(USER_FRINDS)
+
+    if(!friends){
+        let url ="https://randomuser.me//api"
+        let users = [];
+
+        for(let i=0; i < 6;i++){
+            let rb = await fetch(url);
+            if (rb.ok) {
+                let data = await rb.json();
+                let user = {
+                    "_id":data.results[0].id.value,
+                    "userName":data.results[0].name.first,
+                    "fullname":data.results[0].name.first+" "+data.results[0].name.last,
+                    "password":"123",
+                    "email":data.results[0].email,
+                    "imgUrl":data.results[0].picture.medium,
+                    "followers":[],
+                    "following":[],
+                }
+                users.push(user);
+    
+            }
+        }
+    
+        utilService.saveToStorage(USER_FRINDS,users)
+    }
+
 }
+
+
 
 
 
@@ -162,6 +155,13 @@ function updateLocalUserFields(user) {
 function getLoggedinUser() {
     return utilService.loadFromStorage(USER_DB) || null
 }
+
+function getFriends() {
+
+    console.log(utilService.loadFromStorage(USER_FRINDS) )
+    return utilService.loadFromStorage(USER_FRINDS) || null
+}
+
 
 
 // ;(async ()=>{
