@@ -22,7 +22,7 @@ export const userService = {
 
 window.userService = userService
 
-await generateFriends()
+ generateFriends()
  generateUser()
 
 
@@ -51,7 +51,7 @@ await generateFriends()
 }
 
 
- async function  generateFriends(){
+( async function  generateFriends(){
 
     let friends = utilService.loadFromStorage(USER_FRINDS)
 
@@ -81,7 +81,7 @@ await generateFriends()
         utilService.saveToStorage(USER_FRINDS,users)
     }
 
-}
+})()
 
 
 
