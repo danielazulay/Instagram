@@ -1,15 +1,21 @@
 
+import { useEffect } from "react";
 import { Friend } from "./Friend";
 import { CircleImg } from "./buttons/CircleImg";
 import { useSelector } from "react-redux";
+import { utilService } from "../services/util.service";
 
 
 
 export function SideSugestion({friendSave}){
     const logingInUser = useSelector((userSate) => userSate.userModule.user);
-    const friends = useSelector((userSate) => userSate.userModule.users);
+     const friends = useSelector((userSate) => userSate.userModule.users);
 
     // const [friend, setFriends] = useState([]);
+
+    useEffect(()=>{
+        utilService.loadFromStorage("friends")
+    })
     
     function checkFriend(id){
         return logingInUser.following.indexOf(id) !== -1 ? true : false

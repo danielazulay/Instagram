@@ -6,50 +6,78 @@ import { StoryList } from "../cmps/StoryList";
 import { useSelector } from "react-redux";
 import { loadStories } from "../store/actions/story.actions";
 import { StoryDetails } from "../cmps/StoryDetails";
-import { storyService } from "../services/story.service";
-import { UpdateUSer } from "../store/actions/user.actions";
-import { userService } from "../services/user.service";
+import { UpdateFriend, UpdateUSer, loadFriends } from "../store/actions/user.actions";
 
 
 export function HomePage() {
   const stories = useSelector((storeState) => storeState.storyModule.stories);
   const user = useSelector((userSate) => userSate.userModule.user);
-
+  const friends = useSelector((userSate) => userSate.userModule.users);
   const [storyId, setStoryId] = useState(null);
   const [emojie, setEmojiPicker] = useState(null);
   const [selected, setSelected] = useState(false);
-  const [btnFriend,setBtnFriend] = useState()
 
 
   useEffect(  () => {
+   
      onLoadStories();
-
-    
+     onLoadFriends()
+     
   }, [stories]);
+
+  
 
   function friendSave(friend_id){
 
     let index = user.following.indexOf(friend_id)
-
+    let friend = friends.filter((el)=>friend_id ===el._id )[0]
+    
     if(-1 !== index){
     user.following.splice(index,1);
-    setBtnFriend(false)
+    let userIndex =   friend.followers.indexOf(user._id)
 
+    friend.followers.splice(userIndex,1);
     }else{
   
       user.following.push(friend_id);
-      setBtnFriend(true)
+      friend.followers.push(user._id)
+
     }
-
-    userService.updateLocalUserFields(user)
-
-
+ 
+    UpdateFriend(friend);
     UpdateUSer(user);
   }
 
+  function checkFriend(id){
+    return user.following.indexOf(id) !== -1 ? true : false
+}
+
+  // function friendSave(friend_id){
+
+  //   let index = user.following.indexOf(friend_id)
+
+  //   if(-1 !== index){
+  //   user.following.splice(index,1);
+  //   setBtnFriend(false)
+
+  //   }else{
+  
+  //     user.following.push(friend_id);
+  //     setBtnFriend(true)
+  //   }
+
+  //   userService.updateLocalUserFields(user)
+
+
+  //   UpdateUSer(user);
+  // }
+
   function onLoadStories() {
-    
     loadStories();
+  }
+
+  function onLoadFriends() {
+    loadFriends()
   }
 
   function onCloseStory() {
@@ -62,7 +90,6 @@ export function HomePage() {
 
   if(!stories) return <>...loading</>
   return (
-
 
     <div className="home-page">
          
@@ -82,8 +109,8 @@ export function HomePage() {
         <StoryList stories={stories} user={user} onOpenStory={onOpenStory} />
       </div>
       <div className="side-sugestion">
-        <SideSugestion  friendSave={friendSave} btnFriend={btnFriend}/>
-      </div>
+        <SideSugestion  friendSave={friendSave} checkFriend={checkFriend}/>
+      </div> 
     </div>
 
   );

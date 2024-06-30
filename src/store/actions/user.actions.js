@@ -4,7 +4,22 @@ import { store } from '../store.js'
 
 import { showErrorMsg } from '../../services/event-bus.service.js'
 import { LOADING_DONE, LOADING_START } from "../reducers/system.reducer.js";
-import { REMOVE_USER, SET_USER, SET_USERS, SET_WATCHED_USER,UPDATE_USER } from "../reducers/user.reducer.js";
+import {SET_FRIENDS, REMOVE_USER, SET_USER, SET_USERS, SET_WATCHED_USER,UPDATE_USER,UPDATE_FRIEND } from "../reducers/user.reducer.js";
+
+
+
+export async function loadFriends() {
+    try {
+
+        const friends = await userService.query()
+        store.dispatch({ type: SET_FRIENDS, friends })
+    } catch (err) {
+        console.log('UserActions: err in loadUsers', err)
+    } finally {
+        store.dispatch({ type: LOADING_DONE })
+    }
+}
+
 
 export async function loadUsers() {
     try {
@@ -84,7 +99,24 @@ export async function loadUser(userId) {
 export async function UpdateUSer(user) {
     try {
         
+     await userService.updateLocalUserFields(user)
+   
         store.dispatch({ type: UPDATE_USER, user })
+
+    } catch (err) {
+        showErrorMsg('Cannot load user')
+        console.log('Cannot load user', err)
+    }
+}
+
+
+export async function UpdateFriend(friend) {
+    try {
+                
+     let  friends  = await userService.updateLocalFriendFields(friend)
+   
+        store.dispatch({ type: UPDATE_FRIEND, friends })
+
     } catch (err) {
         showErrorMsg('Cannot load user')
         console.log('Cannot load user', err)

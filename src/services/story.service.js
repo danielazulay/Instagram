@@ -11,8 +11,8 @@ export const storyService = {
 };
 let STORY = "story";
 
-
 generateStories()
+
 async function generateStories() {
   let stories = utilService.loadFromStorage(STORY);
 

@@ -7,11 +7,12 @@ import { useEffect, useRef, useState } from "react";
 import { Create } from "../pages/Create";
 import { Friend } from "./Friend";
 import { userService } from "../services/user.service";
-import { UpdateUSer } from "../store/actions/user.actions";
+import { UpdateFriend, UpdateUSer } from "../store/actions/user.actions";
 
 export function SideMenu() {
 
   const user = useSelector((userSate) => userSate.userModule.user);
+
 
   const friends = useSelector((userSate) => userSate.userModule.users);
   const [search, setSearch] = useState(false);
@@ -24,24 +25,25 @@ export function SideMenu() {
     return user.following.indexOf(id) !== -1 ? true : false
 }
 
-  function friendSave(friend_id){
+function friendSave(friend_id){
 
-    let index = user.following.indexOf(friend_id)
-
-    if(-1 !== index){
-    user.following.splice(index,1);
-
-    }else{
+  let index = user.following.indexOf(friend_id)
+  let friend = friends.filter((el)=>friend_id ===el._id )[0]
   
-      user.following.push(friend_id);
+  if(-1 !== index){
+  user.following.splice(index,1);
+  let userIndex =   friend.followers.indexOf(user._id)
 
-    }
+  friend.followers.splice(userIndex,1);
+  }else{
 
-    userService.updateLocalUserFields(user)
+    user.following.push(friend_id);
+    friend.followers.push(user._id)
 
-
-    UpdateUSer(user);
   }
+  UpdateFriend(friend);
+  UpdateUSer(user);
+}
 
   function handleSeach(event) {
     SetSearchTxt(event.currentTarget.value);
@@ -57,7 +59,7 @@ export function SideMenu() {
 
   useEffect(() => {
     function handleClickOutside(event) {
-      console.log(event.target);
+
       if (searchBarRef && !searchBarRef.current.contains(event.target)) {
         setSearch(false);
       }
@@ -230,9 +232,9 @@ export function SideMenu() {
                 .filter((el) =>
                   el.fullname.toLowerCase().includes(searchTxt.toLowerCase()) && !checkFriend(el._id)
                 )
-                .map((firend) => (
-                  <li key={firend._id}>
-                    <Friend user={firend}  friendSave={friendSave} checkFriend={checkFriend}></Friend>
+                .map((friend) => (
+                  <li key={friend._id}>
+                    <Friend user={friend}  friendSave={friendSave} checkFriend={checkFriend}></Friend>
                   </li>
                 ))}
             </ul>

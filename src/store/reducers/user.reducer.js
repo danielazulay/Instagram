@@ -9,12 +9,12 @@ export const REMOVE_USER = 'REMOVE_USER'
 export const SET_USERS = 'SET_USERS'
 export const SET_SCORE = 'SET_SCORE'
 export const UPDATE_USER = 'UPDATE_USER'
-
-
+export const UPDATE_FRIEND = 'UPDATE_FRIEND'
+export const SET_FRIENDS = 'SET_FRIENDS'
 
 const initialState = {
     user: userService.getLoggedinUser(),
-    users: userService.getFriends(),
+    users: [],
 }
 
 export function userReducer(state = initialState, action) {
@@ -26,6 +26,9 @@ export function userReducer(state = initialState, action) {
             break
         case SET_USER:
             newState = { ...state, user: action.user }
+            break
+        case SET_FRIENDS:
+            newState = { ...state, users:[...action.friends] }
             break
         case SET_WATCHED_USER:
             newState = { ...state }
@@ -39,6 +42,10 @@ export function userReducer(state = initialState, action) {
         case UPDATE_USER:
             newState = { ...state, user: action.user }
             break
+            case UPDATE_FRIEND:
+                
+                newState = { ...state, users:[...action.friends] }
+                break
     //         case UPDATE_STORY:
     //   return {
     //     ...state,

@@ -1,4 +1,5 @@
 
+import { storageService } from './async-storage.service'
 import { httpService } from './http.service'
 import { utilService } from './util.service'
 
@@ -17,17 +18,15 @@ export const userService = {
     update,
     changeScore,
     updateLocalUserFields,
-    getFriends
+    updateLocalFriendFields,
+    getFriends,
+    query,
 }
 
 window.userService = userService
 
- generateFriends()
- generateUser()
-
-
-
-
+generateUser()
+generateFriends()
 
  function generateUser(){
 
@@ -51,7 +50,7 @@ window.userService = userService
 }
 
 
-( async function  generateFriends(){
+ async function  generateFriends(){
 
     let friends = utilService.loadFromStorage(USER_FRINDS)
 
@@ -72,6 +71,7 @@ window.userService = userService
                     "imgUrl":data.results[0].picture.medium,
                     "followers":[],
                     "following":[],
+                    "saved":[],
                 }
                 users.push(user);
     
@@ -81,10 +81,19 @@ window.userService = userService
         utilService.saveToStorage(USER_FRINDS,users)
     }
 
-})()
+}
 
 
 
+async function query() {
+    try {
+      let stories = await storageService.query(USER_FRINDS);
+  
+      return stories;
+    } catch {
+      throw new Error();
+    }
+}
 
 
 async function getById(userId) {
@@ -146,18 +155,31 @@ function saveLocalUser(user) {
 }
 
 function updateLocalUserFields(user) {
-    const currUser = getLoggedinUser()
-    const userToSave = { ...currUser, ...user }
-    sessionStorage.setItem(USER_DB, JSON.stringify(userToSave))
-    return user
+    const currUser = getLoggedinUser();
+    const userToSave = { ...currUser, ...user };
+    //sessionStorage.setItem(USER_DB, JSON.stringify(userToSave)); // actual running project
+     localStorage.setItem(USER_DB, JSON.stringify(userToSave)); 
+    return userToSave; 
 }
+
+function updateLocalFriendFields(friend) {
+    const friends = getFriends();
+
+    let index  = friends.findIndex(f => f._id === friend._id)
+
+    friends.splice(index,1,friend)
+    //sessionStorage.setItem(USER_DB, JSON.stringify(userToSave)); // actual running project
+     localStorage.setItem(USER_FRINDS, JSON.stringify(friends)); 
+    return friends; 
+}
+
+
 
 function getLoggedinUser() {
     return utilService.loadFromStorage(USER_DB) || null
 }
 
  function getFriends() {
-
     return  utilService.loadFromStorage(USER_FRINDS)
 }
 

@@ -92,12 +92,9 @@ export function Story({ story, user, onOpenStory }) {
         <h2>{story.by.fullname}</h2>
 
 
-        <button
-                  className="compose-button"
-                  dangerouslySetInnerHTML={{
-                    __html: SvgService.getSvg("dots"),
-                  }}
-                />
+        <button  className="compose-button"
+         dangerouslySetInnerHTML={{
+        __html: SvgService.getSvg("dots"),}}/>
        
       </div>
 
