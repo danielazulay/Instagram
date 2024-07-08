@@ -10,6 +10,7 @@ export function MenuButton({
 }) {
   return (
     <div>
+    
       <div className="svgMenuLine">
         <div className="svgMenu">
           <div className="menu-buttons">
@@ -35,8 +36,9 @@ export function MenuButton({
               dangerouslySetInnerHTML={{ __html: SvgService.getSvg("comment") }}
             />
           </button>
-
-          <span
+          
+          {/* massage hide until develope message hidden */}
+          <span 
             className="compose-button black"
             dangerouslySetInnerHTML={{ __html: SvgService.getSvg("send") }}
           />

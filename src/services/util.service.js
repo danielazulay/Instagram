@@ -64,6 +64,11 @@ function loadFromStorage(key) {
     return (data) ? JSON.parse(data) : undefined
 }
 
+function resumeText(str){
+    return str.substring(0,112)
+}
+
+
 // util function
 function getAssetSrc(name) {
     const path = `/src/assets/${name}`
@@ -73,6 +78,3 @@ function getAssetSrc(name) {
 }
 
 
-function resumeText(str){
-    return str.substring(0,112)
-}

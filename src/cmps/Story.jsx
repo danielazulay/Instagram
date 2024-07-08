@@ -7,16 +7,18 @@ import { FormPost } from "./FormPost";
 import { CircleImg } from "./buttons/CircleImg";
 import { UpdateUSer } from "../store/actions/user.actions";
 import { saveStory } from "../store/actions/story.actions";
+import { MenuEdit } from "./MenuEdit";
+import { EditModal } from "./EditModal";
 
 
-export function Story({ story, user, onOpenStory }) {
+export function Story({friendSave,checkFriend, story, user, onOpenStory }) {
   const [spand, setSpand] = useState(false);
   const [post, setPost] = useState("");
   const [selected, setSelected] = useState(false);
   const [emojiPosition, setEmojiPosition] = useState({x :0,y :0})
   const [save,setSave] =useState(false)
-
-
+  const [menu,setMenu] =useState(false)
+  const [edit,setEdit] =useState(false)
 
   function postSaved(id) {
 
@@ -33,16 +35,28 @@ export function Story({ story, user, onOpenStory }) {
 
   }
 
+  
+  function openMenu(){
+    setMenu((past)=>!past)
+  }
+
+
+  function openEdit(){
+    setEdit((past)=>!past)
+  }
+
   function checkIfSaved(id) {
     return user.saved.indexOf(id) ===-1 ? false : true;
   }
 
   function checkLike() {
+
     return story.likedBy.find((element) => user._id == element._id) !==
       undefined
       ? true
       : false;
   }
+
 
   function handleLike(action) {
     const newLike = {
@@ -50,12 +64,14 @@ export function Story({ story, user, onOpenStory }) {
       fullname: user.fullname,
       imgUrl: user.imgUrl,
     };
-
     if (action) {
+
       story.likedBy.push(newLike);
     } else  {
+     
       story.likedBy = story.likedBy.filter((el) => el._id !== user._id);
     }
+
     saveStory(story);
   }
 
@@ -85,14 +101,19 @@ export function Story({ story, user, onOpenStory }) {
     setSelected(prev => !prev);
   }
 
+  function handleMenuEdit(){
+    setMenu((prev)=>!prev)
+  }
+
   return (
     <div className="story-block">
       <div className="story-titlle">
-        <CircleImg img={user.imgUrl} />
+        <CircleImg img={story.by.imgUrl} />
         <h2>{story.by.fullname}</h2>
 
 
         <button  className="compose-button"
+        onClick={handleMenuEdit}
          dangerouslySetInnerHTML={{
         __html: SvgService.getSvg("dots"),}}/>
        
@@ -110,13 +131,12 @@ export function Story({ story, user, onOpenStory }) {
       />
 
       <div className="story-text">        
-        <pre><b className="gray">{story.by.fullname + " "}</b>{!spand ? utilService.resumeText(story.txt):story.txt}</pre> 
-
-        <span
+        <pre><b className="gray">{story.by.fullname + " "}</b>{story.txt.length< 112? story.txt :  (!spand  ? utilService.resumeText(story.txt):story.txt)}</pre> 
+        {story.txt.length > 112? <span
           style={{ visibility: spand ? "hidden" : "visible" }}
           onClick={expand}>
           <span> ...more</span>
-        </span>
+        </span>:<></>}
       </div>
 
       <a onClick={() => onOpenStory(story._id)} className="vill-all">
@@ -156,6 +176,8 @@ export function Story({ story, user, onOpenStory }) {
         ) : (
           <></>
         )}
+        {edit&& <EditModal openEdit={openEdit} openMenu={openMenu} story={story} user={user}/>}
+        {menu&&<MenuEdit openMenu={openMenu}  openEdit={openEdit} onOpenStory={onOpenStory} postSaved={postSaved} checkIfSaved={checkIfSaved} checkFriend={checkFriend} friendSave={friendSave} handleMenuEdit={handleMenuEdit} user={user} story={story}/>}
       </div>
 
 

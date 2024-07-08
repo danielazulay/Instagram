@@ -76,6 +76,7 @@ export function StoryDetails({
   }
 
   function checkLike() {
+
     return story.likedBy.find((element) => user._id == element._id) !==
       undefined
       ? true
@@ -92,6 +93,7 @@ export function StoryDetails({
   }
 
   function handleLike(action, commnetId) {
+
     const newLike = {
       _id: user._id,
       fullname: user.fullname,
@@ -117,6 +119,8 @@ export function StoryDetails({
     }
     saveStory(story);
   }
+
+  
 
   function handleChange(event) {
     setPost(event.currentTarget.value);
@@ -168,6 +172,7 @@ export function StoryDetails({
                   <h2>{story.by.fullname}</h2>
                 </div>
                 <button
+                // onClick={handleMenuEdit}
                   className="compose-button"
                   dangerouslySetInnerHTML={{
                     __html: SvgService.getSvg("dots"),
@@ -261,6 +266,7 @@ export function StoryDetails({
           </div>
         </div>
       </div>
+     
     </div>
   );
 }

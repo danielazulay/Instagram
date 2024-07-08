@@ -79,12 +79,14 @@ function friendSave(friend_id){
   return (
     <div className={`side-menu`}>
       <div className="top-menu">
+      <NavLink to={`/Instagram`} className="black">
         <span
           className="heart-top-menu"
           dangerouslySetInnerHTML={{
             __html: SvgService.getSvg("instagran"),
           }}
         />
+        </NavLink>
         <form className="search-menu heart-top-menu">
           <input placeholder="Search" type="text"></input>
         </form>
@@ -93,14 +95,16 @@ function friendSave(friend_id){
           dangerouslySetInnerHTML={{ __html: SvgService.getSvg("lev") }}
         />
       </div>
+     
       <div className="instagran-logo icon">
+
         <span
           dangerouslySetInnerHTML={{
             __html: SvgService.getSvg("instagran"),
           }}
         />
-
-        <Link to="/">
+     
+        <Link to="/Instagram">
           <span
             className="small black icon"
             dangerouslySetInnerHTML={{

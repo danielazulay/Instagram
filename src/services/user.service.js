@@ -73,11 +73,13 @@ generateFriends()
                     "following":[],
                     "saved":[],
                 }
+
+                if(user._id === null){
+                    user._id =i
+                }
                 users.push(user);
-    
             }
         }
-    
         utilService.saveToStorage(USER_FRINDS,users)
     }
 

@@ -24,7 +24,7 @@
       grid-template-rows: 0.5fr 0.4fr 0.2fr 0.1fr;
       grid-template-columns: 3fr 7fr;
       width: 75%;
-      margin-bottom: 0;
+      margin-bottom: 10%;
 
       .img-grid {
         display: flex;
@@ -59,8 +59,7 @@
 
     .mobile-profile{
       visibility: hidden;
-    
-    
+      display: none;    
       .img-profile{
         margin-top: 3%;
         margin-left: 15px;
@@ -211,6 +210,7 @@ visibility:none;
 
     .profile-page .grid-container  .mobile-profile{
       visibility: visible;
+      display: block;
     }
 }
 

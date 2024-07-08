@@ -1,0 +1,294 @@
+.modal-edit {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(89, 89, 89, 0.8);
+    z-index: 3;
+    overflow: hidden;
+  
+    .buttom-submit {
+      appearance: none;
+      color: white;
+      background-color: #7a7a7a;
+      font-size: 20px;
+      font-weight: 100;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+    }
+    .model {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-height: 20%;
+      max-height: 80%;
+      max-width: 60%;
+      min-width: 30%;
+  
+      transform: translate(-50%, -50%);
+      background-color: white;
+      border-radius: 15px;
+  
+  
+      .header {
+        border-bottom: 0.1px solid rgb(198, 191, 191);
+     display: flex;
+   justify-content: center;
+  
+        height: 2%;
+        margin-top: 0;
+  
+        .back-button {
+          width: 50px;
+          display: inline;
+          margin-top: 0;
+          background: none;
+          color: inherit;
+          border: none;
+          padding: 0;
+          font: inherit;
+          cursor: pointer;
+          outline: inherit;
+          font-weight: 800;
+          margin-right: 30%;
+        }
+        .tittle-share {
+          font-family: "-apple-system, BlinkMacSystemFont, " Segoe UI
+            ", Roboto, Helvetica, Arial, sans-serif";
+          font-family: 300;
+          font-size: 19px;
+          width: 650px;
+          display: flex;
+    justify-content: center;
+    align-items: center;
+        }
+
+      }
+   
+       .modal-upload {
+
+        display: flex;
+        height: 90%;
+        flex-direction: row-reverse;
+
+        .img-edit{
+            max-width: 100%;
+            .img2{
+                height: 100%;
+            }
+        }
+  
+  
+     
+       .form-txt {
+        min-width: 40%;
+        min-height: 40%;
+
+
+        
+          .upload-text {
+           max-height: 71vh;
+           max-width: 100vw;
+            display: flex;
+          justify-content: safe;
+            flex-grow :0;
+  
+  
+            .img-container {
+              min-width: 20%;
+              min-height:30%;   
+              max-height:90%;   
+              max-width: 60%;
+  
+              border-right: 0.5px solid gray;
+              justify-content: center;
+              .img-share {
+  
+                min-width: 60%;
+                max-width: 100%;
+                min-height: 60%;
+                max-height: 100%;
+  
+              
+            }
+  
+            }
+               
+  
+         
+  
+            .desc-container {
+              width: 300px;
+                    .detail-share {
+                display: flex;
+                gap: 5px;
+                font-size: 10px;
+                align-items: center;
+                margin-top: 5%;
+                margin-bottom: 5%;
+              }
+   
+  
+              .input-share {
+  
+  
+                min-height: 100px;
+                max-width: 90%;
+                min-width: 50px;
+                border: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+
+  
+  // @media only screen and (max-width: 1300px) {
+  
+  
+  
+  //   .profile-model .model .header {
+  //     height: 10%;
+  //   }
+  
+  
+  //       .img-container {
+  //         height: 100%;
+  //         width: 100%;
+  //         border-right: 0.5px solid gray;
+  //         justify-content: center;
+  //   .profile-model .model .header {
+  //     .tittle-share {
+  //       flex-direction: column;
+  //       width: 550px;
+  //       align-content: center;
+  //       justify-content: center;
+  //       font-size: 14px;
+  
+  //     }
+  
+  //     height: 15%;
+  //   }
+  
+  //   .profile-model .model {
+  //     left: 50%;
+  //     height: 70vh;
+  //     width: 60vw;
+  //   }
+  
+  //   .profile-model
+  //     .model
+  //     .modal-upload
+  //     .form-txt
+  //     .upload-text
+  //     .img-container
+  //     img {
+  //     height: auto;
+  //   }
+  // }
+  // }
+  // // @media only screen and (max-width: 600px) {
+  // //   .profile-model .model {
+  // //     top: 50%;
+  // //     left: 53%;
+  // //     width: 50%;
+  // //     transform: translate(-55%, -50%);
+  // //     height: 60%;
+  // //     width: 80vw;
+  // //   }
+  
+  // //   .img-container
+  // //  {
+  
+  // //   height: 350px;
+  // //   width: auto;
+  
+  //     .img-share{
+  //       object-fit: cover;
+  //       height: 100%;
+  //       width: auto;
+  //     }
+    
+  // }
+  // }
+  
+  @media only screen and (min-width: 1690px) {
+  .img-share{
+    max-width: 100%;
+  
+  }
+  
+  }
+  
+  @media only screen and (max-width: 800px){
+  
+    
+  
+    .model .header {
+      border-bottom: 0.1px solid rgb(198, 191, 191);
+      display: flex;
+      justify-content: center;
+      height: 5%;
+      margin-top: 1%;
+      .back-button {
+        width: 10px;
+        display: inline;
+        margin-top: 0;
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+        font-weight: 800;
+        margin-right: 30%;
+  
+        svg {
+          fill: currentcolor;
+          height: 14px;
+          width: 14px;
+      }
+      }
+      .tittle-share {
+        font-family: "-apple-system, BlinkMacSystemFont, " Segoe UI
+          ", Roboto, Helvetica, Arial, sans-serif";
+        font-family: 300;
+        font-size: 9px;
+        width: 50px;
+        align-content: center;
+      }
+      .share-button {
+        width: 60px;
+        display: inline;
+        margin-top: 0;
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+        font-weight: 800;
+        color: $color-prime;
+        margin-left: 25%;
+        font-size: 9px;
+      }
+    }
+  
+  }
+  
+  @media only screen and (max-width: 560px){
+
+    .modal-upload .form-txt .upload-text .desc-container {
+        max-width: 100%;
+      }
+    .modal-upload .form-txt .upload-text .desc-container .input-share {
+      width: 100%;
+    }
+  }

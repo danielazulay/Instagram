@@ -5,8 +5,9 @@ import { ADD_STORY, REMOVE_STORY, SET_STORIES,UPDATE_STORY } from '../reducers/s
 import { storageService } from '../../services/async-storage.service.js'
 // Action Creators
 let STORY_DB = "story"
-export function getActionRemoveStory(reviewId) {
-    return { type: REMOVE_STORY, reviewId }
+export async function getActionRemoveStory(storyId) {
+    await storyService.remove(storyId)
+    return { type: REMOVE_STORY, storyId }
 }
 export function getActionAddStory(review) {
     return { type: ADD_STORY, review }
