@@ -56,10 +56,12 @@
    
     width: break-word;
     pre{
+  
       margin-bottom: 0;
       font-weight: 400;
       color: black;
-      text-wrap: wrap;
+      white-space: pre-wrap; /* Wrap long lines */
+      word-wrap: break-word; /* Break long words */
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
   

@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 import { useEffect, useRef, useState } from "react";
 import { Create } from "../pages/Create";
 import { Friend } from "./Friend";
-import { userService } from "../services/user.service";
 import { UpdateFriend, UpdateUSer } from "../store/actions/user.actions";
 
 export function SideMenu() {
@@ -88,7 +87,7 @@ function friendSave(friend_id){
         />
         </NavLink>
         <form className="search-menu heart-top-menu">
-          <input placeholder="Search" type="text"></input>
+            <input id="search" placeholder="Search" type="text" value={searchTxt} onChange={handleSeach}></input>
         </form>
         <span
           className="heart-top-menu"
@@ -214,6 +213,7 @@ function friendSave(friend_id){
           <div className="search-input">
             <form>
               <input
+              id="search"
                 type="text"
                 placeholder="Search"
                 value={searchTxt}

@@ -10,16 +10,16 @@ import { storyService } from "../services/story.service";
 import { UpdateUSer } from "../store/actions/user.actions";
 
 export function StoryDetails({
-  selected,
-  setSelected,
   onCloseStory,
   user,
   storyId,
+  openMenu
 }) {
   const [story, setStory] = useState();
   const [post, setPost] = useState("");
   const [emojiPosition, setEmojiPosition] = useState({ x: 0, y: 0 });
   const [save, setSave] = useState(false);
+  const [selected, setSelected] = useState(false);
 
   useEffect(() => {
     getStory();
@@ -172,7 +172,7 @@ export function StoryDetails({
                   <h2>{story.by.fullname}</h2>
                 </div>
                 <button
-                // onClick={handleMenuEdit}
+               onClick={openMenu}
                   className="compose-button"
                   dangerouslySetInnerHTML={{
                     __html: SvgService.getSvg("dots"),
@@ -265,8 +265,7 @@ export function StoryDetails({
             </div>
           </div>
         </div>
-      </div>
-     
+      </div>    
     </div>
   );
 }

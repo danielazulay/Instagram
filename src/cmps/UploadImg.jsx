@@ -18,6 +18,7 @@ export function UploadImg({ changePage, url, handleChange }) {
 
       <form onSubmit={onSubmit}>
         <input
+          id="text"
           className="input-upload"
           type="text"
           placeholder="Link"

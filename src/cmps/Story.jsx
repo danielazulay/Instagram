@@ -9,9 +9,10 @@ import { UpdateUSer } from "../store/actions/user.actions";
 import { saveStory } from "../store/actions/story.actions";
 import { MenuEdit } from "./MenuEdit";
 import { EditModal } from "./EditModal";
+import { StoryDetails } from "./StoryDetails";
 
 
-export function Story({friendSave,checkFriend, story, user, onOpenStory }) {
+export function Story({friendSave,checkFriend, story, user }) {
   const [spand, setSpand] = useState(false);
   const [post, setPost] = useState("");
   const [selected, setSelected] = useState(false);
@@ -19,6 +20,19 @@ export function Story({friendSave,checkFriend, story, user, onOpenStory }) {
   const [save,setSave] =useState(false)
   const [menu,setMenu] =useState(false)
   const [edit,setEdit] =useState(false)
+  const [storyId, setStoryId] = useState(null);
+
+
+
+  function onCloseStory() {
+    setStoryId(null);
+  }
+
+  function onOpenStory(story) {
+    setStoryId(story);
+  }
+
+
 
   function postSaved(id) {
 
@@ -178,6 +192,18 @@ export function Story({friendSave,checkFriend, story, user, onOpenStory }) {
         )}
         {edit&& <EditModal openEdit={openEdit} openMenu={openMenu} story={story} user={user}/>}
         {menu&&<MenuEdit openMenu={openMenu}  openEdit={openEdit} onOpenStory={onOpenStory} postSaved={postSaved} checkIfSaved={checkIfSaved} checkFriend={checkFriend} friendSave={friendSave} handleMenuEdit={handleMenuEdit} user={user} story={story}/>}
+     
+         {storyId && (
+        <StoryDetails
+        openEdit={openEdit} 
+        openMenu={openMenu}
+        friendSave={friendSave}
+        checkFriend={checkFriend}
+          storyId={storyId}
+          user={user}
+          onCloseStory={onCloseStory}
+        />
+         )}
       </div>
 
 

@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 
 import { SideSugestion } from "../cmps/SideSugestion";
 import { StoryList } from "../cmps/StoryList";
 import { useSelector } from "react-redux";
 import { loadStories } from "../store/actions/story.actions";
-import { StoryDetails } from "../cmps/StoryDetails";
 import { UpdateFriend, UpdateUSer, loadFriends } from "../store/actions/user.actions";
 
 
@@ -13,10 +12,6 @@ export function HomePage() {
   const stories = useSelector((storeState) => storeState.storyModule.stories);
   const user = useSelector((userSate) => userSate.userModule.user);
   const friends = useSelector((userSate) => userSate.userModule.users);
-  const [storyId, setStoryId] = useState(null);
-  const [emojie, setEmojiPicker] = useState(null);
-  const [selected, setSelected] = useState(false);
-  // const [menu,setMenu] =useState(false)
 
   useEffect(  () => {
    
@@ -24,9 +19,7 @@ export function HomePage() {
      onLoadFriends()
      
   }, [stories]);
-
   
-
 
 
   function friendSave(friend_id){
@@ -56,8 +49,6 @@ export function HomePage() {
     return user.following.indexOf(id) !== -1 ? true : false
 }
 
-
-
   function onLoadStories() {
     loadStories();
   }
@@ -66,40 +57,14 @@ export function HomePage() {
     loadFriends()
   }
 
-  function onCloseStory() {
-    setStoryId(null);
-  }
-
-  function onOpenStory(story) {
-    setStoryId(story);
-  }
-
-  
-  // function handleMenuEdit(){
-  //   setMenu((prev)=>!prev)
-  // }
 
   if(!stories) return <>...loading</>
   return (
 
     <div className="home-page">
          
-      {storyId && (
-        <StoryDetails
-        friendSave={friendSave}
-        checkFriend={checkFriend}
-          storyId={storyId}
-          selected={selected}
-          setSelected={setSelected}
-          setEmojiPicker={setEmojiPicker}
-          user={user}
-          onCloseStory={onCloseStory}
-        />
-      )}
-      {/* {story && <StoryDetails   selected={selected} setSelected={setSelected} setEmojiPicker={setEmojiPicker} story={story} user={user} onCloseStory={onCloseStory}/>} */}
-
       <div className="story-list">
-        <StoryList friendSave={friendSave} checkFriend={checkFriend} stories={stories} user={user} onOpenStory={onOpenStory} />
+        <StoryList friendSave={friendSave} checkFriend={checkFriend} stories={stories} user={user}  />
       </div>
       <div className="side-sugestion">
         <SideSugestion friendSave={friendSave} checkFriend={checkFriend}/>

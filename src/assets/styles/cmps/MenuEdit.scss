@@ -5,16 +5,16 @@
     width: 100vw;
     height: 100vh;
     background-color: rgba(89, 89, 89, 0.8);
-    z-index: 1;
+    z-index: 3;
     overflow: hidden;
     .model {
       position: absolute;
       top: 50%;
       left: 50%;
       min-height: 28%;
-      max-height: 35%;
-      max-width: 45%;
-      min-width: 35%;
+      max-height: 25%;
+      max-width: 30%;
+      min-width: 20%;
 
       transform: translate(-50%, -50%);
  
@@ -59,3 +59,18 @@
     }
   }
   
+
+
+  @media only screen and (max-width: 540px) {
+    .menu-model {
+
+      .model {
+  
+        min-height: 28%;
+        max-height: 25%;
+        max-width: 65%;
+        min-width: 55%;
+      }  
+  
+  }
+}

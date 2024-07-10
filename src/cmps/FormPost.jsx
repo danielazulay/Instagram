@@ -3,6 +3,7 @@ export function FormPost({onPostSubmit,setSelected,handleChange,post}){
 
      <form  className="form-post" onSubmit={onPostSubmit}  >
       <input
+        id="post-text"
         className="input-post"
         onClick={() => setSelected(false)} // how to make close when click out
         type="text"

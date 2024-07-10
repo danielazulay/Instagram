@@ -9,7 +9,6 @@ export function UploadTxt({ setText,text, url, user, }) {
   }
 
 
-
   return (
 
     <div className="upload-text">
@@ -22,7 +21,7 @@ export function UploadTxt({ setText,text, url, user, }) {
         <h2>{user.fullname}</h2>
         </div>
       <form>
-        <textarea type="text" placeholder="Write a caption..." onChange={handleChange} value={text} className="input-share" ></textarea>
+        <textarea id="text" type="text" placeholder="Write a caption..." onChange={handleChange} value={text} className="input-share" ></textarea>
 
       </form>
       </div>
