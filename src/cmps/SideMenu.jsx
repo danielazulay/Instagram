@@ -229,7 +229,7 @@ function friendSave(friend_id){
             </form>
           </div>
           <div className={`recent-list`}>
-          <span>Recent</span>
+          {/* <span>Recent</span> */}
           {searchTxt && (
             <ul>
               {friends
